@@ -1,0 +1,36 @@
+<div class="container tc_bg">
+	<div class="row">
+		<div class="col-sm-12">
+			<h4>{{'ang_termsofuse' | translate}}</h4>
+		</div>
+	</div>
+	<div class="row">
+		<!-- <div class="col-sm-3">
+			<div class="terms_list">
+				<ul>
+					<span *ngFor="let item of termsConditionsArr; let index = index; ">
+						<li *ngIf="item.type == 'terms'">
+							<a href="javascript:void(0)" id="plink_1" (click)="showTermsNDConditions(index)">{{item.title}}</a>
+						</li>
+					</span> -->
+					<!-- <li class="parent_link">
+						<a href="javascript:void(0)" id="" (click)="sublinkshow()">Terms 3<i class="fa fa-caret-down pull-right" aria-hidden="true"></i></a>
+						<ul class="sublink" *ngIf="sublink">
+							<li><a href="javascript:void(0)" id="clink_1">Terms 3.1</a></li>
+							<li><a href="javascript:void(0)" id="clink_2">Terms 3.1</a></li>
+							<li><a href="javascript:void(0)" id="clink_3">Terms 3.1</a></li>
+						</ul>
+					</li> -->
+				<!-- </ul>
+			</div>
+		</div> -->
+		<div class="col-sm-12">
+			<div id="plink_1" class="tc_content">
+				<h5>{{displayArr?.title}}</h5>
+				<div>
+					<p [innerHtml]="displayArr?.body"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

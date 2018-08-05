@@ -1,0 +1,222 @@
+
+.signup_view{
+	background:#ffffff;
+	padding: 20px 60px;
+	margin:50px auto;
+	box-shadow: 0px 0 30px rgba(0,0,0,0.1);
+}
+.signup_view legend{
+	font-size: 30px;
+	font-family: 'Lato-Bold';
+	color: #222222;
+	margin-bottom: 20px;
+}
+.type_of_language{
+	margin-bottom: 30px;
+}
+.type_of_language button{
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+	padding:7px 25px;
+	font-size: 20px;
+    width: 100%;
+}
+.signup_view .control-group input{
+	border-left: 0;
+	border-top: 0;
+	border-right: 0;
+	border-bottom: 1px solid #b2b2b2;
+	width: 100%;
+	font-size: 20px;
+	color: #645d4b;
+	padding: 16px 35px 16px 35px;
+	font-family: 'Lato-Regular';
+}
+.signup_view .control-group{position: relative;margin-bottom: 25px;}
+.signup_view .control-group i{
+	font-size: 25px;
+	color: #000000;
+	position: absolute;
+    top: 22px;
+}
+.signup_view .control-group .fa-mobile{
+	font-size: 34px;
+    top: 18px;
+}
+.signup_view .control-group .fa-envelope{
+	font-size: 19px;
+    top: 20px;
+}
+.sign_up_btn{
+	font-family: 'Lato-Heavy';
+	font-size: 20px;
+	text-transform: uppercase;
+	padding:10px 60px;
+	margin:0 auto;
+	display: block;
+}
+.already_view{
+	text-align: center;
+	color: #777777;
+	font-size: 20px;
+}
+.already_view a{
+	color: #777777;
+}
+.already_view strong{
+	color: #c59b42;
+	font-family: 'lato-Bold';
+}
+.flag_dropdown .dropbtn{font-size: 20px;}
+.gutter_right{margin-right: -15px !important;}
+.Country_code{padding-top: 10px;}
+.Country_code select{border: none;border-bottom: 1px solid #b3b3b2;border-radius: 0;font-size: 24px;height: 59px;padding:10px;}
+.Country_code select:focus{outline: none !important;box-shadow: none;}
+.form-control:focus{outline: none;}
+.control-group i{padding-left: 10px;}
+.gutter_right.mobile_outer{margin-right: 0 !important;padding-right: 0;}
+.type_of_language .ryec_btn.active{background: transparent;color: #c59b42;}
+.type_gender{
+	margin-top: 18px;
+}
+.type_gender [type="radio"]:checked,
+.type_gender [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+.type_gender [type="radio"]:checked + label,
+.type_gender [type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 40px;
+    cursor: pointer;
+    line-height: 24px;
+    display: inline-block;
+    color: #414141;
+    margin-right: 25px;
+    font-size: 20px;
+}
+.type_gender [type="radio"]:checked + label:before,
+.type_gender [type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 26px;
+    height: 26px;
+    border: 2px solid #41454b;
+    border-radius: 100%;
+    background: #fff;
+}
+.type_gender [type="radio"]:checked + label:after,
+.type_gender [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #c59b42;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.type_gender [type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+.type_gender [type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.radio-btn label{font-size: 20px;}
+
+@media (min-width: 992px){
+	.signup_view{
+		width: 100%;
+	}	
+}
+@media (min-width: 1024px){
+	.signup_view{
+		width: 70%;
+	}
+}
+
+@media (max-width: 767px){
+	.signup_view legend{
+		font-size: 25px;
+	}
+	.type_of_language{
+		margin-bottom: 30px;
+	}
+	.sign_up_btn{
+		font-size: 17px;
+	}
+	.already_view{
+		font-size: 17px;
+	}
+	.signup_view{
+		padding: 20px 20px;
+	}
+	.type_of_language button{
+		font-size: 17px;
+		padding: 7px 15px;
+	}
+	.signup_view .control-group{
+		margin-bottom: 30px;
+	}
+	.signup_view .control-group input,.flag_dropdown .dropbtn{
+		font-size: 17px;
+	}
+	.signup_view{
+		margin:20px auto;
+	}
+
+	
+}
+@media (max-width: 576px){
+	.type_of_language button{
+		display: block;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.sign_up_btn{
+		/*width: 100%;*/
+		padding:10px 40px;;
+	}
+	
+}
+
+@media (max-width: 575px){
+	.country_outer{
+   		width: 25%;
+	}		  
+	.mobile_outer{
+	   width: 74%;
+	}
+	.signup_view .control-group input{
+	  font-size: 14px;
+	  padding: 16px 10px 16px 35px;
+	}
+	.control-group i{top:13px !important;}
+	.signup_view .control-group input,.flag_dropdown .dropbtn{
+		font-size: 14px;
+	}
+  
+  }
+  @media (max-width: 460px){
+  
+  .control-group input {
+    padding: 16px 2px 16px 35px !important;
+  }
+  .country_outer{
+    width: 40%;
+  }
+  .mobile_outer{
+    width: 60%;
+  }
+  
+}

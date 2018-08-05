@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="inbox-sec">
+        <!-- <div class="message-heading">
+            <div class="row">
+                <div class="col-sm-5 no-gutter-right">
+                    <div class="inbox-heading">
+                        <h3>inbox</h3>
+                    </div>
+                </div>
+                <div class="col-sm-7 no-gutter-left brdr-left" *ngIf="conversionList">
+                    <div class="inbox-heading message-detail">
+                        <span class="business-img"><img [src]="conversionList?.image_url" alt="img"></span>
+                        <h3>{{conversionList?.name}}</h3>
+                        <span class="message-title">{{conversionList?.title}}</span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-sm-5 col-xs-12 no-gutter-right">
+                <div class="message-heading">
+                    <div class="inbox-heading">
+                        <h3>{{'ang_inbox' | translate}}</h3>
+                    </div>
+                </div>
+                <perfect-scrollbar class="inbox-list">
+                    <div>
+                        <div class="inbox-block" *ngFor="let thread of threadList;let index = index;" (click)="openChatWindow(thread.id, index)">
+                            <div class="inbox-img"><img [src]="thread.image_url" alt="chat img"></div>
+                            <div class="inbox-detail">
+                                <h4 class="business-name">{{thread.name}}<span class="message-time">{{thread.last_message.timestamp | date: 'hh:mm a'}}</span></h4>
+                                <h5 class="business-title">{{thread.title}}</h5>
+                                <p class="message-content message_msg">{{thread.last_message.message}}</p>
+                                <div class="new_message" *ngIf="thread.unread_count != 0 && thread.id != thread_id">{{thread.unread_count}}</div>
+                            </div>
+                        </div>
+                        
+                        <div *ngIf="isMoreThread">
+                            <button type="button" (click)="loadPrevious()" class="btn btn-sm btn-block load_btn">{{'ang_loadprevious' | translate}}</button>
+                        </div>
+
+                        <div *ngIf="threadList?.length == 0" style="text-align: center;font-size: 20px;padding: 20px;">
+                           {{'ang_noconversationfound' | translate}}
+                        </div>
+                    </div>
+                </perfect-scrollbar>
+            </div>
+            <div [ngClass]="{'active':isConversionOpened}" class="col-sm-7 col-xs-12 no-gutter-left brdr-left chat_view_responsive" *ngIf="conversionList">
+                <div class="message-heading">
+                    <div class="inbox-heading message-detail">
+                        <i class="fa fa-chevron-left hidden" (click)="chatDrawer()" aria-hidden="true"></i>
+                        <span class="business-img"><img [src]="conversionList?.image_url" alt="img"></span>
+                        <h3>{{conversionList?.name}}</h3>
+                        <span class="message-title">{{conversionList?.title}}</span>
+                    </div>
+                </div>
+                <div class="message-screen">
+                    <perfect-scrollbar class="message-area" id="msg_div" #msg_div (scroll)="onScroll($event)">
+                        <!-- <div class="center_date top">
+                            <span>March 00,0000</span>
+                        </div> -->
+                        <div>
+                            <div *ngIf="isMoreMessage">
+                                <button type="button" (click)="loadPreviousMessage()" class="btn btn-sm btn-block load_btn">{{'ang_loadprevious' | translate}}</button>
+                            </div>
+
+                            <div *ngFor="let item of messageArr">
+                                <div class="center_date">
+                                    <span>{{item.date}}</span>
+                                </div>
+                                <div *ngFor="let message of item.data">
+                                    <div class="received-msg clearfix" *ngIf="message.posted_by != loggedUserId"><div class="message-content">{{message.message}} <span>{{message.timestamp | date: 'hh:mm a'}}</span></div></div>
+                                    <div class="send-msg clearfix" *ngIf="message.posted_by == loggedUserId"><div class="message-content">{{message.message}} <span>{{message.timestamp | date: 'hh:mm a'}}</span></div></div>    
+
+                                </div>
+                            </div>
+                    </div>
+                    </perfect-scrollbar>
+                    <div class="message-form">
+                        <div class="message-text">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="1" placeholder="Type a message here...." name="message_text" [(ngModel)]="message_text"></textarea>
+                            </div>
+                        </div>
+                        <div class="send-btn">
+                            <a href="javascript:void(0)" title="{{'ang_send' | translate}}" (click)="sendMessage()"><img src="../../../assets/images/send-img.png" alt="send img"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

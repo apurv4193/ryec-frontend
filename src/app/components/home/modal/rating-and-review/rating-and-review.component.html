@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h5 class="modal-title">{{'ang_ratingsandreview' | translate}}</h5>
+    <button type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" novalidate [formGroup]="ratingForm" (submit)="submitDetail()">
+        <span class="rate">{{'ang_giverating' | translate}} </span> <ngb-rating [(rate)]="currentRate" max="5"></ngb-rating>    
+
+        <div class="control-group">
+            <div class="controls">
+                <input type="text"  formControlName="review" id="review" placeholder="{{'ang_addreview' | translate}}"
+                    class="input-xlarge">
+                <!-- <textarea id="review" formGroupName="review" placeholder="Add review"></textarea> -->
+            </div>
+            <p class="help-block" *ngIf="ratingForm.controls.review.touched && ratingForm.controls.review.errors?.required">{{'ang_reviewisrequired' | translate}}</p>
+        </div>
+
+        <div class="profile_btn">
+            <button class="ryec_btn" [disabled]="!ratingForm.valid && currentRate != 0" type="submit">{{'ang_submit' | translate}}</button>
+        </div>
+    </form>
+</div>

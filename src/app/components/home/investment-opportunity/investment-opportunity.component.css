@@ -1,0 +1,145 @@
+.coming_text {box-shadow: 0px 0px 8px #c1c1c1;background: #fff;    padding: 10%;}
+.coming_text h2{text-align: center;font-size: 50px;}
+
+.investment_banner{position: relative;height: 400px;margin-left: -15px;margin-right: -15px;text-align: center;}
+.investment_banner img{width: 100%;height: 100%;}
+.investment_banner h2{ color: #fff;text-transform: capitalize;position: absolute;top: 40%;left: 50%;transform: translate(-50%,-40%);content:" ";font-size: 60px;}
+.myinterest_tab{position: absolute;bottom: 0;background: #000;width: 100%;}
+.myinterest_tab ul{font-size: 0;}
+.myinterest_tab ul li{display: inline-block;width:50%;vertical-align: middle;}
+/* .myinterest_tab ul li a:hover,.myinterest_tab ul li a:active{color:#c59b42;} */
+.myinterest_tab ul li a:hover,.myinterest_tab ul li a.active{color:#c59b42;border-bottom: 5px solid #c59b42;}
+.myinterest_tab ul li a{border-bottom: 5px solid transparent;font-size: 30px;color:#fff;line-height: 60px;display: block;position: relative;padding: 3px 2px;}
+.myinterest_tab.myinterest_tab_member ul li{width:33.33%;}
+/*sort by panel start*/
+.sort_by_tab{background: #c59b42;margin-top:50px;margin-bottom: 20px;}
+.sort_by_tab span{display: inline-block;text-transform:uppercase;font-size: 20px;padding: 0 10px;
+font-family: 'Lato-Bold';color: #ffffff;vertical-align: middle;}
+.sort_by_tab ul{display: inline-block;vertical-align: middle;}
+.sort_by_tab ul li{display: inline-block;}
+.sort_by_tab ul li a{display: block;font-size: 22px;color: #000;padding: 5px 7px;font-size: 18px;
+position: relative;border-bottom: 3px solid transparent;text-transform: capitalize;}
+.sort_by_tab ul li a:hover,
+.sort_by_tab ul li a.active{border-bottom: 3px solid #000;}
+.filter_btn{display: inline-block;float: right;vertical-align: middle;margin-left: 5px;}
+.filter_btn a{font-size: 18px;font-family: 'Lato-Bold';line-height: 40px;padding: 0px 8px;color: #fff;border-left: 1px solid #fff;text-transform: uppercase;}
+.filter_btn a:hover,.filter_btn a.active{color:#000;}
+.filter_btn a img{padding-right: 5px;}
+
+.business_listing_box{background: #ffffff;-webkit-box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);margin-bottom: 30px;font-size: 0;}
+.business_listing_view{margin-top: 30px;}
+.business_listing_img{width:35%;display:inline-block;vertical-align: middle;height: 258px;overflow: hidden;}
+.business_listing_content{width: 65%;display:inline-block;vertical-align: middle;padding:15px 15px 15px 30px;}
+.business_listing_img img{width: 100%;height: 100%;}
+.business_content_left h2{font-family: 'Lato-Heavy';
+text-transform: uppercase;margin-bottom: 15px;}
+.business_content_left li{margin-bottom:25px;margin-bottom: 17px;}
+.business_content_left li:last-child{margin-bottom: 0;}
+.business_content_left li i{width: 20px;}
+.business_content_left li:nth-child(2) i{}
+.business_content_left li:nth-child(4) i{padding-left: 3px;}
+.business_content_right{height: 100%;text-align:right;padding-right: 15px;}
+.business_content_right a{position: relative;top: 50%;transform: translate(0, -50%);
+padding:15px 25px;font-size: 16px;font-family: 'Lato-Bold';text-transform: uppercase;}
+.business_content_right a i{font-size: 23px;vertical-align: top;margin-left: 5px;}
+.pagination_view{display: block;text-align: center;margin-bottom: 50px;margin-top:50px;}
+.pagination_view ngb-pagination{display: inline-block;}
+.total_result{font-size: 16px;text-align: right;margin-bottom:5px;}
+
+.create_oppo_btn .ryec_btn{width: 50%;display: block;padding: 10px 0;text-align: center;margin: 40px auto;}
+.create_oppo_btn .ryec_btn i{padding-right:10px;}
+@media (min-width: 768px){
+	.business_content_left h2{font-size:17px;margin-bottom: 16px;}
+	.business_content_left li{font-size: 14px;margin-bottom: 20px;}
+	.business_content_left li i{font-size: 16px;}
+	.business_content_left li:nth-child(2) i{font-size: 21px;}
+	.business_content_right a{font-size:12px;padding: 10px 15px;}
+	.business_content_right a i{font-size: 20px;}
+	.business_listing_content{padding: 20px 15px 0px 30px;}
+	.investment_banner h2{width: 86%;}
+	.filter_btn a img{height: 20px;}
+	.sort_by_tab span{font-size: 18px;padding: 0 6px;}
+	.sort_by_tab ul li a{padding: 5px 7px;font-size: 16px;}
+	.filter_btn a{font-size: 16px;line-height: 36px; padding: 0px 7px;}
+	.investment_banner h2{font-size: 50px;}
+	.myinterest_tab ul li a{font-size: 25px;line-height: 40px;}
+}
+@media(min-width: 992px){
+	.investment_banner h2{width: 90%;}
+	.business_content_left h2{font-size:20px;margin-bottom: 9px;}
+	.business_content_left li{font-size: 16px;    margin-bottom: 9px;}
+	.business_content_left li i{font-size: 16px;}
+	.business_content_left li:nth-child(2) i{font-size: 21px;}
+	.business_content_right a{font-size:14px;padding: 15px 25px;}
+	.business_content_right a i{font-size: 23px;}
+	.business_listing_content{padding: 15px 15px 15px 30px;}
+	.filter_btn a img{height: auto;}
+	.sort_by_tab span{font-size: 20px;padding: 0 10px;}
+	.sort_by_tab ul li a{padding: 8px 7px;font-size: 18px;}
+	.filter_btn a{font-size: 18px;line-height: 45px; padding: 0px 8px;}
+	.investment_banner h2{font-size: 60px;}
+	.myinterest_tab ul li a{font-size: 30px;line-height: 60px;}
+
+}
+@media(min-width: 1024px){
+	.investment_banner h2{width: 80%;}
+
+	.business_content_left h2{font-size:20px;margin-bottom: 9px;}
+	.business_content_left li{font-size: 16px;    margin-bottom: 9px;}
+	.business_content_left li i{font-size: 16px;}
+	.business_content_left li:nth-child(2) i{font-size: 21px;}
+	.business_content_right a{font-size:14px;}
+}
+@media(min-width: 1200px){
+	.investment_banner h2{width: 70%;}
+	.business_content_left h2{font-size:22px;margin-bottom:15px;}
+	.business_content_left li{font-size: 18px;margin-bottom: 17px;}
+	.business_content_left li i{font-size: 20px;}
+	.business_content_left li:nth-child(2) i{font-size: 24px;}
+	.business_content_right a{font-size:16px;}
+}
+@media(min-width: 1400px){
+	.investment_banner h2{width: 50%;}
+}
+@media(max-width: 767px){
+	.investment_banner{height: 270px;}	
+	.investment_banner h2{font-size: 25px;}
+	.sort_by_tab span{display: block;text-align: center;padding:10px 0;}
+	.sort_by_tab ul{padding:0 15px;}
+	.sort_by_tab ul,
+	.sort_by_tab ul li{display: block;text-align: center;}
+	.sort_by_tab ul li a{padding: 10px 0;}
+	.filter_btn{float:none;display:block;text-align: center;}
+	.filter_btn a{border-left: 0;}
+	.myinterest_tab ul li a{font-size: 22px;line-height: 35px;}
+	.business_listing_img {width: 25%;float: none;display: inline-block;margin:0 -1px;vertical-align: middle;}
+	.business_listing_content{width: 70%;float: none;display: inline-block;margin:0 -1px;vertical-align: middle;}
+	.business_content_left h2{font-size:17px;margin-bottom: 6px;}
+	.business_content_left li{font-size: 14px;    margin-bottom: 6px;}
+	.business_content_left li i{font-size: 16px;}
+	.business_content_right a{font-size:12px;padding: 10px 10px;transform: translate(0, -40%);top:40%;}
+	.business_content_right a i{font-size: 20px;}
+	.business_listing_content{padding: 05px 15px 05px 30px;}
+	.business_content_right{padding-right: 0;}
+	.business_listing_img{height: 200px;}
+	.create_oppo_btn .ryec_btn{font-size: 16px;width: 70%;}
+	.myinterest_tab.myinterest_tab_member ul li a{font-size: 20px;}
+}
+@media (max-width: 575px){
+
+	.business_content_right{text-align: left;margin-top: 10px;}
+	.business_content_right a{transform: translate(0, 0);top: 0;display: inline-block;}
+	.business_listing_content,
+	.business_listing_img{width: 100%;margin:0;}
+	.business_listing_content{padding: 15px;}
+	.business_content_right a i {font-size: 16px;}
+	.myinterest_tab ul li a{font-size: 20px;line-height: 35px;}
+	.myinterest_tab ul li{width: 100%;}
+	.investment_banner h2{width: 100%;}
+	.myinterest_tab.myinterest_tab_member ul li{width: 100%;}
+	.create_oppo_btn .ryec_btn{font-size: 14px;width: 100%;}
+	.investment_banner h2{top:30%;}
+}
+
+.text-overflow-hidden{text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}

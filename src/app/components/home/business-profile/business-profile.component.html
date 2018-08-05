@@ -1,0 +1,652 @@
+<div class="container">
+	<div class="business_detail_view">
+		<div class="business_title">
+			<div class="row business_all_btn">
+				<div class="col-md-4 col-xs-12">
+					<h2>{{'ang_businessdetail' | translate}}</h2>
+				</div>
+				<div class="col-md-4 col-xs-12">
+					<div class="profile_btn">
+						<button class="ryec_btn" [disabled]="!addBusinessForm.valid" type="submit" (click)="onSubmitEditBusiness()">{{'ang_save' | translate}}</button>
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-12">
+					<div class="profile_btn">
+						<button class="ryec_btn" type="submit" (click)="cancelEditBusiness()">{{'ang_cancel' | translate}}</button>
+					</div>
+				</div>
+			</div>
+			<!-- <i class="fa fa-info-circle" aria-hidden="true" title=""></i> -->
+		</div><!-- business_title End -->
+
+		<form class="form-horizontal" [formGroup]="addBusinessForm" novalidate>
+			<!-- {{addBusinessForm.value | json}} -->
+			<div class="row edit_business_form">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="control-group">
+						<label class="control-label" for="name">{{'ang_businessname' | translate}}<span class="required_field">*</span><i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_businessnamehelp' | translate}}"></i></label>
+						<!-- <i class="fa fa-info-circle" aria-hidden="true"></i> -->
+						<div class="controls">
+							<input *ngIf="business_slug === 'add-new'" type="text" id="name" name="name" formControlName="name" placeholder="{{'ang_businessname' | translate}}" class="input-xlarge">
+							<!-- <input *ngIf="business_slug !== 'add-new'" type="text" id="name" name="name" formControlName="name" placeholder="{{'ang_businessname' | translate}}" class="input-xlarge readonly" readonly> -->
+							<input *ngIf="business_slug !== 'add-new'" type="text" id="name" name="name" formControlName="name" placeholder="{{'ang_businessname' | translate}}" class="input-xlarge">
+						</div>
+						<p class="help-block" *ngIf="addBusinessForm.controls.name.touched && (
+							addBusinessForm.controls.name.errors?.required ||
+							addBusinessForm.controls.name.errors?.pattern)">
+                        {{'ang_businessnamevalidation'| translate}}
+                    </p>
+					</div>
+				</div><!-- col End -->
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="control-group">
+						<label class="control-label" for="name">{{'ang_mobile' | translate}}<i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_mobilenymberhelp' | translate}}"></i></label>
+						<div class="controls">
+							<input type="text" id="mobile" readonly name="mobile" formControlName="mobile" placeholder="{{'ang_mobile' | translate}}" class="input-xlarge readonly">
+						</div>
+						<p class="help-block" *ngIf="addBusinessForm.controls.mobile.touched && (addBusinessForm.controls.mobile.errors?.required)">
+							{{'ang_mobilerequired' | translate}}
+						</p>
+						<p class="help-block" *ngIf="addBusinessForm.controls.mobile.touched && (addBusinessForm.controls.mobile.errors?.minlength || addBusinessForm.controls.mobile.errors?.maxlength)">
+							{{'ang_mobilevalidation' | translate}}
+						</p>
+					</div>
+				</div><!-- col End -->
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="control-group">
+						<label class="control-label" for="name">{{'ang_telephonenumber' | translate}}<i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_telephonenumberhelp' | translate}}"></i></label>
+						<!-- <i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_telephonehelp' | translate}}"></i>					 -->
+								<div class="controls">
+									<input type="text" id="phone" name="phone" formControlName="phone" minlength="6" maxlength="13" placeholder="{{'ang_telephonenumber' | translate}}" class="input-xlarge" (keypress)="numberOnly($event)">
+								</div>
+								<!-- <p class="help-block" *ngIf="addBusinessForm.controls.phone.touched && (addBusinessForm.controls.phone.errors?.minlength || addBusinessForm.controls.phone.errors?.maxlength)">
+									{{'ang_phonevalidation' | translate}}
+								</p> -->
+								<p class="help-block" *ngIf="addBusinessForm.controls.phone.touched && addBusinessForm.controls.phone.errors?.pattern">
+									{{'ang_numbervalidation' | translate}}
+								</p>
+							</div>
+
+
+				</div><!-- col End -->
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="control-group">
+						<label class="control-label" for="name">{{'ang_businessemailid' | translate}}</label>
+						<div class="controls">
+							<input type="email" id="email_id" name="email_id" formControlName="email_id" placeholder="{{'ang_businessemailid' | translate}}" class="input-xlarge">
+						</div>
+						<p class="help-block" *ngIf="addBusinessForm.controls.email_id.touched &&
+						addBusinessForm.controls.email_id.errors?.pattern">
+						{{'ang_businessemailvalidation' | translate}}</p>
+					</div>
+				</div><!-- col End -->
+				</div><!-- row End -->
+				<div class="row edit_business_form">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_description' | translate}}</label>
+							<div class="controls">
+								<textarea formControlName="description"	 id="description" name="description"></textarea>
+							</div>
+						</div>
+					</div><!-- col End -->
+				</div>
+				<div class="business_categories_section" *ngIf="business_id > 0">
+					<h2>{{'ang_businesscategories' | translate}}
+						<span class="edit_cate pull-right" (click)="editBusinesscategory(contentCategory)">{{'ang_edit' | translate}}</span>
+					</h2>
+					<h2>
+						<span *ngFor="let cat of businessDetail?.data?.parent_categories; let isLast=last; ">
+							{{cat.name}}{{isLast ? '' : ', '}}
+						</span>
+					</h2>
+					<mat-chip-list>
+						<mat-chip  *ngFor="let category of business_category;let index = index;">{{category.category}}</mat-chip>
+						<!-- <mat-chip  *ngFor="let category of business_category;let index = index;">{{category.category}}<i class="fa fa-times" aria-hidden="true" (click)="removeCategory(index)"></i></mat-chip> -->
+					</mat-chip-list>
+				</div><!-- business_categories_section End -->
+				<div class="row edit_business_form" style="margin-top:30px;">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_mapadress' | translate}}<i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_addresshelp' | translate}}"></i></label>
+							<div class="controls">
+								<input type="text" (change)="addressChanged()" places-auto-complete (place_changed)="placeChanged($event)" id="address" formControlName="address" placeholder="{{'ang_businessaddress' | translate}}" class="input-xlarge">
+							</div>
+							<p class="help-block" *ngIf="addBusinessForm.controls.address.touched &&
+							addBusinessForm.controls.address.errors?.required">
+							{{'ang_businessaddressvalidation' | translate}}</p>
+						</div>
+					</div><!-- col End -->
+				</div><!-- row End -->
+				<div class="row edit_business_form">
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_latitude' | translate}}</label>
+							<div class="controls">
+								<input type="text" id="Latitude" formControlName="latitude" placeholder="{{'ang_latitude' | translate}}" class="input-xlarge readonly" readonly>
+							</div>
+						</div>
+					</div><!-- col End -->
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_longitude' | translate}}</label>
+							<div class="controls">
+								<input class="readonly" type="text" id="Longitude" formControlName="longitude" placeholder="{{'ang_longitude' | translate}}" class="input-xlarge readonly" readonly>
+							</div>
+						</div>
+					</div><!-- col End -->
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_street' | translate}}</label>
+							<div class="controls">
+								<input type="text" formControlName="street_address" id="Street Address" placeholder="{{'ang_street' | translate}}" class="input-xlarge">
+							</div>
+							<p class="help-block" ></p>
+						</div>
+					</div><!-- col End -->
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_locality' | translate}}</label>
+							<div class="controls">
+								<input type="text" formControlName="locality" id="Locality" placeholder="{{'ang_locality' | translate}}" class="input-xlarge">
+							</div>
+							<p class="help-block" ></p>
+						</div>
+					</div><!-- col End -->
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_country' | translate}}</label>
+							<div class="controls">
+								<select name="" formControlName="country" class="form-control">
+									<option *ngFor="let code of countries;" [ngValue]="code.name">{{code.name}}</option>
+								</select>
+							</div>
+						</div>
+					</div><!-- col End -->
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_state' | translate}}<i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_statehelp' | translate}}"></i></label>
+							<div class="controls">
+								<select name="" class="form-control" formControlName="state">
+									<option *ngFor="let code of states;" [ngValue]="code.name">{{code.name}}</option>
+								</select>
+							</div>
+						</div>
+					</div><!-- col End -->
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_city' | translate}}<i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_cityhelp' | translate}}"></i></label>
+							<div class="controls">
+								<select name="" class="form-control" formControlName="city">
+									<option *ngFor="let code of cities;" [ngValue]="code.name">{{code.name}}</option>
+								</select>
+							</div>
+						</div>
+					</div><!-- col End -->
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_taluka' | translate}}</label>
+							<div class="controls">
+								<input type="text" formControlName="taluka" id="Taluka" placeholder="{{'ang_taluka' | translate}}" class="input-xlarge">
+							</div>
+						</div>
+					</div><!-- col End -->
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_district' | translate}}</label>
+							<div class="controls">
+								<input type="text" id="District" formControlName="district" placeholder="{{'ang_district' | translate}}" class="input-xlarge">
+							</div>
+						</div>
+					</div><!-- col End -->
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_pincode' | translate}}</label>
+							<div class="controls">
+								<input type="text" id="Pincode" formControlName="pincode" placeholder="{{'ang_pincode' | translate}}" class="input-xlarge">
+							</div>
+						</div>
+					</div><!-- col End -->
+				</div><!-- row End -->
+
+				<div class="row edit_business_form">
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_yearestablished' | translate}}<span class="required_field">*</span><i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_yearhelp' | translate}}"></i></label>
+							<div class="controls">
+								<input type="text" pattern="[+()0-9]*" id="establishment_year" formControlName="establishment_year" placeholder="{{'ang_yearestablished' | translate}}" class="input-xlarge" required>
+							</div>
+
+							<p class="help-block" *ngIf="addBusinessForm.controls.establishment_year.touched && (addBusinessForm.controls.establishment_year.errors?.minlength || addBusinessForm.controls.establishment_year.errors?.maxlength)">
+								{{'ang_yearnotvalid' | translate}}
+							</p>
+
+						</div>
+					</div><!-- col End -->
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_website' | translate}}</label>
+							<div class="controls">
+								<input type="text" id="website_url" formControlName="website_url" placeholder="{{'ang_website' | translate}}" class="input-xlarge">
+							</div>
+						</div>
+					</div><!-- col End -->
+				</div><!--row end-->
+
+
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="hours_opration_view">
+						<h2>{{'ang_hoursofoperation' | translate}}<i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_timezonehelp' | translate}}"></i></h2>
+						<!-- <mat-form-field>
+							<mat-select [(value)]="timezone"  placeholder="{{'ang_timezone' | translate}}" (change)="changeTimeZone($event)">
+								<mat-option *ngFor="let time of timezoneArr" [value]="time">
+									{{time}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field> -->
+						<div class="city_dropdown hours">
+							<div class="dropdown">
+								<button (click)="showTimeZoneDropDown()" class="dropbtn">{{timezone}}</button>
+							  	<div id="myDropdown" class="dropdown-content" *ngIf="isTimeZoneShow">
+									<div class="city_search_input">
+										<i _ngcontent-c1="" aria-hidden="true" class="fa fa-search"></i>
+										<input type="text" placeholder="{{'ang_searchhere' | translate}}" id="myInput" name="timezoneSearch" formControlName="timezoneSearch" (input)="filterTimeZone()" class="city-search">
+									</div>
+									<perfect-scrollbar style="height: 245px;">
+										<a href="javascript:void()" (click)="selectTimeZone(time)" *ngFor="let time of timezoneArr">{{time.value}} - {{time.name}}</a>
+									</perfect-scrollbar>
+							  	</div>
+							</div>
+						</div>
+							<div formGroupName="business_working_hours">
+							<div formArrayName="options">
+								<div class="opne_time_listing" *ngFor="let child of addBusinessForm['controls']['business_working_hours']['controls']['options']['controls']; let i = index">
+									<div formGroupName="{{i}}" *ngIf="fields.business_working_hours.options[i]['isOpen']">
+										<mat-checkbox (change)="checkboxChange(i)" name="isOpen" formControlName="isOpen">{{fields.business_working_hours.options[i]['day']}}</mat-checkbox>
+										<input matInput type="text" formControlName="startTime">
+										<mat-form-field>
+											<mat-select (change)="changeStartMeridies(fields.business_working_hours.options[i]['startMeridies'],i,'startMeridies')" placeholder="{{fields.business_working_hours.options[i]['startMeridies']}}">
+												<mat-option food of foods>
+													{{fields.business_working_hours.options[i]['startMeridies']=='AM'?'PM':'AM'}}
+												</mat-option>
+											</mat-select>
+										</mat-form-field>
+										<span><i class="fa fa-minus" aria-hidden="true"></i></span>
+										<input matInput type="text" formControlName="endTime">
+										<mat-form-field>
+											<mat-select (change)="changeStartMeridies(fields.business_working_hours.options[i]['endMeridies'],i,'endMeridies')" placeholder="{{fields.business_working_hours.options[i]['endMeridies']}}">
+												<mat-option food of foods>
+													{{fields.business_working_hours.options[i]['endMeridies']=='AM'?'PM':'AM'}}
+												</mat-option>
+											</mat-select>
+										</mat-form-field>
+									</div>
+									<div formGroupName="{{i}}" *ngIf="!fields.business_working_hours.options[i]['isOpen']">
+										<mat-checkbox name="isOpen" (change)="checkboxChange(i)" formControlName="isOpen">{{fields.business_working_hours.options[i]['day']}}</mat-checkbox>
+										<span class="close_time">{{'ang_close' | translate}}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<!-- <div class="opne_time_listing">
+							<mat-checkbox>Saturday</mat-checkbox>
+							<span class="close_time">Close</span>
+						</div>
+						<div class="opne_time_listing">
+							<mat-checkbox>Sunday</mat-checkbox>
+							<span class="close_time">Close</span>
+						</div> -->
+
+					</div><!-- hours_opration_view End -->
+				</div><!-- col End -->
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="busi_activi_view">
+						<h2>{{'ang_businessactivities' | translate}}<i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_businessactivity' | translate}}"></i></h2>
+
+						<div class="control-group">
+								<div class="controls">
+									<ul class="social-activities">
+										<li *ngFor="let activity of businessActivityArray; let ind = index; ">
+											<p>{{activity.activity_title}}</p>
+											<div class="edit_icon">
+												<i class="fa fa-pencil" (click)="editActivity(ind)" aria-hidden="true"></i>
+												<i class="fa fa-trash" (click)="deleteActivity(ind)" aria-hidden="true"></i>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="controls add_new_box">
+									<textarea name="business_activities" id="business_activities" formControlName="business_activities" placeholder="{{'ang_writehere' | translate}}"></textarea>
+									<i class="fa fa-plus-circle" (click)="addActivity()" aria-hidden="true"></i>
+								</div>
+							</div>
+					</div><!-- busi_activi_view End -->
+				</div><!-- col End -->
+			</div><!-- Row End -->
+
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="categories_gallery clearfix">
+						<input type="file" (change)="uploadProfilePic($event)" style="display: none;" accept="image/x-png,image/gif,image/jpeg" #userProfile>
+						<h2>{{'ang_uploadimage' | translate}} <i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_imagehelp' | translate}}"></i> <span class="browse_btn pull-right" (click)="triggerUpload()">{{'ang_browse' | translate}}</span></h2>
+						<ul>
+							<li *ngFor="let img of base64BusinessImages">
+								<span><i aria-hidden="true" class="fa fa-times" (click)="deleteBusinessImage(ind)"></i></span>
+								<img [src]="img">
+							</li>
+
+							<li *ngFor="let img of businessDetail?.data?.business_images; let ind = index;">
+								<span><i aria-hidden="true" (click)="deleteBusinessImage(ind, img.id)" class="fa fa-times"></i></span>
+								<img [src]="img.image_name">
+							</li>
+						</ul>
+					</div><!-- categories_gallery End -->
+				</div><!-- col End -->
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="categories_gallery clearfix">
+						<input type="file" (change)="uploadBusinessLogo($event, contentImage)" style="display: none;" accept="image/x-png,image/gif,image/jpeg" #businessLogo>
+						<h2>{{'ang_businesslogo' | translate}} <span class="browse_btn pull-right" (click)="triggerLogoUpload()">{{'ang_browse' | translate}}</span></h2>
+						<ul>
+							<li *ngIf="business_logo && !businessProfilePic">
+								<img [src]="business_logo" class="business-logo">
+							</li>
+							<li *ngIf="businessProfilePic">
+								<img [src]="businessProfilePic" class="business-logo">
+							</li>
+						</ul>
+					</div>
+				</div><!-- col End -->
+			</div><!-- Row End -->
+
+			<br/><br/><br/>
+
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="meta_tag_view" >
+						<h2>{{'ang_addmetatags' | translate}}</h2>
+						<div class="input_auto_complete">
+							<input auto-complete [source]="metaTags" formControlName="tag" (valueChanged)="valueChanged($event)"/>
+							<i class="fa fa-plus" aria-hidden="true"></i>
+						</div>
+						<!-- <h4>separate tags with commas (,)</h4> -->
+
+						<mat-chip-list *ngIf="selectedTags?.length > 0">
+							<mat-chip *ngFor="let tag of selectedTags;let index = index;">
+								{{tag}}
+								<i class="fa fa-times" aria-hidden="true" (click)="removeMetaTags(index)"></i>
+							</mat-chip>
+						</mat-chip-list>
+					</div>
+				</div><!-- col End -->
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="social_profile" style="margin-top:0px;">
+						<h2>{{'ang_socialprofile' | translate}}<i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_socialprofilehelp' | translate}}"></i></h2>
+						<ul class="social">
+							<li>
+								<a href="javascript:void()" target="_blank" title="{{'ang_facebook' | translate}}"><img _ngcontent-c6="" alt="{{'ang_facebook' | translate}}" src="../assets/images/facebook.png"></a>
+								<input class="input-xlarge" formControlName="facebook_url" id="facebook_url" name="facebook_url" placeholder="{{'ang_enterfacebooklink' | translate}}" type="text">
+							</li>
+							<li>
+								<a href="javascript:void()" target="_blank" title="{{'ang_twitter' | translate}}"><img alt="{{'ang_twitter' | translate}}" src="../assets/images/twitter.png"></a>
+								<input class="input-xlarge" formControlName="twitter_url" id="twitter_url" name="twitter_url" placeholder="{{'ang_entertwitterlink' | translate}}" type="text">
+							</li>
+							<li>
+								<a href="javascript:void()" target="_blank" title="{{'ang_linkedin' | translate}}"><img alt="{{'ang_linkedin' | translate}}" src="../assets/images/linkedin.png"></a>
+								<input class="input-xlarge" formControlName="linkedin_url" id="linkedin_url" name="linkedin_url" placeholder="{{'ang_enterlinkedinlink' | translate}}" type="text">
+							</li>
+							<li>
+								<a href="javascript:void()" target="_blank" title="{{'ang_instagram' | translate}}"><img alt="{{'ang_instagram' | translate}}" src="../assets/images/instagram.png"></a>
+								<input class="input-xlarge" formControlName="instagram_url" id="instagram_url" name="instagram_url" placeholder="{{'ang_enterinstagramlink' | translate}}" type="text">
+							</li>
+						</ul>
+					</div>
+				</div><!-- col End -->
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-xs-12">
+					<div class="profile_btn">
+						   <button class="ryec_btn" [disabled]="!addBusinessForm.valid" type="submit" (click)="onSubmitEditBusiness()">{{'ang_save' | translate}}</button>
+					  </div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="profile_btn">
+						   <button class="ryec_btn" type="submit" (click)="cancelEditBusiness()">{{'ang_cancel' | translate}}</button>
+					  </div>
+				</div>
+			</div>
+		</form>
+		<!--K 29-03-2018 start-->
+		<div *ngIf="showExtraFields">
+			<section class="owner_info">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="title">
+							<h2>{{'ang_ownerinformation' | translate}}<i class="fa fa-info-circle" aria-hidden="true" title="Add only Rajput Community Business Owners."></i></h2>
+							<a href="javascript:void()" (click)="addExitOwnerData()">{{'ang_addnew' | translate}}</a>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-12" *ngFor="let owner of businessDetail?.data?.owners;let index = index;">
+						<div class="owner_box">
+							<div class="img_outer">
+								<img [src]="owner.image_url">
+							</div>
+							<div class="detail">
+								<h2>{{owner.name}}</h2>
+								<p>{{owner.email}}</p>
+								<p>{{owner.phone}}</p>
+							</div>
+							<div class="icons_outer">
+								<a href="javascript:void(0)" (click)="addExitOwnerData(owner.id)"><img src="assets/images/owner_edit.png" alt=""></a>
+								<a href="javascript:void(0)" (click)="deleteOwnerData(owner.id, index)"><img src="assets/images/owner_delete.png" alt=""></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section><!--owner_info section end-->
+			<section class="pro_info">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="title">
+							<h2>{{'ang_products' | translate}}<i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_producthelp' | translate}}"></i></h2>
+							<a href="javajavascript:void()" (click)="addNewProduct()">{{'ang_addnew' | translate}}</a>
+						</div>
+					</div>
+				</div>
+				<div class="row" *ngIf="addProductFlag">
+					<div class="col-sm-12">
+						<div class="add_pro_box">
+							<form class="form-horizontal" [formGroup]="addProductForm" novalidate>
+								<div class="control-group">
+									<label class="control-label" for="name">{{'ang_productname' | translate}}</label>
+									<input type="text" formControlName="name" name="name" placeholder="" class="input-xlarge">
+									<p class="help-block" *ngIf="addProductForm.controls.name.touched && addProductForm.controls.name.errors?.required">{{'ang_prodcutnamevalidation' | translate}}</p>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="name">{{'ang_productimages' | translate}}</label>
+									<div class="pro_browse">
+										<ul>
+											<li><i class="fa fa-plus" aria-hidden="true" (click)="triggerProductImage()"><input type="file" (change)="uploadProductPic($event)" style="display: none;" accept="image/x-png,image/gif,image/jpeg" #productImage></i></li>
+											<li *ngFor="let image of base64ProductImages;let index = index;">
+												<span><i aria-hidden="true" class="fa fa-times" (click)="removeProductImage(index)"></i></span>
+												<img [src]="image">
+											</li>
+
+											<li *ngFor="let image of productImagesArr;let index = index;">
+												<span><i aria-hidden="true" class="fa fa-times" (click)="removeImage(image.id, index)"></i></span>
+												<img [src]="image.image_thumbnail">
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="name">{{'ang_cost' | translate}}<i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_productcosthelp' | translate}}"></i></label>
+									<input type="text" formControlName="cost" name="cost" placeholder="" class="input-xlarge">
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="name">{{'ang_description' | translate}}</label>
+									<textarea formControlName="description" name="description" placeholder="" rows="6"></textarea>
+									<p class="help-block" *ngIf="addProductForm.controls.description.touched && addProductForm.controls.description.errors?.required">{{'ang_descriptionisrequired' | translate}}</p>
+								</div>
+								<div class="bottom_btn">
+									<button [disabled]="!addProductForm.valid" type="submit" (click)="saveProduct()">{{'ang_save' | translate}}</button>
+									<button (click)="hideProductSection()">{{'ang_cancel' | translate}}</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<ul class="product_gallery">
+					<li *ngFor="let product of businessDetail?.data?.products;let index = index; ">
+						<span><i aria-hidden="true" class="fa fa-pencil" (click)="editProduct(product.id, index)"></i> <i aria-hidden="true" class="fa fa-times" (click)="removeProduct(product.id, index)"></i></span>
+						<img _ngcontent-c1="" alt="fs" [src]="product.image_url">
+						<p>{{product.name}}</p>
+					</li>
+				</ul>
+			</section><!--pro_info end-->
+
+			<!--K 29-03-2018 end-->
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<div class="title">
+						<h2>{{'ang_services' | translate}}<i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_servicehelp' | translate}}"></i></h2>
+						<a href="javajavascript:void()" (click)="addNewService()"> {{'ang_addnew' | translate}}</a>
+					</div>
+					<div class="row" *ngIf="addServiceFlag">
+							<div class="col-sm-12">
+								<div class="add_pro_box">
+									<form class="form-horizontal" [formGroup]="addServiceForm" novalidate>
+										<div class="control-group">
+											<label class="control-label" for="name">{{'ang_servicename' | translate}}</label>
+											<input type="text" formControlName="name" name="name" placeholder="" class="input-xlarge">
+											<p class="help-block" *ngIf="addServiceForm.controls.name.touched && addServiceForm.controls.name.errors?.required">{{'ang_servicenamevalidation' | translate}}</p>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="name">{{'ang_serviceimage' | translate}}</label>
+											<div class="pro_browse">
+												<ul>
+													<li><i class="fa fa-plus" aria-hidden="true" (click)="triggerServiceImage()"><input type="file" (change)="uploadServicePic($event)" style="display: none;"  accept="image/x-png,image/gif,image/jpeg" #serviceImage></i></li>
+													<li *ngIf="base64ServiceLogo"><img [src]="base64ServiceLogo" alt=""></li>
+												</ul>
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="name">{{'ang_cost' | translate}}<i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_servicecosthelp' | translate}}"></i></label>
+											<input type="text" formControlName="cost" name="cost" placeholder="" class="input-xlarge">
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="name">{{'ang_description' | translate}}</label>
+											<textarea type="text" formControlName="description" name="description" placeholder="" rows="6"></textarea>
+											<p class="help-block" *ngIf="addServiceForm.controls.description.touched && addServiceForm.controls.description.errors?.required">{{'ang_descriptionisrequired' | translate}}</p>
+										</div>
+										<div class="bottom_btn">
+											<button [disabled]="!addServiceForm.valid" type="submit" (click)="saveService()">{{'ang_save' | translate}}</button>
+											<button (click)="hideServiceSection()">{{'ang_cancel' | translate}}</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					<ul class="product_gallery">
+					<li *ngFor="let service of businessDetail?.data?.services;let index = index; ">
+						<span><i aria-hidden="true" class="fa fa-pencil" (click)="editService(service.id, index)"></i> <i aria-hidden="true" class="fa fa-times" (click)="removeService(service.id, index)"></i></span>
+						<img _ngcontent-c1="" alt="fs" [src]="service.image_url">
+						<p>{{service.name}}</p>
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+	<!-- business_detail_view End -->
+</div><!-- container End -->
+
+<!--- Business Categoties -->
+<ng-template #contentCategory let-c="close" let-d="dismiss">
+	<div class="modal-header">
+			<h5 class="modal-title">{{'ang_businesscategory' | translate}}</h5>
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="category_outer">
+				<h5>{{'ang_selectmaincategory' | translate}}</h5>
+				<div class="category_dropdown">
+			        <select (change)="changeCategory(category_name)" [(ngModel)]="category_name">
+						<option value="">{{'ang_selectone' | translate}}</option>
+						<option value={{cat.category_id}} *ngFor="let cat of mainCategory">{{cat.name}}</option>
+					</select>
+				</div>
+				<p>
+					{{'ang_youcanchooseonemaincategory' | translate}}
+				</p>
+			</div>
+			<div class="cat_breadcrumb">
+				<mat-chip *ngFor="let cat of selectedName; let isEnd = last;"> <span (click)="chooseSubCategory(cat)">{{cat}}</span> <span *ngIf="!isEnd"> >> </span> </mat-chip>
+			</div>
+			<div class="category_list">
+				<ul>
+					<li *ngFor="let subCat of subCategory" (click)="getSubcategory(subCat)">
+						{{subCat.name}} {{subCat.id}}
+						<i *ngIf="subCat.sub_category_count>0" class="fa fa-angle-right" aria-hidden="true"></i>
+
+						<button *ngIf="subCat.sub_category_count==0" (click)="chooseCategory(subCat)" class="ryec_btn" type="submit">{{'ang_select' | translate}}</button>
+					</li>
+					<li *ngIf="subCategory?.length == 0">{{'ang_nocategoryfound' | translate}}</li>
+					<!-- <li>real estate <button class="ryec_btn" type="submit">select</button></li> -->
+				</ul>
+			</div>
+			<div class="category_selected" *ngIf="business_category.length>0">
+				<mat-chip-list>
+					<mat-chip *ngFor="let cat of business_category;let ind = index;"> {{cat.category}} <i (click)='removeCategory(ind)' class="fa fa-times" aria-hidden="true"></i></mat-chip>
+				</mat-chip-list>
+			</div>
+		</div>
+</ng-template>
+<!--- Business Categoties End -->
+
+
+
+<!--- Add Rating and Reviews-->
+<ng-template #contentHelp let-c="close" let-d="dismiss">
+	<div class="modal-header">
+			<h5 class="modal-title">RYEC Help</h5>
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+
+		</div>
+</ng-template>
+	<!--- Add Rating and Reviews End-->
+
+<ng-template #contentImage let-c="close" let-d="dismiss">
+	<div class="modal-header">
+			<h5 class="modal-title">{{'ang_uploadbusinesslogo' | translate}}</h5>
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<image-cropper style="height:400px"
+				[imageChangedEvent]="imageChangedEvent"
+				[maintainAspectRatio]="true"
+				[aspectRatio]="1 / 1"
+				[resizeToWidth]="500"
+				[onlyScaleDown]="false"
+				format="png"
+				[imageQuality] = "80"
+				(imageCropped)="imageCropped($event)"
+				(imageLoaded)="imageLoaded()"
+				(loadImageFailed)="loadImageFailed()"
+			></image-cropper>
+			<div class="profile_btn">
+				<button class="ryec_btn" type="submit" (click)="sendCropImage()">{{'ang_cropupload' | translate}}</button>
+			</div>
+		</div>
+</ng-template>

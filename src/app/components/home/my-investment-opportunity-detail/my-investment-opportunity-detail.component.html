@@ -1,0 +1,223 @@
+<div class="investment_banner">
+	<img src="assets/images/investment_detail.png" alt="">
+    <div class="business_type_view">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-md-5 col-sm-6 col-xs-12">
+                    <div class="business_title business_title_icon">
+                        <h2 class="title" *ngIf="investmentDetail?.title">{{investmentDetail?.title}} -<span>{{investmentDetail?.category_name}}</span></h2>
+                    </div>
+                    <!-- business_title End -->
+                </div>
+                <!-- col End -->
+                <div class="col-md-7 col-sm-6 col-xs-12">
+                    <ul class="business_social_link">
+                        <li>
+                            <a href="javascript:void(0)" routerLink="/home/create-investment-opportunity/{{routerLink}}">
+                                <span>
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    {{'ang_edit' | translate}}
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript::void(0)">
+                                <span>
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                    {{'ang_closeopp' | translate}}
+                                </span>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="javascript:void(0)" (click)="openShareOptions(contentShare)">
+                                <span>
+                                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                    {{'ang_share' | translate}}
+                                </span>
+                            </a>
+                        </li> -->
+                    </ul>
+                </div>
+                <!-- col End -->
+            </div>
+            <!-- Row End -->
+        </div>
+        <!-- container End -->
+    </div>
+</div>
+<!--header view end-->
+<div class="container">
+	<div class="row shadow_card desc_content">
+		<div class="col-sm-12">
+			<div class="project_info_outer">
+				<div class="project_info" *ngIf="investmentDetail?.offering_percent">
+					<span>{{'ang_approxoffering' | translate}}</span>
+					<h6>{{investmentDetail?.offering_percent}}%</h6>
+				</div>
+				<div class="project_info" *ngIf="investmentDetail?.investment_amount_start">
+					<span>{{'ang_investmentamountrequired' | translate}}</span>
+					<h6><i class="fa fa-inr" aria-hidden="true"></i>{{investmentDetail?.investment_amount_start}} - {{investmentDetail?.investment_amount_end}}</h6>
+				</div>
+				<div class="project_info" *ngIf="investmentDetail?.project_duration">
+					<span>{{'ang_projectduration' | translate}}</span>
+					<h6>{{investmentDetail?.project_duration}}</h6>
+				</div>
+				<div class="project_info" *ngIf="investmentDetail?.location">
+					<span>{{'ang_location' | translate}}</span>
+					<h6>{{investmentDetail?.location | trimstr : 15}}</h6>
+				</div>
+			</div>
+		</div>
+		
+	</div><!--row end-->
+    <div class="row shadow_card desc_content">
+        <div class="col-sm-12">
+            <div class="project_desc">
+                <h6 class="title_my_inve_opp">Ranip, Ahmedabad</h6>
+                <p>{{investmentDetail?.descriptions}}</p>
+            </div>
+        </div>
+    </div>
+	<div class="row shadow_card owner_information">
+		<div class="col-sm-12">
+			<h4 class="title">{{'ang_ownerinformation' | translate}}</h4>
+		</div>
+           <!--  <div class="row"> -->
+        <div class="col-sm-3 col-md-3 col-lg-3 gutter_right">
+            <div class="owner_profile">
+                <img [src]="investmentDetail?.creator_profile_pic">
+            </div>
+            <!-- owner_profile End -->
+        </div>
+        <div class="col-sm-5 col-md-6 col-lg-6">
+            <div class="owner_info_content">
+            	<h2>{{investmentDetail?.creator_business_name}}</h2>
+                <p *ngIf="investmentDetail?.creator_name"><i class="fa fa-user" aria-hidden="true"></i> {{investmentDetail?.creator_name}}</p>
+                <p *ngIf="investmentDetail?.creator_phone"><i class="fa fa-mobile" aria-hidden="true"></i> +91<span>-</span>{{investmentDetail?.creator_phone}}</p>
+                <p *ngIf="investmentDetail?.creator_email"><i class="fa fa-envelope" aria-hidden="true"></i> {{investmentDetail?.creator_email}}</p>
+            </div>
+            <!-- owner_info_content End -->
+        </div>
+        <div class="col-sm-4 col-md-3 col-lg-3" *ngIf="investmentDetail?.creator_business_slug">
+            <div class="owner_more">
+                <a href="javascript:void()" class="ryec_btn" routerLink="/home/business-detail/{{investmentDetail?.creator_business_slug}}">{{'ang_viewmore' | translate}} <i aria-hidden="true" class="fa fa-angle-right"></i>
+                </a>
+            </div>
+            <!-- owner_more End -->
+        </div>
+            <!-- </div> -->
+    </div>
+    <!-- owner_information End -->	
+    <div class="row shadow_card project_doc" *ngIf="investmentDetail?.file_docs?.length > 0">
+    	<div class="col-sm-12">
+			<h4 class="title">{{'ang_projectdocument' | translate}}</h4>
+		</div>
+    	<div class="col-md-12">
+    		<ul>
+    			<li *ngFor="let doc of investmentDetail?.file_docs"><a href="{{doc.url}}" target="_blank">{{doc.name}}</a></li>
+    		</ul>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-sm-4" *ngIf="investmentDetail?.file_images?.length > 0">
+    		<div class="photo_gallery">
+    			<h4 class="title">{{'ang_photos' | translate}}</h4>
+                <ul>
+                    <li *ngFor="let image of investmentDetail?.file_images; let index = index;" (click)="openImageViwer(index,contentImage)">
+                        <img alt="image" [src]="image.url">
+                    </li>
+                </ul>
+            </div>
+            <!-- photo_gallery End -->
+    	</div>
+    	<div class="offset-sm-4 col-sm-4" *ngIf="investmentDetail?.file_videos?.length > 0">
+    		<div class="video_gallery">
+    			<h4 class="title">{{'ang_videos' | translate}}</h4>
+                <ul>
+                    <li *ngFor="let video of investmentDetail?.file_videos; let index = index;" (click)="openVideoViwer(index,contentVideo)">
+                        <img alt="video" [src]="video.thumbnail">
+                    </li>
+                </ul>
+            </div>
+            <!-- photo_gallery End -->
+    	</div>
+    </div>
+   <div class="row shadow_card owner_information interests_container">
+        <div class="col-sm-12">
+            <h4 class="title">{{'ang_interests' | translate}} <span class="pull-right total_interes_count">{{'ang_totalinterests' | translate}} : {{totalInerestCount}}</span></h4>
+        </div>
+           <!--  <div class="row"> -->
+        <div class="col-sm-12 col-xs-12 interests_listing_view" *ngFor="let item of allInterest; let index = index;">  
+            <div class="row">  
+                <div class="col-sm-3 col-md-3 col-lg-3 gutter_right">
+                    <div class="owner_profile">
+                        <img [src]="item.profile_pic">
+                    </div>
+                    <!-- owner_profile End -->
+                </div>
+                <div class="col-sm-5 col-md-6 col-lg-6">
+                    <div class="owner_info_content">
+                        <h2>{{item?.creator_business_name}}</h2>
+                        <p *ngIf="item?.user_name"><i class="fa fa-user" aria-hidden="true"></i> {{item?.user_name}}</p>
+                        <p *ngIf="item?.phone"><i class="fa fa-mobile" aria-hidden="true"></i> +91<span>-</span>{{item?.phone}}</p>
+                        <p *ngIf="item?.email"><i class="fa fa-envelope" aria-hidden="true"></i> {{item?.creator_email}}</p>
+                    </div>
+                    <!-- owner_info_content End -->
+                </div>
+                <div class="col-sm-4 col-md-3 col-lg-3">
+                    <div class="owner_more">
+                        <a href="javascript:void()" class="ryec_btn">{{'ang_message' | translate}}
+                        </a>
+                    </div>
+                    <!-- owner_more End -->
+                </div>
+            </div>
+        </div>
+            <!-- </div> -->
+        <div class="col-sm-12 col-xs-12">    
+            <div class="pagination_view">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="currentPage" size="sm" (pageChange)="getNextPageRatingList($event)"></ngb-pagination>
+            </div>
+        </div>
+    </div>          
+</div><!--container end-->
+
+<!--- Image viwer in model view-->
+    
+<ng-template #contentImage let-c="close" let-d="dismiss" >
+        <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <ngb-carousel *ngIf="investmentDetail?.file_images?.length > 0" [activeId]="activeId">
+                <ng-template ngbSlide *ngFor="let image of investmentDetail?.file_images;let index = index;" [id]="index">
+                  <img [src]="image.url" alt="Random first slide" style="width:100%;">
+                </ng-template>
+            </ngb-carousel> 
+        </div>
+  </ng-template>
+     
+  <!--- Image viwer in model view End-->
+
+
+  <!--- Video viwer in model view-->
+<ng-template #contentVideo let-c="close" let-d="dismiss" >
+        <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <ngb-carousel *ngIf="investmentDetail?.file_videos?.length > 0" [activeId]="videoActiveId">
+                <ng-template ngbSlide *ngFor="let video of investmentDetail?.file_videos;let index = index;" [id]="index">
+                    <youtube-player class="video_popup" style="width: 100%;"
+                        [videoId]="video.video_id"
+                    ></youtube-player>
+                </ng-template>
+            </ngb-carousel> 
+        </div>
+  </ng-template>
+     
+  <!--- Video viwer in model view End-->

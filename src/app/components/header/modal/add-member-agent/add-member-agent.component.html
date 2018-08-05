@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <h4>{{'ang_customermobile' | translate}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <form class="form-horizontal" [formGroup]="addMemberForm">
+    <div class="control-group">
+      <div class="row">
+        <div class="col-sm-3 col-md-3 gutter_right country_outer">  
+           <!--  <div class="control-group"> -->
+              <!--Mobile -->
+              <div class="flag_dropdown">
+                <button class="dropbtn" (click)="selectCountryCode();">
+                  <img [src]="country_img" width="20px" /> {{country_code}}
+                </button>
+                <div class="flag_dropdown_list" *ngIf="showDropDown">
+                    <perfect-scrollbar>
+                      <a href="javascript:void(0);" (click)="selectCountry(code);" *ngFor="let code of countryCodes;"><img [src]="code.country_flag" width="20px"/>  {{code.country_code}}</a>
+                    </perfect-scrollbar>
+                </div> 
+            </div>               
+            <!-- </div> -->
+          </div>
+          <div class="col-sm-9 col-md-9 gutter_right mobile_outer">  
+            <div class="controls">
+              <input type="tel" required name="mobile" formControlName="phone" placeholder="{{'ang_mobile' | translate}}"
+                class="input-xlarge">
+            </div>
+            <p class="help-block" *ngIf="addMemberForm.controls.phone.touched && addMemberForm.controls.phone.errors?.required ">{{'ang_mobilerequired'| translate}}</p>
+            </div>
+            <p class="help-block" *ngIf="addMemberForm.controls.phone.touched && (addMemberForm.controls.phone.errors?.minlength || addMemberForm.controls.phone.errors?.maxlength || addMemberForm.controls.phone.errors?.pattern)">{{ 'ang_mobilevalidation' | translate}}</p>
+          
+      </div><!--row end-->
+      </div>
+    <div class="profile_btn">
+      <button class="ryec_btn" type="button" (click)="sendOTP()">{{'ang_sendotp' | translate}}</button>
+      <!-- <p>Didn't Receive OTP? <a href="#"> Resend OTP</a></p> -->
+    </div>
+  </form>
+</div>

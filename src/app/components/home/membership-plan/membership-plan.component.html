@@ -1,0 +1,175 @@
+<div class="container">
+	<div class="member_bg">
+		<h1>{{'ang_membershipplan' | translate}}</h1>
+		<div class="col-sm-12">
+			<div class="plan_table table-responsive ">
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>{{'ang_services' | translate}}</th>
+							<th>{{'ang_basic' | translate}}
+								<img src="assets/images/basic.png" alt="Basic">
+							</th>
+							<th>{{'ang_premium' | translate}}
+								<img src="assets/images/table_crown.png" alt="Premium">
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{'ang_registerbusinessplan' | translate}}</td>
+							<td>
+								<img src="assets/images/correct.png" alt="correct">
+							</td>
+							<td>
+								<img src="assets/images/correct.png" alt="correct">
+							</td>
+						</tr>
+						<tr>
+							<td>{{'ang_detailoninquiryforbusiness' | translate}}</td>
+							<td>
+								<img src="assets/images/incorrect.png" alt="incorrect">
+							</td>
+							<td>
+								<img src="assets/images/correct.png" alt="correct">
+							</td>
+						</tr>
+						<tr>
+							<td>{{'ang_chatwithpotentialcustomers' | translate}}</td>
+							<td>
+								<img src="assets/images/incorrect.png" alt="incorrect">
+							</td>
+							<td>
+								<img src="assets/images/correct.png" alt="correct">
+							</td>
+						</tr>
+						<tr>
+							<td>{{'ang_reviewandrating' | translate}}</td>
+							<td>
+								<img src="assets/images/incorrect.png" alt="incorrect">
+							</td>
+							<td>
+								<img src="assets/images/correct.png" alt="correct">
+							</td>
+						</tr>
+						<tr>
+							<td>{{'ang_productlisting' | translate}}</td>
+							<td>
+								<img src="assets/images/incorrect.png" alt="incorrect">
+							</td>
+							<td>
+								<img src="assets/images/correct.png" alt="correct">
+							</td>
+						</tr>
+						<tr>
+							<td>{{'ang_servicelisting' | translate}}</td>
+							<td>
+								<img src="assets/images/incorrect.png" alt="incorrect">
+							</td>
+							<td>
+								<img src="assets/images/correct.png" alt="correct">
+							</td>
+						</tr>
+						<tr>
+							<td>{{'ang_prioritysearchresult' | translate}}</td>
+							<td>
+								<img src="assets/images/incorrect.png" alt="incorrect">
+							</td>
+							<td>
+								<img src="assets/images/correct.png" alt="correct">
+							</td>
+						</tr>
+						<tr>
+							<td>{{'ang_investmentopportunitiesaccess' | translate}}</td>
+							<td>
+								<img src="assets/images/incorrect.png" alt="incorrect">
+							</td>
+							<td>
+								<img src="assets/images/correct.png" alt="correct">
+							</td>
+						</tr>
+						<tr>
+							<td>{{'ang_invitationevents' | translate}}</td>
+							<td>
+								<img src="assets/images/incorrect.png" alt="incorrect">
+							</td>
+							<td>
+								<img src="assets/images/correct.png" alt="correct">
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<a href="javascript::void(0);" class="ryec_btn">{{'ang_free' | translate}}</a>
+							</td>
+							<td>
+								<a href="javascript::void(0);" (click)="showPlans()" class="ryec_btn">{{'ang_plans' | translate}}</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="help-block plan_error" *ngIf="isApply == 1">*{{'ang_alreaymembershipapply' | translate}}</p>
+			</div>
+		</div>
+		
+		<h1 style="margin-top:20px;">{{'ang_premiummembershipplan' | translate}}</h1>
+
+		<div class="flex-container plans_outer">
+			<div class="col-sm-6 col-md-4 flex-items" *ngFor="let plan of membershipPlansList; let ind = index;">
+				<div class="plan_box">
+					<h3>{{plan.type}}</h3>
+					<img [src]="plan.logo_thumbnail">
+					<h4>
+						<i class="fa fa-inr" aria-hidden="true"></i>{{plan.price}}</h4>
+					<div class="plan_btn">
+						<button href="javascript::void(0);" [disabled]="isApply == 1" class="ryec_btn" (click)="selectMembershipPlan(plan.id)">{{'ang_showinterest' | translate}}</button>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="col-sm-6 col-md-4 flex-items">
+				<div class="plan_box">
+					<h3>10 Years</h3>
+					<img src="assets/images/10.png">
+					<h4>
+						<i class="fa fa-inr" aria-hidden="true"></i>7000</h4>
+					<div class="plan_btn">
+						<a href="#" class="ryec_btn">show interest</a>
+					</div>
+				</div>
+			</div> -->
+			<!-- <div class="col-sm-6 col-md-4 flex-items">
+				<div class="plan_box">
+					<h3>5 Years</h3>
+					<img src="assets/images/5.png">
+					<h4>
+						<i class="fa fa-inr" aria-hidden="true"></i>4000</h4>
+					<div class="plan_btn">
+						<a href="#" class="ryec_btn">show interest</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4 offset-md-2 flex-items">
+				<div class="plan_box">
+					<h3>3 Years</h3>
+					<img src="assets/images/3.png">
+					<h4>
+						<i class="fa fa-inr" aria-hidden="true"></i>2500</h4>
+					<div class="plan_btn">
+						<a href="#" class="ryec_btn">show interest</a>
+					</div>
+				</div>
+			</div>
+			<div class="offset-sm-3 col-sm-6 col-md-4 offset-md-0 flex-items">
+				<div class="plan_box">
+					<h3>1 Year</h3>
+					<img src="assets/images/1.png">
+					<h4>
+						<i class="fa fa-inr" aria-hidden="true"></i>1100</h4>
+					<div class="plan_btn">
+						<a href="#" class="ryec_btn">show interest</a>
+					</div>
+				</div>
+			</div> -->
+		</div>
+	</div>
+</div>

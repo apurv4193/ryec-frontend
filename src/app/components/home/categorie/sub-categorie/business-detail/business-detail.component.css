@@ -1,0 +1,237 @@
+.business_detail_banner{position: relative;height: 400px;margin-left: -15px;margin-right: -15px;}
+.business_detail_banner img{width: 100%;height: 100%;}
+.business_type_view{position: absolute;left: 0;width: 100%;bottom: 0;min-height: 100px;
+background: rgba(0, 0, 0, 0.7);}
+.business_type_view {}
+.business_title h2{color: #f3f3f3;text-transform: uppercase;
+font-family: 'Lato-Heavy';margin: 32px 0;overflow: hidden;
+    text-overflow: ellipsis;white-space: nowrap;}
+.business_social_link{height: 100%;}
+.business_social_link li{height: 100%;display: inline-block;width: 33.33%;
+margin:0 -2px -5px -2px;vertical-align: middle;}
+.business_social_link li a{display: table;height: 100%;color: #ffffff;font-size: 20px;
+text-align: center;font-family: 'Lato-Bold';vertical-align: middle;width: 100%;}
+.business_social_link li a span{display: table-cell;width: 100%;height: 100%;vertical-align: middle;}
+.business_social_link li:first-child a{background: #c59b42;color: #ffffff;}
+.business_social_link li:first-child a i{color: #ffffff;}
+.business_social_link li a i{display: block;line-height: 50px;font-size: 40px;  color: #c59b42;}
+.business_social_link li a:hover i{color: #fff;}	
+.business_detail_content{margin-top: 65px;}
+.photo_gallery ul li{display: inline-block;width:31.7%;height: 100px;
+margin-right: 5px;margin-bottom:5px;cursor: pointer;}
+.photo_gallery ul li img{width: 100%;height: 100%;}
+.photo_gallery ul li:nth-child(3),
+.photo_gallery ul li:nth-child(6){margin-right:0;}
+.other_information{margin-top:55px;word-wrap: break-word;}
+.other_information h3{font-size: 20px;font-family: 'Lato-Bold';margin-bottom: 30px;}
+.other_information a{color:#000;text-decoration: underline;}
+.other_information a:hover{color:#c59b42;}
+.inform_view{font-size: 18px;vertical-align: middle;margin-bottom:15px;}
+.inform_view span{width: 25px;display: inline-block;font-size: 22px;
+	vertical-align: middle;line-height: 30px;}
+.inform_view > div{width: 90%;display: inline-block;vertical-align: top;
+padding-left: 5px;}
+.inform_view span.call{font-size: 25px;}
+.inform_view span.mobile{font-size: 30px;}
+.business_activities p{font-size: 18px;color: #414141;margin-bottom: 30px;text-align: justify;
+padding-left: 20px;position: relative;}
+.business_activities p:before{position: absolute;left: 5px;top:10px;content: '';
+background: #414141;width: 6px;height: 6px;border-radius: 10px;}
+.hours_operation,
+.business_activities,
+.ratings_reviews{margin-top: 50px;}
+.hours_operation h2,
+.business_activities h2,
+.ratings_reviews h2{font-size: 20px;font-family: 'Lato-Bold';margin-bottom:30px;text-transform: capitalize;}
+.business_activities h2 span,.hours_operation h2 span{color: #c59b42;}
+.open_time{margin-bottom: 5px;font-size: 0;}
+.day_type{display: inline-block;width: 35%;font-size: 18px;}
+.time_type{display: inline-block;width: 64%;font-size: 18px;}
+.year_established{margin-top:50px;}
+.year_established h2{font-size: 20px;font-family: 'Lato-Bold';margin-bottom: 20px;}
+.year_established p{font-size: 18px;}
+.social_profile{margin-top:50px;}
+.social_profile h2{font-size: 20px;font-family: 'Lato-Bold';margin-bottom: 20px;}
+.social_profile ul li{display: inline-block;width: 25%;margin:0 -2px;}
+.social_profile ul li a{display: block;}
+.social_profile ul li a img{max-width: 40%;-webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);box-shadow: 0 0 1px transparent;
+    -webkit-transition-duration: 0.3s;transition-duration: 0.3s;
+    -webkit-transition-property: transform;transition-property: transform;
+    -webkit-transition-timing-function: ease-out;transition-timing-function: ease-out;}
+.social_profile ul li a img:hover{-webkit-transform: translateY(-8px);
+    transform: translateY(-8px);}
+
+.essar_contant,
+.owner_information,
+.our_products,
+.all_ratings{background: #ffffff;-webkit-box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);padding:20px 15px;margin-bottom: 30px;}    
+.essar_contant h4{font-size: 18px;color: #c59b42;font-family: 'Lato-Bold';position:relative;}
+.essar_contant h4 span{float: right;background: #008f45;color: #fff;padding:5px;
+	font-size:14px;border-radius: 3px;}
+.essar_contant p{font-size: 16px;margin-top: 25px;text-align: justify;} 
+.read_more{text-align: right;margin-top:20px;}
+.read_more a{display: inline-block;color: #438acd;font-size: 14px;
+	text-decoration: underline;}  
+.read_more a:hover{color:#c59b42;}	
+.owner_information{padding:30px 40px;}
+.owner_information h4{font-size: 20px;font-family: 'Lato-Bold';margin-bottom: 30px;}
+.owner_profile{width: 130px;height: 130px;border-right: 100px;border-radius: 100%;overflow: hidden;}
+.owner_profile img{width: 100%;height:100%;border-radius: 100%;}
+.owner_box{border-bottom: 2px solid #ddd8d8;padding-bottom: 30px;margin-bottom: 30px;}
+.owner_box:last-child{margin-bottom: 0;border-bottom: 0;padding-bottom: 0;}
+.owner_more a{width: 100%;display: block;text-align: center;padding: 7px 0 9px 0;}
+.owner_more a i{vertical-align: middle;font-size: 22px;margin-top:-2px;}
+.owner_info_content{position: relative;top:15%;word-wrap: break-word;}
+.owner_more{position: relative;top:33%;}
+.owner_info_content h2{font-size: 20px;font-family: 'Lato-Bold';}
+.owner_info_content p{font-size: 18px;}
+.our_products h2,
+.all_ratings h2{font-size: 20px;font-family: 'Lato-Bold';margin-bottom: 30px;}
+.all_ratings{}
+.ratings_comment{border-bottom: 1px solid #f1f1f1;padding-bottom: 30px;margin-bottom: 30px;}
+.ratings_name{font-size: 20px;color: #9a9a9a;margin-bottom: 15px;}
+.toatl_ratings{float: right;color: #c59b42;margin-top: -7px;}
+.comment_img{width: 100px;height: 100px;border-radius: 100px;display: inline-block;
+vertical-align: middle;}
+.comment_img img{width: 100%;height: 100%;border-radius: 100px;}
+.comment_view{display: inline-block;width: 85%;padding-left:15px;color: #5d5d5d;
+    font-size: 20px;vertical-align: middle;}
+.ratings_comment:last-child{border-bottom: 0;margin-bottom: 0;}
+.all_ratings .pagination_view{float: right;}    
+.ng2-carouselamos > div img{width: 100%;}
+.ratings_reviews .star_section{font-size: 0;margin-bottom: 10px;}
+.rate_bar ngb-rating{font-size: 30px;vertical-align: middle;color: #c59b42;outline: none;}
+.ratings_reviews .star_section .rate_bar{display: inline-block;vertical-align: middle;}
+.ratings_reviews .star_section .rate{font-size: 30px;font-family: 'Lato-Bold';display: inline-block;vertical-align: middle;}
+.ratings_reviews .star_section .review{font-size: 15px;display: inline-block;vertical-align: middle;float:right;position: relative;top: 15px;}
+.toatl_ratings ngb-rating{font-size: 25px;}
+.photo_gallery ul li{position: relative;}
+.photo_gallery ul li:hover::before{background: rgba(0, 0, 0, 0.3);position: absolute;top:0;bottom:0;left:0;right: 0;content: "";}
+.photo_gallery ul li:hover::after{position: absolute;content: "\F00E";font-family: FontAwesome;top: 50%;color: #fff;font-size: 30px;left: 0;right: 0;bottom: 0;text-align: center;transform: translateY(-50%);}
+.progress_bar_cst{font-size: 0;}
+.progress_bar_cst span{display: inline-block;width: 10%;font-size: 14px;margin-right: 15px;}
+.progress_bar_cst p{display: inline-block;width: 85%;}
+.our_products .item_name{width: 155px;text-align: center;word-break:  break-word;}
+.owner_box .owner_img_outer{margin-right: -15px;}
+.our_products .pro_img_outer{height: 155px;width: 155px;}
+.our_products .pro_img_outer img{height: 100%;width: 100%;}
+
+.business_activities a{color:#000;text-decoration: underline;}
+.all_rating_outer .ryec_btn{padding: 8px 20px;display: inline-block;}
+.star {position: relative;  display: inline-block;font-size: 30px;color: #d3d3d3;}
+.full {color: #c59b42;}
+.half {position: absolute;display: inline-block;overflow: hidden;color: #c59b42;}
+.carousel-indicators{display: none !important;}
+.background_image{background-size: cover !important;position:absolute;top:0;left:0;right:0;bottom:0;filter: blur(10px);z-index:-1;}
+
+@media (min-width: 768px){
+    .business_social_link li a{font-size: 17px;}
+    .business_social_link li a i{font-size: 30px;}
+    .inform_view > div{width: 80%;}
+    .progress_bar_cst span{width: 15%;}
+    .progress_bar_cst p{width: 79%;}
+    .time_type{font-size: 16px;}
+    .day_type{font-size: 16px;}
+    .owner_info_content h2{font-size: 16px;}
+    .owner_info_content p{font-size: 14px;}
+    .owner_more .ryec_btn{font-size: 15px;}
+    .owner_more{top:15%;}
+    .ratings_name{font-size: 16px;}
+    .hours_operation h2 span{font-size: 18px;}
+    .comment_view{width: 71%;font-size: 18px;line-height: 22px;}
+    .owner_information{padding:30px 20px;}
+    .owner_profile{width: 60px;height: 60px;}
+    .business_title h2{font-size: 30px;}
+    .bus_slider_img img{height: 400px;}
+}
+@media (min-width: 992px){
+    .business_social_link li a{font-size: 20px;}
+    .business_social_link li a i{font-size: 40px;}
+    .time_type{font-size: 18px;}
+    .day_type{font-size: 18px;}
+    .owner_info_content h2{font-size: 20px;}
+    .owner_info_content p{font-size: 18px;}
+    .owner_more .ryec_btn{font-size: 20px;}
+    .owner_more{top:33%;}
+    .ratings_name{font-size: 20px;}
+    .hours_operation h2 span{font-size: 20px;}
+    .comment_view{width: 82%;font-size: 20px;}
+    .owner_profile{width: 100px;height: 100px;}
+    .owner_information{padding:30px 40px;}
+    .no-slider{display: none;}
+    
+}
+@media (min-width: 1024px){
+
+}
+@media (min-width: 1200px){
+    .inform_view > div{width: 90%;}
+    .progress_bar_cst span{width: 10%;}
+    .progress_bar_cst p{width: 85%;}
+    .comment_view{width: 85%;}
+    .owner_profile{width: 130px;height: 130px;}
+    
+}
+@media(max-width: 767px){
+    .no-slider{display: block;}
+    .business_title h2{text-align: center;margin:20px 0;}
+    .business_social_link li{margin: 0 -2px 0px -2px;height: 100px;}
+    .business_social_link li a{font-size: 14px;}
+    .business_social_link li a i{font-size: 30px;line-height: 45px;}
+    .essar_contant{margin-top: 50px;}
+    .owner_profile{width:150px;height:150px;margin:0 auto;}
+    .owner_information{padding:30px;}
+    .owner_more{width: 70%;margin:0 auto;}
+    .ratings_name{font-size: 16px;}
+    .comment_view{width:72%;font-size: 16px;line-height: 20px;}
+    .other_information{margin-top: 25px;}
+    .other_information h3{margin-bottom: 20px;}
+    .hours_operation, .business_activities, .ratings_reviews{margin-top:30px;}
+    .business_activities p{margin-bottom: 10px;}
+    .hours_operation h2, .business_activities h2, .ratings_reviews h2{margin-bottom: 20px;}
+    .business_detail_content {margin-top: 45px;} 
+    .year_established{margin-top: 30px;}   
+    .social_profile{margin-top: 30px;}
+    .owner_info_content h2{font-size: 18px;text-align: center;}
+    .owner_info_content p{text-align: center;}
+    .social_profile ul{text-align: center;}
+    .business_detail_banner{height: 300px;}
+    .business_detail_banner #parent_div img{height:300px !important;}
+    .all_rating_outer .ryec_btn{font-size: 14px;}
+    .business_title h2{font-size: 22px;margin: 34px 0 0 0;}
+    .bus_slider_img img{height: 300px;}
+}
+@media(max-width: 460px){
+    .business_title h2{font-size: 18px;}
+    .business_social_link li{margin: 0 -2px 0px -2px;height: 70px;}
+    .business_social_link li a{font-size: 14px;}
+    .business_social_link li a i{font-size: 25px;line-height: 30px;}
+    .photo_gallery ul li{height: 80px;}
+    .other_information h3{font-size: 18px;margin-bottom: 10px;}
+    .inform_view > div{width: 88%;}
+    .inform_view{font-size: 16px;}
+    .hours_operation h2, .business_activities h2, .ratings_reviews h2{font-size: 18px;margin-bottom: 10px;}
+    .business_activities p{font-size: 16px;}
+    .ratings_reviews .star_section .rate{font-size: 18px;}
+    .progress_bar_cst span{width:14%;}
+    .progress_bar_cst p{width: 80%;}
+    .day_type{font-size: 16px;}
+    .time_type{font-size: 16px;}
+    .year_established h2{font-size: 18px;margin-bottom: 10px;}   
+    .social_profile h2{font-size: 18px;margin-bottom: 10px;}
+    .year_established p{font-size: 16px;}
+    .social_profile ul li a img{max-width: 50%;}
+    .essar_contant p{font-size: 14px;}
+    .owner_profile{width: 100px;height: 100px;}
+    .owner_more a{font-size: 15px;}
+    .ratings_name{font-size: 14px;}
+    .toatl_ratings{float: none;}
+    .comment_img{display: block;margin:0 auto;}
+    .comment_view{width: 100%;font-size: 14px;line-height: 20px;}
+    .our_products h2, .all_ratings h2{font-size: 18px;margin-bottom: 15px;}
+    .owner_information{padding:30px 20px;}
+    .owner_information h4{font-size: 18px;margin-bottom: 20px;}
+
+}

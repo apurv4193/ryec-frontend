@@ -1,0 +1,20 @@
+<div class="container" *ngIf="allCategoryArr?.length > 0">
+    <div class="sub_category_view">
+        <h2>{{'ang_atozcategories' | translate}}</h2>
+        <div class="sub_category_listing">
+            <ul>
+                <li *ngFor="let item of allCategoryArr" [hidden]="showCategory(item)">
+                    <a href="" routerLink="/category/{{item.category_slug}}" (click)="saveParentCategory(item)">
+                        <span>
+                            <img width="40px" height="40px" [src]="item.image_url">
+                        </span>{{item.name}}
+                        <i aria-hidden="true" class="fa fa-angle-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- sub_category_listing End -->
+    </div>
+    <!-- sub_category_view End -->
+</div>
+<!-- container End -->

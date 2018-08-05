@@ -1,0 +1,228 @@
+<div class="user_profile_view" *ngIf="ownerInfo">
+	<div class="owner_business_name">
+		<h3>
+			<a href="javascript:void(0);" (click)="cancelEditOwner()">{{business_name}}</a> > {{'ang_ownerprofile' | translate}}</h3>
+	</div>
+	<div class="profile_photo">
+		<div class="upload_photo">
+			<img alt="user_profile" [src]="ownerInfo.photo_thumbnail" #userProfileImage>
+			<input type="file" style="display: none;" accept="image/x-png,image/gif,image/jpeg" #userProfile>
+			<!-- add_photo End -->
+		</div>
+		<!-- upload_photo End -->
+	</div>
+	<!-- profile_photo End  -->
+	<form>
+		<div>
+			<div class="personal_profile_view">
+				<div class="row">
+					<div class="col-md-12 col-xs-12">
+						<div class="profile_title">
+							<h2>{{'ang_personalprofile' | translate}}</h2>
+						</div>
+						<!-- profile_title End -->
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_username' | translate}}</label>
+							<div class="controls">
+								<input type="text" pattern="[a-zA-Z][a-zA-Z ]+" readonly [(ngModel)]="ownerInfo.full_name" id="fullname" name="fullname"
+								 placeholder="{{'ang_username' | translate}}" class="input-xlarge readonly">
+							</div>
+
+						</div>
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12" *ngIf="ownerInfo?.email_id	">
+						<div class="control-group">
+							<label class="control-label" for="email">{{'ang_email' | translate}}</label>
+							<div class="controls">
+								<input type="text" id="email" name="email" [(ngModel)]="ownerInfo.email_id" readonly placeholder="{{'ang_email' | translate}}"
+								 class="input-xlarge readonly">
+							</div>
+						</div>
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12" *ngIf="ownerInfo?.mobile">
+						<div class="control-group">
+							<label class="control-label" for="phone">{{'ang_mobile'| translate}}</label>
+							<div class="controls">
+								<input type="tel" readonly maxlength="10" readonly [(ngModel)]="ownerInfo.mobile" id="mobile" name="mobile" placeholder="{{'ang_mobile'| translate}}"
+								 class="input-xlarge readonly">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_age' | translate}}</label>
+							<div class="controls">
+								<input type="text" readonly [(ngModel)]="ownerInfo.age" id="age" name="age" placeholder="{{'ang_age' | translate}}" class="input-xlarge readonly">
+							</div>
+
+						</div>
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="gender">{{'ang_gender'| translate}}</label>
+							<div class="controls">
+								<input type="text" readonly readonly id="gender" name="gender" [(ngModel)]="gender" placeholder="{{'ang_gender'| translate}}"
+								 class="input-xlarge readonly">
+							</div>
+							<!-- type_gender End -->
+						</div>
+					</div>
+
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_designation' | translate}}</label>
+							<div class="controls">
+								<input type="text" readonly [(ngModel)]="ownerInfo.designation" id="designation" name="designation" placeholder="{{'ang_designation' | translate}}"
+								 class="input-xlarge readonly">
+							</div>
+
+						</div>
+					</div>
+					<!-- col End -->
+				</div>
+				<!-- row End -->
+			</div>
+			<!-- personal_profile_view End -->
+
+			<!-- personal_profile_view End -->
+			<div class="personal_profile_view">
+				<div class="row">
+					<div class="col-md-12 col-xs-12">
+						<div class="profile_title">
+							<h2>{{'ang_otherinformation' | translate}}</h2>
+						</div>
+						<!-- profile_title End -->
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="fathename">{{'ang_fathername'| translate}}</label>
+							<div class="controls">
+								<input type="text" pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="ownerInfo.father_name" readonly id="fathername" name="fathername"
+								 placeholder="{{'ang_fathername'| translate}}" class="input-xlarge readonly">
+							</div>
+
+						</div>
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="nativevillage">{{'ang_nativevillage'| translate}}</label>
+							<div class="controls">
+								<input type="text" pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="ownerInfo.native_village" readonly id="nativevillage" name="nativevillage"
+								 placeholder="{{'ang_nativevillage' | translate}}" class="input-xlarge readonly">
+							</div>
+
+						</div>
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="maternalhome">{{'ang_maternalhome' | translate}}</label>
+							<div class="controls">
+								<input type="text" pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="ownerInfo.maternal_home" readonly id="maternalhome" name="maternalhome"
+								 placeholder="{{'ang_maternalhome' | translate}}" class="input-xlarge readonly">
+							</div>
+
+						</div>
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12" *ngIf="ownerInfo.kul_gotra !== 'null'">
+						<div class="control-group">
+							<label class="control-label" for="kulgotra">{{'ang_kulgotra'| translate}}</label>
+							<div class="controls">
+								<input type="text" pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="ownerInfo.kul_gotra" readonly id="kulgotra" name="kulgotra"
+								 placeholder="{{'ang_kulgotra'| translate}}" class="input-xlarge readonly">
+							</div>
+						</div>
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12" *ngIf="ownerInfo?.children?.length !== 0">
+						<div class="control-group">
+							<label class="control-label" for="children">{{'ang_children' | translate}}</label>
+							<div class="controls">
+								<ul class="child-name-list">
+									<li *ngFor="let child of ownerInfo.children">
+										{{child.children_name}}</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12" *ngIf="ownerInfo?.social_activities?.length !== 0">
+						<div class="control-group">
+							<label class="control-label" for="business achievements">{{'ang_socialactivities' | translate}}</label>
+							<div class="controls">
+								<ul class="social-activities">
+									<li *ngFor="let activity of ownerInfo.social_activities">{{activity.activity_title}}</li>
+								</ul>
+							</div>
+							<!-- <p class="help-block" *ngIf="profileForm['controls'].personal['controls'].business_achievments.touched && profileForm['controls'].personal['controls'].business_achievments.errors?.pattern ">{{'ang_validdetails'| translate}}</p> -->
+						</div>
+					</div>
+					<!-- col End -->
+					<div class="col-md-12 col-xs-12">
+						<div class="profile_title">
+							<h2>
+								<!--{{'ang_otherinformation' | translate}}-->{{'ang_socialprofile' | translate}}</h2>
+						</div>
+						<div class="controls">
+							<ul class="social">
+								<li *ngIf="ownerInfo?.social_profiles?.facebook_url">
+									<a href="{{ownerInfo?.social_profiles?.facebook_url}}" target="_blank" title="{{'ang_facebook' | translate}}">
+										<img src="../assets/images/facebook.png" alt="{{'ang_facebook' | translate}}">
+									</a>
+								</li>
+								<li *ngIf="!ownerInfo?.social_profiles?.facebook_url">
+									<a href="javascript:void(0)" target="_blank" title="{{'ang_facebook' | translate}}">
+										<img src="../assets/images/facebook-edit.png" alt="{{'ang_facebook' | translate}}">
+									</a>
+								</li>
+								<li *ngIf="ownerInfo?.social_profiles?.twitter_url">
+									<a href="{{ownerInfo?.social_profiles.twitter_url}}" target="_blank" title="{{'ang_twitter' | translate}}">
+										<img src="../assets/images/twitter.png" alt="{{'ang_twitter' | translate}}">
+									</a>
+								</li>
+								<li *ngIf="!ownerInfo?.social_profiles?.twitter_url">
+									<a href="javascript:void(0)" target="_blank" title="{{'ang_twitter' | translate}}">
+										<img src="../assets/images/twitter-edit.png" alt="{{'ang_twitter' | translate}}">
+									</a>
+								</li>
+								<li *ngIf="ownerInfo?.social_profiles?.linkedin_url">
+									<a href="{{ownerInfo?.social_profiles.linkedin_url}}" target="_blank" title="{{'ang_linkedin' | translate}}">
+										<img src="../assets/images/linkedin.png" alt="{{'ang_linkedin' | translate}}">
+									</a>
+								</li>
+								<li *ngIf="!ownerInfo?.social_profiles?.linkedin_url">
+									<a href="javascript:void(0)" target="_blank" title="{{'ang_linkedin' | translate}}">
+										<img src="../assets/images/linkedin-edit.png" alt="{{'ang_linkedin' | translate}}">
+									</a>
+								</li>
+								<li *ngIf="ownerInfo?.social_profiles?.instagram_url">
+									<a href="{{ownerInfo?.social_profiles.instagram_url}}" target="_blank" title="{{'ang_instagram' | translate}}">
+										<img src="../assets/images/instagram.png" alt="{{'ang_instagram' | translate}}">
+									</a>
+								</li>
+								<li *ngIf="!ownerInfo?.social_profiles?.instagram_url">
+									<a href="javascript:void(0)" target="_blank" title="{{'ang_instagram' | translate}}">
+										<img src="../assets/images/instagram-edit.png" alt="{{'ang_instagram' | translate}}">
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- row End -->
+			</div>
+			<!-- personal_profile_view End -->
+			<!-- <div class="row">-->
+		</div>
+	</form>
+</div>
+<!-- user_profile_view End -->

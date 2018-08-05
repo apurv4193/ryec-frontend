@@ -1,0 +1,212 @@
+.signup_view {
+  background: #ffffff;
+  padding: 20px 60px;
+  margin: 50px auto;
+  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.signup_view legend {
+  font-size: 30px;
+  font-family: 'Lato-Bold';
+  color: #222222;
+  margin-bottom: 40px;
+}
+
+.type_of_language {
+  margin-bottom: 50px;
+}
+
+.type_of_language button {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding: 7px 45px;
+  font-size: 25px;
+}
+
+.signup_view .control-group input {
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid #b2b2b2;
+  width: 100%;
+  font-size: 20px;
+  color: #645d4b;
+  padding: 16px 35px 16px 35px;
+  font-family: 'Lato-Regular';
+}
+
+.signup_view .business_view .control-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+.explore_btn{
+  padding: 10px 20px;
+  margin-bottom: 25px;
+}
+
+.signup_view .control-group i {
+  font-size: 25px;
+  color: #000000;
+  position: absolute;
+  top: 22px;
+}
+
+.signup_view .control-group .fa-mobile {
+  font-size: 34px;
+  top: 18px;
+}
+.signup_view .control-group .fa-envelope,
+.signup_view .control-group .fa-briefcase{
+  font-size: 20px;
+}
+
+.sign_up_btn {
+  font-family: 'Lato-Heavy';
+  font-size: 20px;
+  text-transform: uppercase;
+  padding: 10px 60px;
+  margin: 0 auto;
+  display: block;
+}
+
+.already_view {
+  text-align: center;
+  color: #777777;
+  font-size: 26px;
+}
+
+.already_view a {
+  color: #777777;
+}
+
+.already_view strong {
+  color: #c59b42;
+  font-family: 'lato-Bold';
+}
+.thank_you{
+  font-size: 40px;
+  text-align: center;
+  font-family: 'lato-Bold';
+  margin-bottom: 20px;
+}
+.thank_you span{
+  color: #c59b42;
+}
+.thank_section{
+  text-align: center;
+}
+.thank_section h2{
+  font-size: 40px;
+  color: #c59b42;
+  font-family: 'Lato-Medium';
+  margin:30px 0; 
+}
+.thank_you_img img{
+  max-width: 150px;
+}
+.thank_section h4{
+  color:#2b2b2b;
+  font-size: 21px;
+  font-family: 'Lato-Bold';
+  line-height: 35px;
+}
+
+
+.skip_cst{text-align:right;}
+.skip_cst a{font-family: 'Lato-Bold';color: #c59b42;font-size:18px;}
+
+.description_for_bus.control-group i{
+  top: 10px !important;
+  z-index: 1;
+  font-size: 22px !important;
+}
+.description_for_bus textarea{
+  width: 100%;
+  border: 0px;
+  border-bottom: 1px solid #ccc;
+  padding: 5px 35px 16px 35px;
+  font-size: 20px;
+  color: #645d4b;
+}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {
+  .signup_view {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .signup_view {
+    width: 70%;
+  }
+}
+
+@media (max-width: 767px) {
+  .signup_view legend {
+    font-size: 25px;
+  }
+  .type_of_language {
+    margin-bottom: 30px;
+  }
+  .sign_up_btn {
+    font-size: 20px;
+  }
+  .already_view {
+    font-size: 20px;
+  }
+  .signup_view {
+    padding: 20px 20px;
+  }
+  .type_of_language button {
+    font-size: 20px;
+    padding: 7px 30px;
+  }
+  .signup_view .control-group {
+    margin-bottom: 30px;
+  }
+  .signup_view .control-group input {
+    font-size: 20px;
+  }
+  .signup_view {
+    margin: 20px auto;
+  }
+  .thank_section h2{
+    font-size: 35px;
+    margin:20px 0; 
+  }
+  .thank_section h4{
+    font-size: 25px;
+    line-height: 25px;
+  }
+  .thank_you_img img{
+    width: 40%;
+  } 
+}
+
+@media (max-width: 576px) {
+  .type_of_language button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .sign_up_btn {
+    width: 100%;
+    padding: 15px 0;
+  }
+  .thank_you{
+    font-size: 30px;
+    line-height: 35px;
+  }
+  .thank_section h4{
+    font-size: 20px;
+    line-height: 20px;
+  }
+  .thank_you_img img{
+    width: 50%;
+  } 
+  .explore_btn{
+    padding: 5px 10px;}
+}

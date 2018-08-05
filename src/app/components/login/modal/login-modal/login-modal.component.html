@@ -1,0 +1,50 @@
+<div class="modal-header">
+  <h4 class="modal-title">Login</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal" [formGroup]="loginForm" (submit)="submitDetails()" novalidate>
+
+    <div class="control-group">
+      <!--Mobile -->
+      <!-- <label class="control-label" for="Mobile">Mobile Number</label> -->
+      <div class="controls">
+        <i class="fa fa-mobile" aria-hidden="true"></i>
+        <input type="tel" maxlength="10" formControlName="mobnumber" id="mobnumber" name="mob-number" placeholder="Mobile Number"
+          class="input-xlarge">
+        <p class="help-block" *ngIf="loginForm.controls.mobnumber.touched && loginForm.controls.mobnumber.errors?.required ">Please provide your Mobile Number</p>
+      </div>
+      <p class="help-block" *ngIf="loginForm.controls.mobnumber.touched && (loginForm.controls.mobnumber.errors?.minlength || loginForm.controls.mobnumber.errors?.maxlength)">
+        Mobile Number should be 10 digits
+      </p>
+    </div>
+
+    <div class="control-group">
+      <!-- Password-->
+      <!-- <label class="control-label" for="password">Password</label> -->
+      <div class="controls">
+        <i class="fa fa-lock" aria-hidden="true"></i>
+        <input type="password" minlength="4" formControlName="password" id="password" name="password" placeholder="Password" class="input-xlarge">
+        <div>
+          <p class="help-block pull-left" *ngIf="loginForm.controls.password.touched && (loginForm.controls.password.errors?.required || loginForm.controls.password.errors?.minlength)">Password should be at least 8 characters</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Button -->
+    <div class="forgot_pass">Forgot password?</div>
+    <div class="login_btn">
+      <button class="btn">LOGIN</button>
+      <!-- <button [disabled]="!loginForm.valid" class="btn btn-success">LOGIN</button> -->
+    </div>
+    <!-- login_btn End -->
+  </form>
+</div>
+<div class="modal-footer">
+  <!-- <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button> -->
+  Don't have an account?
+  <strong>Sign up</strong>
+</div>

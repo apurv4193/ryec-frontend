@@ -1,0 +1,134 @@
+
+.investment_banner{position: relative;height: 400px;margin-left: -15px;margin-right: -15px;text-align: center;}
+.investment_banner img{width: 100%;height: 100%;}
+.shadow_card{background: #ffffff;-webkit-box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);padding: 30px 15px;margin-bottom: 30px;}
+.desc_content{margin-top:30px;}
+h4.title{text-transform: uppercase;font-family: 'Lato-Bold';}
+.business_title h2.title{text-transform: uppercase;font-family: 'Lato-Bold';color: #f3f3f3;margin: 31px 0;
+    overflow: hidden;text-overflow: ellipsis;white-space: nowrap;text-align: left;}
+.business_title h2.title span{color:#c59b42;vertical-align: top;}
+.desc_content .interest_btn{float:right;}
+.interest_btn a{padding:7px 20px;}
+.project_info_outer{font-size: 0;}
+.project_info{display: inline-block;width:25%;/*margin-top: 30px;*/}
+.project_info span{font-size: 20px;font-family: 'Lato-Bold';text-transform: capitalize;display: block;text-align:center;}
+.project_info h6{font-size: 26px;color:#c59b42;font-family: 'Lato-Bold';text-align:center;}
+.project_desc p{font-size: 18px;text-align: justify;margin-top: 15px;}
+
+.owner_information{padding:30px 20px;}
+
+.owner_profile{border-right: 100px;border-radius: 100%;overflow: hidden;margin:0 auto;}
+.owner_profile img{width: 100%;height:100%;border-radius: 100%;}
+.owner_box{border-bottom: 2px solid #ddd8d8;padding-bottom: 30px;margin-bottom: 30px;}
+.owner_box:last-child{margin-bottom: 0;border-bottom: 0;padding-bottom: 0;}
+.owner_more a{width: 100%;display: block;text-align: center;padding: 7px 0 9px 0;}
+.owner_more a i{vertical-align: middle;font-size: 22px;margin-top:-2px;}
+.owner_info_content{position: relative;top:15%;}
+.owner_more{position: relative;top:33%;}
+.owner_info_content h2{font-size: 20px;font-family: 'Lato-Bold';text-transform: capitalize;}
+.owner_info_content p{font-size: 18px;margin-bottom:5px;}
+.owner_info_content p i{padding-right: 4px;vertical-align: middle;}
+.owner_information h4{margin-bottom: 20px;}
+.owner_info_content p .fa-mobile{font-size: 25px;}
+.gutter_right{margin-right:-15px;}
+.project_doc ul{margin:20px 0;}
+.project_doc ul li{border-bottom: 1px solid #e1e1e1;padding-bottom: 5px;margin-bottom: 10px;}
+.project_doc ul li a{font-size: 20px;padding-left: 15px;color: #000;}
+.project_doc ul li a:hover,.project_doc ul li a.active{color:#c59b42;}
+
+.photo_gallery ul li,.video_gallery ul li{position: relative;}
+.video_gallery ul li:before{position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);content:" ";font-family: FontAwesome;content: "\f01d";color:#fff;font-size: 45px;}
+.photo_gallery ul li:hover::before{background: rgba(0, 0, 0, 0.3);position: absolute;top:0;bottom:0;left:0;right: 0;content: "";}
+.photo_gallery ul li:hover::after{position: absolute;content: "\F00E";font-family: FontAwesome;top: 50%;color: #fff;font-size: 30px;left: 0;right: 0;bottom: 0;text-align: center;transform: translateY(-50%);}
+.photo_gallery ul li,.video_gallery ul li{display: inline-block;width:31.7%;height: 100px;margin-right: 5px;margin-bottom:5px;cursor: pointer;}
+.photo_gallery ul li img,.video_gallery ul li img{width: 100%;height: 100%;}
+.photo_gallery ul li:nth-child(3),.video_gallery ul li:nth-child(3),
+.photo_gallery ul li:nth-child(6),.video_gallery ul li:nth-child(6){margin-right:0;}
+
+.bottom_int_btn{text-align:center;margin:50px 0 20px 0;}
+.bottom_int_btn a{padding:10px 50px;}
+.text-overflow-hidden{text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.title_my_inve_opp{
+	font-size: 24px;
+	color: #c59b42;
+	font-family: 'Lato-Bold';
+}
+.pagination_view{
+	margin-top:10px;
+	float: right;
+}
+.interests_listing_view{
+	border-bottom: 2px solid #d9d9d9;
+	margin-bottom: 30px;
+	padding-bottom:30px;
+}
+.interests_container{
+	margin-top:50px;
+}
+.total_interes_count{
+	color: #c59b42;
+}
+/*.interests_container .interests_listing_view:last-child {
+	border-bottom: 0;
+}*/
+
+
+@media (min-width: 768px){
+	.project_info h6{font-size: 18px;}
+	.project_info span{font-size: 16px;}
+	.interest_btn .ryec_btn{padding: 7px 13px;font-size: 13px;}
+	h4.title{font-size: 18px;}
+	.owner_information{padding:20px;}
+	.owner_more a, .bottom_int_btn a{font-size: 14px;}
+	.owner_profile{width: 100px;height: 100px;}
+}
+@media (min-width: 992px){
+	.owner_profile{width: 160px;height: 160px;}
+}
+@media (min-width: 1024px){
+	.project_info h6{font-size: 20px;}
+	.project_info span{font-size: 18px;}
+	.interest_btn .ryec_btn{padding: 7px 13px;font-size: 20px;}
+	h4.title{font-size: 24px;}
+	.owner_information{padding:30px 20px;}
+	.owner_more a, .bottom_int_btn a{font-size: 20px;}
+
+}
+@media (min-width: 1200px){
+	.project_info h6{font-size: 26px;}
+	.project_info span{font-size: 20px;}
+}
+
+
+@media(max-width: 767px){
+	.investment_banner{height: 270px;}
+	h4.title{font-size: 18px;}
+	.interest_btn a, .owner_more a{font-size: 13px;padding: 7px 10px;}
+	.project_info span{font-size: 16px;}
+	.project_info h6{font-size: 20px;}
+	.owner_more a i{font-size: 20px;margin-top: -5px;}
+	.bottom_int_btn a{font-size: 16px;}
+	.owner_information{padding: 15px;}
+	.project_doc ul li a{padding-left: 0;word-wrap: break-word;}
+}	
+@media(max-width: 575px){
+	.owner_profile{width: 100px;height: 100px;}
+	.owner_more{margin: 15px 0;}
+	.shadow_card{padding: 15px;}
+	.project_info{width: 100%;}
+	.owner_info_content{text-align: center;}
+	h4.title{font-size: 16px;}
+	.photo_gallery{margin-bottom: 15px;}
+	.project_doc ul li a{font-size: 16px;}
+}
+@media(max-width: 460px){
+	.photo_gallery ul li{height: 80px;}
+	.total_interes_count{
+		float: none;
+		display: block;
+		text-align: center;
+		margin-top: 10px;
+	}
+}
+
+

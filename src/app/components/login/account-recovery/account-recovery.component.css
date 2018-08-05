@@ -1,0 +1,156 @@
+.control-group input {
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid #b2b2b2;
+  width: 100%;
+  font-size: 24px;
+  color: #645d4b;
+  padding: 16px 35px 16px 35px;
+  font-family: 'Lato-Regular';
+}
+
+.control-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.control-group:nth-child(2) {
+  margin-bottom: 0;
+}
+
+.control-group i {
+  font-size: 25px;
+  color: #000000;
+  position: absolute;
+  top: 22px;
+}
+
+.control-group .fa-mobile {
+  font-size: 34px;
+  top: 18px;
+}
+
+.forgot_pass {
+  cursor: pointer;
+  text-align: right;
+  color: #000000;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.login_btn {
+  text-align: center;
+}
+
+.login_btn button {
+  width: 80%;
+  font-family: 'Lato-Heavy';
+  font-size: 25px;
+  border-radius: 100px;
+  padding: 20px 0;
+}
+
+.forgot_pass {
+  cursor: pointer;
+  text-align: right;
+  color: #000000;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.login_btn {
+  text-align: center;
+}
+
+.login-footer {
+  text-align: center;
+  border: 0;
+  display: block;
+  color: #777777;
+  font-size: 25px;
+}
+
+.login-footer strong a {
+  color: #c59b42;
+}
+
+.login_view {
+  background: #ffffff;
+  padding: 35px 60px;
+  margin: 70px auto;
+  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.login_view legend {
+  font-size: 30px;
+  font-family: 'Lato-Bold';
+  color: #222222;
+  margin-bottom: 40px;
+}
+
+.login_view .control-group {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+/* change password css */
+
+/* change password css End */
+
+@media (min-width: 992px) {
+  .login_view {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .login_view {
+    width: 70%;
+  }
+}
+
+@media (max-width: 767px) {
+  .login_view {
+    padding: 20px 20px;
+    margin: 20px auto;
+  }
+  .login_view .control-group {
+    margin-bottom: 30px;
+  }
+  .login_view .control-group input {
+    font-size: 20px;
+  }
+  .login_btn button {
+    font-size: 20px;
+  }
+  .login-footer {
+    font-size: 20px;
+  }
+  .forgot_pass {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  .login_view legend {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .login_btn button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 15px 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .login-footer {
+    font-size: 16px;
+  }
+}

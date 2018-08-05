@@ -1,0 +1,42 @@
+<div class="container well">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="form-horizontal" [formGroup]="cgPasswordForm" (submit)="submitDetails()">
+        <fieldset class="login_view">
+          <div id="legend">
+            <legend>{{'ang_changepassword'| translate}}</legend>
+          </div>
+          <!--if statusAlert role is === 0-->
+          <p class="help-block" *ngIf="statusAlert.status === 0" role="alert">
+            <strong>{{statusAlert.message}}</strong>
+          </p>
+
+          <div class="control-group">
+            <div class="controls">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+              <input type="password" formControlName="password" id="password" name="password" placeholder="{{'ang_newpassword' | translate}}"
+                class="input-xlarge">
+            </div>
+            <p class="help-block pull-left" *ngIf="cgPasswordForm.controls.password.touched && (cgPasswordForm.controls.password.errors?.required || cgPasswordForm.controls.password.errors?.minlength)">{{'ang_passwordvalidation'| translate}}</p>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+              <input type="password" formControlName="confirmPassword" id="3" name="password" placeholder="{{'ang_confirmpassword' | translate}}"
+                class="input-xlarge">
+            </div>
+            <p class="help-block" *ngIf="cgPasswordForm.controls.confirmPassword.touched && cgPasswordForm.controls.confirmPassword.errors?.required">{{'ang_confirmpasswordvalidation' | translate}}</p>
+            <p class="help-block" *ngIf="cgPasswordForm.controls.confirmPassword.touched && cgPasswordForm.controls.confirmPassword.errors?.equalTo">{{'ang_samepasswordvalidation' | translate}}</p>
+          </div>
+ 
+          <div class="control-group">
+            <div class="login_btn">
+              <button type="submit" class="ryec_btn" [disabled]="!cgPasswordForm.valid">{{'ang_submit' | translate}}</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

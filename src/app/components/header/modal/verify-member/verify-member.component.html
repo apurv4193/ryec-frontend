@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h4>{{'ang_enterotp'| translate}} {{mobile}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="row" *ngIf="memberdata?.profile_pic">
+    <div class="col-md-12 text-center">
+    <h5 class="result_text">{{'ang_wefoundthisresult' | translate}}</h5>
+      <div class="user_img">
+        <img [src]='memberdata.profile_pic' width="100px" height="100px">
+      </div>      
+      <span class="text-center member_name">{{memberdata.name }}</span>
+    </div>
+  </div>
+  <form class="form-horizontal" [formGroup]="otpForm">
+    <div class="control-group">
+      <div class="controls">
+        <input type="tel" maxlength="6" formControlName="otp" name="otp" placeholder="{{'ang_otp' | translate}}" class="input-xlarge">
+        <p class="help-block" *ngIf="otpForm.controls.otp.touched && otpForm.controls.otp.errors?.required ">{{'ang_otprequired'| translate}}</p>
+      </div>
+      <p class="help-block" *ngIf="otpForm.controls.otp.touched && (otpForm.controls.otp.errors?.minlength || otpForm.controls.otp.errors?.maxlength || otpForm.controls.otp.errors?.pattern)">{{ 'ang_otpinvalid' | translate}}</p>
+    </div>
+    <div class="profile_btn">
+      <button class="ryec_btn" type="submit" (click)="otpCheck()">{{'ang_submit' | translate}}</button>
+      <p>{{'ang_dontreceiveotp' | translate}}
+        <a href="javascipt:void(0);" (click)="resendOTP()">{{'ang_resendotp' | translate}}</a>
+      </p>
+    </div>
+  </form>
+</div>

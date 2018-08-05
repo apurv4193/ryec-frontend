@@ -1,0 +1,23 @@
+.tc_bg{background: #fff;margin-top: 40px;}
+.tc_bg h4{ font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #c59b42;
+  font-family: 'Lato-Bold';
+  margin:40px 0 20px 0;
+  padding-bottom: 20px;}
+.tc_content p{color: #424242;
+  line-height: 25px;
+  text-align: justify;
+  margin: 8px 0;
+  padding: 5px 0 10px;
+  font-size: 14px;}
+
+.terms_list li{background: #232222;padding: 5px 10px;border-bottom: 1px solid #565656;}
+.terms_list li a{font-size: 16px;color: #fff;text-decoration: none;}
+.terms_list li a:hover,.terms_list li a:focus{color:#c59b42;}
+.terms_list li a{display: block;}
+.parent_link{position: relative;}
+.parent_link li{border-bottom: none;}
+@media(max-width:575px){
+	.tc_content h5{margin-top: 30px;}
+}

@@ -1,0 +1,31 @@
+<div class="modal-header">
+	<h4>{{'ang_getotp' | translate}}</h4>
+	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+
+<div class="modal-body">
+	<form class="form-horizontal" [formGroup]="otpForm">
+		<div class="control-group">
+			<div class="controls">
+				<input type="hidden" formControlName="phone" name="mobile">
+				<input type="hidden" formControlName="country_code" name="country_code">
+				<input type="tel" maxlength="6" formControlName="reset_password_otp" name="otp" placeholder="{{'ang_otp' | translate}}" class="input-xlarge">
+				<p class="help-block" *ngIf="otpForm.controls.reset_password_otp.touched && otpForm.controls.reset_password_otp.errors?.required ">{{'ang_otprequired'| translate}}</p>
+			</div>
+			<p class="help-block" *ngIf="otpForm.controls.reset_password_otp.touched && (otpForm.controls.reset_password_otp.errors?.minlength || otpForm.controls.reset_password_otp.errors?.maxlength || otpForm.controls.reset_password_otp.errors?.pattern)">{{ 'ang_otpinvalid' | translate}}</p>
+		</div>
+		<div class="profile_btn">
+			<button class="ryec_btn" type="submit" (click)="otpCheck()">{{'ang_submit' | translate}}</button>
+			<p> {{message}}
+				<br/>
+				<br/> {{'ang_verify_otp_extra_msg' | translate}}
+				<br/>
+				<br/> {{countDown | async}}
+				<a href="javascipt:void(0);" [ngClass]="{'sct_send': send == false}" (click)="resendOTP()">{{'ang_resendotp' | translate}}</a>
+				<span class="time_view" *ngIf="!send">( {{(minutesDisplay) && (minutesDisplay <= 59) ? minutesDisplay : '00'}} : {{(secondsDisplay) && (secondsDisplay <= 59) ? secondsDisplay : '00'}} )</span>
+			</p>
+		</div>
+	</form>
+</div>

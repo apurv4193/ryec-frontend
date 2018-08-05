@@ -1,0 +1,13 @@
+.spinner_view{position: fixed;top: 0;left: 0;width: 100%;    background: rgba(255, 255, 255, 0.9);z-index: 1060;height: 100%;}
+.load{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);width:100px;height:100px;}
+.load hr{border:0;margin:0;width:40%;height:40%;position:absolute;border-radius:50%;animation:spin 2s ease infinite;box-shadow: 2px 2px 10px #b3b1b1;}
+.load :first-child{background:#c59b42;animation-delay:-1.5s}
+.load :nth-child(2){background:#222222;animation-delay:-1s}
+.load :nth-child(3){background:#c59b42;animation-delay:-0.5s}
+.load :last-child{background:#222222}
+@keyframes spin{
+  0%,100%{transform:translate(0)}
+  25%{transform:translate(160%)}
+  50%{transform:translate(160%, 160%)}
+  75%{transform:translate(0, 160%)}
+}	

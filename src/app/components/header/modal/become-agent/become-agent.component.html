@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h4>{{'ang_whybecomeagent' | translate}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div *ngIf="!successFul_submission">
+    <form class="form-horizontal" [formGroup]="becomeAgentForm">
+      <div class="control-group">
+        <div class="controls">
+          <textarea rows="5" required formControlName="comment" name="comment" placeholder="{{'ang_writesomething' | translate}}" class="input-xlarge"
+            pattern="[a-zA-Z][a-zA-Z ]+"></textarea>
+        </div>
+        <p class="help-block" *ngIf="becomeAgentForm.controls.comment.touched && becomeAgentForm.controls.comment.errors?.required">{{'ang_required' | translate}}</p>
+        <!-- <p class="help-block" *ngIf="becomeAgentForm.controls.comment.touched && (becomeAgentForm.controls.comment.errors?.maxlength || becomeAgentForm.controls.comment.errors?.pattern)">{{'ang_maximum' | translate}}</p> -->
+      </div>
+
+      <div class="profile_btn">
+        <button class="ryec_btn" type="button" (click)="sendDetails()">{{'ang_submit' | translate}}</button>
+      </div>
+    </form>
+  </div>
+  <div class="submit_approval_view" *ngIf="successFul_submission">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="thank_section">
+          <div class="thank_you_img">
+            <img alt="thank_you" src="../assets/images/thank_you.png" class="img-responsive">
+          </div>
+          <h2>{{'ang_youareset' | translate}}</h2>
+          <h4>{{'ang_thankyouagent' | translate}},</h4>
+          <h4>{{'ang_contactsoon' | translate}}.</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

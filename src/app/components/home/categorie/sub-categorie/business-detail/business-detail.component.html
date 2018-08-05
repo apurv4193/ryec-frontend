@@ -1,0 +1,642 @@
+<div class="business_detail_banner">
+    <img alt="eddar-real" src="assets/images/default-logo.png" *ngIf="businessDetail?.data?.business_images?.length == 0" style="object-fit:cover">
+    <ngb-carousel *ngIf="businessDetail?.data?.business_images?.length > 0" [activeId]="activeId">
+        <ng-template ngbSlide *ngFor="let image of businessDetail?.data?.business_images;let index = index;" [id]="index">
+            <div id="parent_div" style="position:relative;height:100%;width:100%;">
+                <div [ngStyle]="{'background' : 'url(' + image.image_name + ') no-repeat'}" id="background" class="background_image"></div>
+                <div>
+                    <img style="object-fit: contain;height: 400px;" [src]="image.image_name" alt="Random first slide">
+                </div>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+    <div class="business_type_view">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-sm-6 col-xs-12">
+                    <div class="business_title business_title_icon">
+                        <h2 title="{{businessDetail?.data?.name}}">
+                            <img *ngIf="businessDetail?.data?.membership_type == 0" [src]="businessDetail?.data?.membership_type_icon" title="{{'ang_basicplantext' | translate}}" />
+                            <img *ngIf="businessDetail?.data?.membership_type == 1" [src]="businessDetail?.data?.membership_type_icon" title="{{'ang_premiumplantext' | translate}}" />
+                            <img *ngIf="businessDetail?.data?.membership_type == 2" [src]="businessDetail?.data?.membership_type_icon" title="{{'ang_premiumplantext' | translate}}" />
+                            {{businessDetail?.data?.name}}
+                        </h2>
+                    </div>
+                    <!-- business_title End -->
+                </div>
+                <!-- col End -->
+                <div class="col-md-5 col-sm-6 col-xs-12">
+                    <ul class="business_social_link">
+                        <li *ngIf="businessDetail?.data?.user_id == user_id || (businessDetail?.data?.created_by_agent == 1 && showAgent)">
+                            <a href="javascript:void(0)" routerLink="/home/business-profile/{{business_slug}}">
+                                <span>
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    {{'ang_edit' | translate}}
+                                </span>
+                            </a>
+                        </li>
+                        <li *ngIf="businessDetail?.data?.user_id != user_id && (businessDetail?.data?.created_by_agent == 0 || !showAgent)">
+                            <a href="javascript:void(0)" (click)="addEnquiryForBusiness(contentEnquiry)">
+                                <span>
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    {{'ang_enquiry' | translate}}
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.google.co.in/maps/place/{{businessDetail?.data?.address}}/@{{businessDetail?.data?.latitude}},{{businessDetail?.data?.longitude}}" target="_blank">
+                                <span>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    {{'ang_directions' | translate}}
+                                </span>
+                            </a>
+                        </li>
+                        <li *ngIf="businessDetail?.data?.user_id != user_id && (businessDetail?.data?.created_by_agent == 0 || !showAgent)">
+                            <a href="javascript:void(0)" (click)="addReviewAndRating(contentRating)">
+                                <span>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    {{'ang_rating' | translate}}
+                                </span>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="javascript:void(0)" (click)="openShareOptions(contentShare)">
+                                <span>
+                                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                    {{'ang_share' | translate}}
+                                </span>
+                            </a>
+                        </li> -->
+                    </ul>
+                </div>
+                <!-- col End -->
+            </div>
+            <!-- Row End -->
+        </div>
+        <!-- container End -->
+    </div>
+    <!-- business_type_view End -->
+</div>
+<!-- business_detail_banner End -->
+
+<div class="business_detail_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                <div class="photo_gallery" *ngIf="businessDetail?.data?.business_images?.length > 0">
+                    <ul>
+                        <li *ngFor="let image of businessDetail?.data?.business_images; let index = index; " (click)="openImageViwer(index,contentImage)">
+                            <img alt="fs" [src]="image.image_name">
+                        </li>
+                    </ul>
+                </div>
+                <!-- photo_gallery End -->
+                <div class="other_information">
+                    <h3>{{'ang_contactinformation' | translate}}</h3>
+                    <div class="inform_view" *ngIf="businessDetail?.data?.mobile">
+                        <span class="mobile">
+                            <i class="fa fa-mobile" aria-hidden="true"></i>
+                        </span>
+                        <div>
+                            <a href="javascript:void(0)">{{businessDetail?.data?.country_code}} {{businessDetail?.data?.mobile}}</a>
+                        </div>
+                        <div *ngIf="!businessDetail?.data?.mobile">
+                            -
+                        </div>
+                    </div>
+                    <!-- inform_view End -->
+                    <div class="inform_view" *ngIf="businessDetail?.data?.phone">
+                        <span class="call">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </span>
+                        <div>
+                            <a href="javascript:void(0)">{{businessDetail?.data?.phone}}</a>
+                        </div>
+                        <div *ngIf="!businessDetail?.data?.phone">
+                            -
+                        </div>
+                    </div>
+                    <!-- inform_view End -->
+                    <div class="inform_view" *ngIf="businessDetail?.data?.address">
+                        <span class="mobile">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </span>
+                        <div>{{businessDetail?.data?.address}}</div>
+                    </div>
+                    <!-- inform_view End -->
+                    <div class="inform_view" *ngIf="businessDetail?.data?.country">
+                        <span>
+                            <i class="fa fa-building-o" aria-hidden="true"></i>
+                        </span>
+                        <div>{{businessDetail?.data?.country}}</div>
+                        <div *ngIf="!businessDetail?.data?.country">-</div>
+                    </div>
+                    <!-- inform_view End -->
+                    <div class="inform_view" *ngIf="businessDetail?.data?.email">
+                        <span>
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                        <div>
+                            <a href="javascript:void(0)">{{businessDetail?.data?.email}}</a>
+                        </div>
+                        <div *ngIf="!businessDetail?.data?.email">
+                            -
+                        </div>
+                    </div>
+                    <!-- inform_view End -->
+                    <div class="inform_view" *ngIf="businessDetail?.data?.website">
+                        <span>
+                            <i class="fa fa-globe" aria-hidden="true"></i>
+                        </span>
+                        <div>
+                            <a href="{{businessDetail?.data?.website}}" target="_blank">{{businessDetail?.data?.website}}</a>
+                        </div>
+                        <div *ngIf="!businessDetail?.data?.website">
+                            -
+                        </div>
+                    </div>
+                    <!-- inform_view End -->
+                </div>
+                <!-- other_information End -->
+                <div class="business_activities" *ngIf="businessDetail?.data?.parent_categories?.length > 0">
+                    <h2>{{'ang_businesscategories' | translate}} </h2>
+                    <!-- <h2>
+                        <span *ngFor="let cat of businessDetail?.data?.parent_categories; let isLast=last; ">
+                            {{cat.name}}{{isLast ? '' : ', '}}
+                        </span>
+                    </h2> -->
+                    <!-- <span>{{businessDetail?.data?.parent_category_name}}</span> -->
+                    <p *ngFor="let category of businessDetail?.data?.category_hierarchy; let index = index;">
+                        <span *ngIf="index < 4">
+                            <span *ngFor="let sub_cate of category;let last = last;let index = index;">
+                                <span *ngIf="last">{{sub_cate.name}}</span>
+                            </span>
+                        </span>
+                    </p>
+                    <a href="javascript:void(0)" (click)="openAllCategories(contentCategory)" *ngIf="businessDetail?.data?.category_hierarchy?.length > 4">{{'ang_more' | translate }}</a>
+                    <p *ngIf="businessDetail?.data?.category_hierarchy?.length == 0">{{'ang_nocategoryfound' | translate }}</p>
+                </div>
+                <!-- business_activities End -->
+                <div class="business_activities">
+                    <h2>{{'ang_businessactivities' | translate}}</h2>
+                    <p *ngFor="let activity of businessDetail?.data?.business_activities">
+                        {{activity.activity_title}}
+                    </p>
+                    <p *ngIf="businessDetail?.data?.business_activities?.length == 0">{{'ang_noactivityfound' | translate}}</p>
+                </div>
+                <!-- business_activities End -->
+                <div class="ratings_reviews">
+                    <h2>{{'ang_ratingsandreview' | translate}}</h2>
+                    <div class="star_section" *ngIf="businessDetail?.data?.rating?.total > 0">
+                        <div class="rate_bar" *ngIf="businessDetail?.data?.rating?.avg_rating">
+                            <ng-template #t let-fill="fill">
+                                <span class="star" [class.full]="fill === 100">
+                                    <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                                </span>
+                            </ng-template>
+
+                            <span class="rate">{{businessDetail?.data?.rating?.avg_rating}}</span> <ngb-rating [(rate)]="businessDetail.data.rating.avg_rating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+                            <!-- <span class="rate">{{businessDetail?.data?.rating?.avg_rating}}</span> <ngb-rating [readonly]="true" [(rate)]="rating" max="5"></ngb-rating> -->
+                        </div>
+                        <span class="review">{{businessDetail?.data?.rating?.total}} {{'ang_review' | translate}}</span>
+                    </div>
+                    <div class="progress_bar_cst" *ngIf="businessDetail?.data?.rating?.total > 0">
+                        <span>{{'ang_5star' | translate}}</span>
+                        <p><ngb-progressbar [value]="start_5"></ngb-progressbar></p>
+                        <span>{{'ang_4star' | translate}}</span>
+                        <p><ngb-progressbar [value]="start_4"></ngb-progressbar></p>
+                        <span>{{'ang_3star' | translate}}</span>
+                        <p><ngb-progressbar [value]="start_3"></ngb-progressbar></p>
+                        <span>{{'ang_2star' | translate}}</span>
+                        <p><ngb-progressbar [value]="start_2"></ngb-progressbar></p>
+                        <span>{{'ang_1star' | translate}}</span>
+                        <p><ngb-progressbar [value]="start_1"></ngb-progressbar></p>
+                    </div>
+                    <p *ngIf="!businessDetail?.data?.rating?.total">{{'ang_noratingsandreviewfound' | translate}}</p>
+                </div>
+                <!-- ratings_reviews End -->
+                <div class="hours_operation">
+                    <h2>{{'ang_hoursofoperation' | translate}}
+                        <!-- <span *ngIf="businessDetail?.data?.timezone">({{businessDetail?.data?.timezone}})</span> -->
+                    </h2>
+                    <h2>
+                        <span style="font-size: 16px;" *ngIf="businessDetail?.data?.current_open_status">{{businessDetail?.data?.current_open_status}}<span style="color: #000;font-size: 16px;" *ngIf="businessDetail?.data?.timings"> : {{businessDetail?.data?.timings}}</span></span>
+                    </h2>
+                    <div class="open_time" *ngFor="let time of businessDetail?.data?.hoursOperation">
+                        <span class="day_type">{{time.name}}</span>
+                        <span class="time_type" *ngIf="time.open_close == 'Open'">{{time.start_time}} - {{time.end_time}}</span>
+                        <span class="time_type" *ngIf="time.open_close == 'Closed'">{{time.open_close}}</span>
+                    </div>
+                    <div *ngIf="!businessDetail?.data?.hoursOperation">{{'ang_nohoursofoprationfound' | translate}}</div>
+                    <!-- open_time End -->
+                </div>
+                <!-- hours_operation End -->
+                <div class="year_established">
+                    <h2>{{'ang_yearestablished' | translate}}</h2>
+                    <p *ngIf="businessDetail?.data?.year_of_establishment">{{businessDetail?.data?.year_of_establishment}}</p>
+                    <p *ngIf="!businessDetail?.data?.year_of_establishment">{{'ang_noyearfound' | translate}}</p>
+                </div>
+                <!-- year_established End -->
+                <div class="social_profile" *ngIf="businessDetail?.data?.social_profiles">
+                    <h2>{{'ang_socialprofile' | translate}}</h2>
+                    <ul>
+                        <li *ngIf="businessDetail?.data?.social_profiles?.facebook_url">
+                            <a href="{{businessDetail?.data?.social_profiles?.facebook_url}}" target="_blank">
+                                <img alt="facebook" src="../assets/images/facebook.png">
+                            </a>
+                        </li>
+                        <li *ngIf="!businessDetail?.data?.social_profiles?.facebook_url">
+                            <a href="javascript:void(0)">
+                                <img alt="facebook" src="../assets/images/facebook-edit.png">
+                            </a>
+                        </li>
+                        <li *ngIf="businessDetail?.data?.social_profiles?.twitter_url">
+                            <a href="{{businessDetail?.data?.social_profiles?.twitter_url}}" target="_blank">
+                                <img alt="twitter" src="../assets/images/twitter.png">
+                            </a>
+                        </li>
+                        <li *ngIf="!businessDetail?.data?.social_profiles?.twitter_url">
+                                <a href="javascript:void(0)">
+                                    <img alt="twitter" src="../assets/images/twitter-edit.png">
+                                </a>
+                            </li>
+                        <li *ngIf="businessDetail?.data?.social_profiles?.linkedin_url">
+                            <a href="{{businessDetail?.data?.social_profiles?.linkedin_url}}" target="_blank">
+                                <img alt="linkedin" src="../assets/images/linkedin.png">
+                            </a>
+                        </li>
+                        <li *ngIf="!businessDetail?.data?.social_profiles?.linkedin_url">
+                                <a href="javascript:void(0)">
+                                    <img alt="linkedin" src="../assets/images/linkedin-edit.png">
+                                </a>
+                            </li>
+                        <li *ngIf="businessDetail?.data?.social_profiles?.instagram_url">
+                            <a href="{{businessDetail?.data?.social_profiles?.instagram_url}}" target="_blank">
+                                <img alt="instagram" src="../assets/images/instagram.png">
+                            </a>
+                        </li>
+                        <li *ngIf="!businessDetail?.data?.social_profiles?.instagram_url">
+                            <a href="javascript:void(0)">
+                                <img alt="instagram" src="../assets/images/instagram-edit.png">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- social_profile End -->
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12">
+                <div class="essar_contant" *ngIf="businessDetail?.data?.name">
+                    <h4>{{businessDetail?.data?.name}}
+                        <span *ngIf="businessDetail?.data?.rating?.user_rating">{{businessDetail?.data?.rating?.user_rating}}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </span>
+                    </h4>
+                    <p>{{businessDetail?.data?.descriptions | trimstr : trimLength}}</p>
+                    <div class="read_more" *ngIf="businessDetail?.data?.descriptions?.length > trimLength">
+                        <a href="javascript:void(0)" (click)="openBusinessDescription(contentDetail)">{{'ang_readmore' | translate}}</a>
+                    </div>
+                    <p *ngIf="!businessDetail?.data?.descriptions">{{'ang_nodescriprionfound' | translate}}</p>
+                    <!-- read_more End -->
+                </div>
+                <!-- essar_contant End -->
+                <div class="owner_information">
+                    <h4>{{'ang_ownerinformation' | translate}}</h4>
+                    <div class="row owner_box" *ngFor="let owner of businessDetail?.data?.owners">
+                        <div class="col-md-3 col-lg-3 owner_img_outer">
+                            <div class="owner_profile">
+                                <!-- <img alt="instagram" [src]="owner.image_url"> -->
+                                <img [src]="owner?.image_url">
+                            </div>
+                            <!-- owner_profile End -->
+                        </div>
+                        <div class="col-md-4 col-lg-5">
+                            <div class="owner_info_content">
+                                <h2>{{owner.name}}</h2>
+                                <p>{{owner.email}}</p>
+                                <p>{{owner.country_code}}<span *ngIf="owner?.country_code">-</span>{{owner.phone}}</p>
+                            </div>
+                            <!-- owner_info_content End -->
+                        </div>
+                        <div class="col-md-5 col-lg-4">
+                            <div class="owner_more">
+                                <a href="javascript:void()" class="ryec_btn" (click)="viewOwnerData(owner.id)" >{{'ang_viewmore' | translate}}
+                                    <i aria-hidden="true" class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                            <!-- owner_more End -->
+                        </div>
+                    </div>
+                    <div *ngIf="businessDetail?.data?.owners?.length == 0">{{'ang_noownerfound' | translate}}</div>
+                </div>
+                <!-- owner_information End -->
+                <div class="our_products" *ngIf="businessDetail?.data?.products?.length > 0">
+                    <h2>{{'ang_ourproducts' | translate}}</h2>
+                    <div class="our_products_slider">
+                        <div ng2-carouselamos [items]="businessDetail?.data?.products" [$item]="itemTemplate" [$prev]="prevTemplate" [$next]="nextTemplate" (onSelectedItem)="selectedItem = $event.item;  selectedIndex = $event.index"></div>
+                        <ng-template #prevTemplate >
+                            <i aria-hidden="true" class="fa fa-angle-left" [ngClass]="{'no-slider' : businessDetail?.data?.products?.length < 4}"></i>
+                        </ng-template>
+
+                        <ng-template #nextTemplate>
+                            <i aria-hidden="true" class="fa fa-angle-right" [ngClass]="{'no-slider' : businessDetail?.data?.products?.length < 4}"></i>
+                        </ng-template>
+
+                        <ng-template let-item let-i="index" #itemTemplate>
+                            <div style="min-width: 155px;margin-right:10px;">
+                                <div class="pro_img_outer">
+                                    <img [src]="item?.image_url" style="width: 100%;" (click)="openProductDetail(item.id,contentProduct)">
+                                </div>
+                                <div class="item_name">{{item?.name}}</div>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <div *ngIf="businessDetail?.data?.products?.length == 0">{{'ang_noproductfound' | translate}}</div>
+                    <!-- our_products_slider End -->
+                </div>
+
+                <div class="our_products" *ngIf="businessDetail?.data?.services?.length > 0">
+                    <h2>{{'ang_ourservices' | translate}}</h2>
+                    <div class="our_products_slider">
+                        <div ng2-carouselamos [items]="businessDetail?.data?.services" [$item]="serviceItemTemplate" [$prev]="prevTemplate" [$next]="nextTemplate" (onSelectedItem)="selectedServiceItem = $event.item;  selectedServiceIndex = $event.index"></div>
+                        <ng-template #prevTemplate>
+                            <i aria-hidden="true" class="fa fa-angle-left" [ngClass]="{'no-slider' : businessDetail?.data?.services?.length < 4}"></i>
+                        </ng-template>
+
+                        <ng-template #nextTemplate>
+                            <i aria-hidden="true" class="fa fa-angle-right" [ngClass]="{'no-slider' : businessDetail?.data?.services?.length < 4}"></i>
+                        </ng-template>
+
+                        <ng-template let-item let-i="index" #serviceItemTemplate>
+                            <div style="min-width: 155px;margin-right:10px;">
+                                <div class="pro_img_outer">
+                                    <img [src]="item?.image_url" style="width: 100%;" (click)="openServiceDetail(item.id,contentService)">
+                                </div>
+                                <div class="item_name">{{item?.name}}</div>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <div *ngIf="businessDetail?.data?.services?.length == 0">{{'ang_noservicefound' | translate}}</div>
+                    <!-- our_services_slider End -->
+                </div>
+                <!-- our_services End -->
+                <div class="all_ratings clearfix">
+                    <h2>{{'ang_allratings' | translate}}</h2>
+                    <div class="ratings_comment" *ngFor="let review of allRatings">
+                        <div class="ratings_name">
+                            {{review.name}} - {{review.timestamp | date: 'hh:mm dd.MM.yyyy'}}
+                            <div class="toatl_ratings">
+                              <div class="rate_bar">
+                               <ngb-rating [readonly]="true" [(rate)]="review.rating" max="5"></ngb-rating>
+                              </div>
+                            </div>
+                            <!-- toatl_ratings End -->
+                        </div>
+                        <!-- ratings_name End -->
+                        <div class="comment_img">
+                            <img alt="user_profile" [src]="review?.image_url">
+                        </div>
+                        <!-- comment_img End -->
+                        <div class="comment_view">
+                            <p>{{review.review}}</p>
+                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, pariatur. Ducimus, eaque delectus sed. Molestiae dolorem dolor cumque numquam delectus aut? Et aliquam quisquam voluptatum delectus atque aut velit repudiandae.</p> -->
+                        </div>
+                        <!-- comment_view End -->
+                    </div>
+                    <!-- <div *ngIf="!businessDetail?.data?.rating?.total">{{'ang_noratingsfound' | translate}}</div> -->
+                    <div class="all_rating_outer">
+                        <a href="javascript:void();" *ngIf="!businessDetail?.data?.rating?.total" class="ryec_btn" (click)="addReviewAndRating(contentRating)">{{'ang_noratingsfoundmessage' | translate}}</a>
+                    <!-- ratings_comment End -->
+
+                    <a href="javascript:void();" *ngIf="businessDetail?.data?.rating?.total" class="ryec_btn" (click)="addReviewAndRating(contentRating)">{{'ang_rateus' | translate}}</a>
+                    <div class="pagination_view" *ngIf="businessDetail?.data?.rating?.total">
+                        <ngb-pagination [collectionSize]="collectionSize" [(page)]="currentPage" size="sm" (pageChange)="getNextPageRatingList($event)"></ngb-pagination>
+                    </div>
+                    </div>
+
+                    <!-- pagination_view End -->
+                </div>
+                <!-- all_ratings End -->
+            </div>
+            <!-- col End -->
+        </div>
+        <!-- row End -->
+        <!-- container -->
+    </div>
+    <!-- business_detail_content End -->
+
+    <!-- container -->
+
+    <!-- business_detail_content End -->
+
+
+<!--- Image viwer in model view-->
+
+<ng-template #contentImage let-c="close" let-d="dismiss" >
+      <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+          <ngb-carousel *ngIf="businessDetail?.data?.business_images?.length > 0" [activeId]="activeId">
+              <ng-template ngbSlide *ngFor="let image of businessDetail?.data?.business_images;let index = index;" [id]="index">
+                <img [src]="image.image_name" alt="Random first slide" style="width:100%;">
+              </ng-template>
+          </ngb-carousel>
+      </div>
+</ng-template>
+
+<!--- Image viwer in model view End-->
+
+<!--- Product Detail view in model view-->
+<ng-template #contentProduct let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <ngb-carousel *ngIf="productDetail?.product_images?.length > 0">
+            <ng-template ngbSlide *ngFor="let image of productDetail?.product_images">
+              <div class="img_outer">
+                <img [src]="image.image_original" alt="Random first slide" style="width:100%;height:200px;">
+              </div>
+            </ng-template>
+        </ngb-carousel>
+        <div class="description">
+            <h4>{{productDetail.name}}</h4>
+
+            <span class="cost" *ngIf="productDetail?.cost"><i class="fa fa-inr" aria-hidden="true"></i>{{productDetail?.cost}}</span>
+
+             <div class="content">
+              <p>{{productDetail.descriptions}}</p>
+           </div>
+        </div>
+    </div>
+</ng-template>
+<!--- Product Detail view in model view End-->
+
+<!--- Service Detail view in model view-->
+<ng-template #contentService let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="img_outer">
+          <img [src]="serviceDetail.original_logo" alt="Random first slide" style="width:100%;height:200px;">
+        </div>
+
+        <div class="description">
+            <h4>{{serviceDetail?.name}}</h4>
+
+            <span class="cost" *ngIf="serviceDetail?.cost"><i class="fa fa-inr" aria-hidden="true"></i>{{serviceDetail?.cost}}</span>
+
+            <div class="content">
+                <p>{{serviceDetail.descriptions}}</p>
+            </div>
+
+        </div>
+    </div>
+</ng-template>
+<!--- Service Detail view in model view End-->
+
+
+<!--- Add Rating and Reviews-->
+<ng-template #contentRating let-c="close" let-d="dismiss">
+    <div class="modal-header">
+            <h5 class="modal-title">{{'ang_ratingsandreview' | translate | uppercase}}</h5>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" novalidate (submit)="submitRatingDetail()">
+              <span class="rate">{{'ang_giverating' | translate}}</span>
+              <div class="rate_bar">
+                <ngb-rating [(rate)]="currentRate" max="5"></ngb-rating>
+              </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <!-- <input type="text"  formControlName="review" id="review" placeholder="Add review"
+                            class="input-xlarge"> -->
+                        <textarea [(ngModel)]="review" name="review" placeholder="{{'ang_addreview' | translate}}" (ngModelChange)="changeEvent($event)"></textarea>
+                        <p class="help-block" *ngIf="reviewValid != false">{{'ang_reviewisrequired' | translate}}</p>
+                    </div>
+                </div>
+                <div class="profile_btn">
+                    <button class="ryec_btn" [disabled]="currentRate == 0" type="submit">{{'ang_submit' | translate}}</button>
+                </div>
+            </form>
+        </div>
+</ng-template>
+<!--- Add Rating and Reviews End-->
+
+<!--- Add Enquiry for business list-->
+<ng-template #contentEnquiry let-c="close" let-d="dismiss">
+        <div class="modal-header">
+                <h5 class="modal-title">{{'ang_writeyourenquiry' | translate}}</h5>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" novalidate  (submit)="submitEnquiryDetail()">
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="text" name="enquiryForm.title" [(ngModel)]="enquiryForm.title" id="title" placeholder="{{'ang_title' | translate}}"
+                                    class="input-xlarge" (ngModelChange)="changeTitleEvent($event)">
+                                <!-- <textarea id="review" formGroupName="review" placeholder="Add review"></textarea> -->
+                            <p class="help-block" *ngIf="validTitle == true">{{'ang_titleisrequired' | translate}}</p>
+                        </div>
+
+                    </div>
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <!-- <input type="text"  formControlName="description" id="description" placeholder="Description"
+                                class="input-xlarge"> -->
+                            <textarea name="enquiryForm.description" [(ngModel)]="enquiryForm.description" (ngModelChange)="changeTitleEvent($event)" placeholder="{{'ang_description' | translate}}"></textarea>
+                            <p class="help-block" *ngIf="validDescription == true">{{'ang_descriptionisrequired' | translate}}</p>
+                        </div>
+                    </div>
+                <div class="profile_btn">
+                    <button class="ryec_btn" [disabled]="validForm == false" type="submit">{{'ang_submit' | translate | uppercase}}</button>
+                </div>
+            </form>
+        </div>
+</ng-template>
+ <!--- Add Enquiry for business list End-->
+
+<!--- Business list description detail view-->
+<ng-template #contentDetail let-c="close" let-d="dismiss">
+    <div class="modal-header">
+            <h5 class="modal-title">{{businessDetail?.data?.name}}</h5>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <perfect-scrollbar style="height:450px;">
+                <p>{{businessDetail?.data?.descriptions}}</p>
+            </perfect-scrollbar>
+        </div>
+</ng-template>
+     <!--- Business list description detail view End-->
+
+<!--- Business list All Categories view-->
+<ng-template #contentCategory let-c="close" let-d="dismiss">
+    <div class="modal-header">
+            <h5 class="modal-title">{{'ang_businesscategories' | translate}}</h5>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li *ngFor="let category of businessDetail?.data?.category_hierarchy;">
+                    <span *ngFor="let sub_cate of category;let last = last;let index = index;">
+                        <span *ngIf="last">{{sub_cate.name}}</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+</ng-template>
+<!--- Business list All Categories view End-->
+
+<!--- Share business view-->
+<ng-template #contentShare let-c="close" let-d="dismiss">
+    <div class="modal-header">
+            <h5 class="modal-title">{{'ang_share' | translate}}</h5>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="social_profile">
+                    <ul>
+                        <!-- <li>
+                            <a href="" target="_blank">
+                                <img ceiboShare [facebook]="{u: repoUrl}" alt="facebook" src="../assets/images/facebook.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" target="_blank">
+                                <img ceiboShare [twitter]="{url:repoUrl, text:businessDetail?.data?.name}" alt="twitter" src="../assets/images/twitter.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" target="_blank">
+                                <img ceiboShare [linkedIn]="{url:repoUrl}" alt="linkedin" src="../assets/images/linkedin.png">
+                            </a>
+                        </li> -->
+                    </ul>
+                </div>
+                <!-- social_profile End -->
+        </div>
+</ng-template>
+<!--- Share business view End-->

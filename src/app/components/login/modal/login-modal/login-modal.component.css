@@ -1,0 +1,86 @@
+.custom-modal .modal-header {
+  border: 0;
+}
+
+.custom-modal .modal-header .modal-title {
+  font-family: 'Lato-Bold';
+  color: #222222;
+  font-size: 28px;
+}
+
+.custom-modal .close {
+  font-size: 35px;
+}
+
+.custom-modal .modal-body {
+  padding: 16px 30px;
+}
+
+.custom-modal .control-group input {
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid #b2b2b2;
+  width: 100%;
+  font-size: 24px;
+  color: #645d4b;
+  padding: 16px 35px 16px 35px;
+  font-family: 'Lato-Regular';
+}
+
+.custom-modal .control-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.custom-modal .control-group:nth-child(2) {
+  margin-bottom: 0;
+}
+
+.custom-modal .control-group i {
+  font-size: 25px;
+  color: #000000;
+  position: absolute;
+  top: 22px;
+}
+
+.custom-modal .control-group .fa-mobile {
+  font-size: 34px;
+  top: 18px;
+}
+
+.forgot_pass {
+  cursor: pointer;
+  text-align: right;
+  color: #000000;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.login_btn {
+  text-align: center;
+}
+
+.login_btn button {
+  background-color: #c59b42 !important;
+  border-color: #c59b42 !important;
+  width: 80%;
+  font-family: 'Lato-Heavy';
+  font-size: 25px;
+  border-radius: 100px;
+  padding: 20px 0;
+  color: #ffffff;
+}
+
+.custom-modal .modal-footer {
+  text-align: center;
+  border: 0;
+  display: block;
+  color: #777777;
+  font-size: 25px;
+}
+
+.custom-modal .modal-footer strong {
+  color: #c59b42;
+}

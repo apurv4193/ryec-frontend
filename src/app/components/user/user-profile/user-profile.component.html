@@ -1,0 +1,138 @@
+<div class="user_profile_view">
+	<div class="profile_photo">
+		<div class="upload_photo">
+			<img alt="user_profile" (click)="triggerUpload()" src="../assets/images/default_image.png" #userProfileImage>
+			<input type="file" (change)="uploadProfilePic($event, contentImage)" style="display: none;" accept="image/x-png,image/gif,image/jpeg" #userProfile>
+			<div class="add_photo"  (click)="triggerUpload()">
+				<img alt="plus-icon" src="../assets/images/plus-icon.png" class="img-responsive">
+			</div>
+			<!-- add_photo End -->
+		</div>
+		<!-- upload_photo End -->
+	</div>
+	<!-- profile_photo End  -->
+	<form [formGroup]="profileForm">
+		<div formGroupName="personal">
+			<div class="personal_profile_view">
+				<div class="row">
+					<div class="col-md-12 col-xs-12">
+						<div class="profile_title">
+							<h2>{{'ang_personalprofile' | translate}}</h2>
+						</div>
+						<!-- profile_title End -->
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">{{'ang_username' | translate}}</label>
+							<div class="controls">
+								<input type="text" pattern="[a-zA-Z][a-zA-Z ]+" formControlName="name" id="fullname" name="fullname" placeholder="{{'ang_username' | translate}}"
+								 class="input-xlarge">
+							</div>
+							<p class="help-block" *ngIf="profileForm['controls'].personal['controls'].name.touched && (
+  profileForm['controls'].personal['controls'].name.errors?.required || profileForm['controls'].personal['controls'].name.errors?.pattern)">{{ 'ang_usernamevalidation' | translate}}</p>
+						</div>
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="email">{{'ang_email' | translate}}</label>
+							<div class="controls">
+								<input type="email" formControlName="email" id="email" name="email" placeholder="{{'ang_email' | translate}}" class="input-xlarge">
+							</div>
+							<p class="help-block" *ngIf="profileForm['controls'].personal['controls'].email.touched && profileForm['controls'].personal['controls'].email.errors?.pattern">{{ 'ang_emailvalidation' | translate}}</p>
+						</div>
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="phone">{{'ang_mobile'| translate}}</label>
+							<div class="controls">
+								<input type="tel" readonly formControlName="phone" id="mobile" name="mobile" placeholder="{{'ang_mobile'| translate}}" class="input-xlarge readonly">
+							</div>
+						</div>
+					</div>
+					<!-- col End -->
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="dob">{{'ang_dob' | translate}}</label>
+							<div class="controls">
+								<i class="fa fa-calendar" (click)="d.toggle()" aria-hidden="true"></i>
+								<input formControlName="dob" ngbDatepicker #d="ngbDatepicker" type="text" id="dob" name="dob" placeholder="{{'ang_dob'| translate}}"
+								 class="input-xlarge">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="gender">{{'ang_gender'| translate}}</label>
+							<div class="type_gender">
+								<input type="radio" formControlName="gender" value="2" id="test1" name="gender" checked>
+								<label for="test1">{{'ang_female' | translate}}</label>
+								<input type="radio" formControlName="gender" value="1" id="test2" name="gender" checked>
+								<label for="test2">{{'ang_male'| translate}}</label>
+							</div>
+							<!-- type_gender End -->
+						</div>
+					</div>
+					<!-- col End -->
+				</div>
+				<!-- row End -->
+			</div>
+			<!-- personal_profile_view End -->
+			<div class="row">
+				<div class="col-md-6 col-xs-12">
+					<div class="profile_btn">
+						<button class="ryec_btn" (click)="submitDetail()" [disabled]="!profileForm.valid" type="submit">{{'ang_save' | translate}}</button>
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="profile_btn">
+						<button class="ryec_btn" type="submit" (click)="cancelUserProfile()">{{'ang_cancel' | translate}}</button>
+					</div>
+				</div>
+			</div>
+			<div class="profile_btn">
+
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div *ngIf="statusAlert.status === 1" class="alert" [ngClass]="{'alert-success':statusAlert.status === 1}" role="alert">
+						Profile {{statusAlert.message}}
+					</div>
+					<!--if statusAlert role is === 0-->
+					<div class="alert" [ngClass]="{'alert-warning':statusAlert.status === 0}" *ngIf="statusAlert.status === 0" role="alert">
+						{{statusAlert.message}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<!-- user_profile_view End -->
+
+<ng-template #contentImage let-c="close" let-d="dismiss">
+	<div class="modal-header">
+			<h5 class="modal-title">{{'ang_profilepic' | translate}}</h5>
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<image-cropper style="height:400px"
+				[imageChangedEvent]="imageChangedEvent"
+				[maintainAspectRatio]="true"
+				[aspectRatio]="1 / 1"
+				[resizeToWidth]="500"
+				[onlyScaleDown]="false"
+				format="png"
+				[imageQuality] = "80"
+				(imageCropped)="imageCropped($event)"
+				(imageLoaded)="imageLoaded()"
+				(loadImageFailed)="loadImageFailed()"
+			></image-cropper>
+			<div class="profile_btn">
+				<button class="ryec_btn" type="submit" (click)="sendCropImage()">{{'ang_cropupload' | translate}}</button>
+			</div>
+		</div>   
+</ng-template>

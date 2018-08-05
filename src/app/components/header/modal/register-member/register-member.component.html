@@ -1,0 +1,83 @@
+<div class="modal-header">
+  <h4>{{'ang_addmember' | translate}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body reg_form_popup">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="form-horizontal" [formGroup]="signUpForm" (submit)="submitDetails()" novalidate>
+        <fieldset class="signup_view">
+          <!-- type_of_language End -->
+          <p class="help-block" *ngIf="statusAlert.status === 0" role="alert">
+            <strong>{{statusAlert.message}}</strong>
+          </p>
+          <div class="control-group">
+            <!-- Username -->
+            <!-- <label class="control-label" for="username">Username</label> -->
+            <div class="controls">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <input (focus)="statusAlert.status === 3" pattern="[a-zA-Z][a-zA-Z ]+" type="text" formControlName="username" id="username"
+                name="username" placeholder="{{'ang_username' | translate}}" class="input-xlarge">
+              <p class="help-block" *ngIf="signUpForm.controls.username.touched && (signUpForm.controls.username.errors?.required || signUpForm.controls.username.errors?.pattern)">{{'ang_usernamevalidation' | translate}}</p>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <!--Mobile -->
+            <!-- <label class="control-label" for="Mobile">Mobile Number</label> -->
+            <div class="controls">
+              <i class="fa fa-mobile" aria-hidden="true"></i>
+              <input (focus)="statusAlert.status === 0" [value]="phone" readonly type="tel" formControlName="mobnumber" id="mobnumber"
+                name="mob-number" placeholder="{{'ang_mobile' | translate}}" class="input-xlarge readonly">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <input (focus)="statusAlert.status === 0" type="email" formControlName="email" id="email" name="email" placeholder="{{'ang_email' | translate}}"
+                class="input-xlarge">
+            </div>
+            <p class="help-block" *ngIf="signUpForm.controls.email.dirty && signUpForm.controls.email.errors?.email">
+              {{'ang_emailvalidation' | translate}}
+            </p>
+          </div>
+
+          <div class="control-group">
+            <!-- Password-->
+            <!-- <label class="control-label" for="password">Password</label> -->
+            <div class="controls">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+              <input type="password" formControlName="password" id="password" name="password" placeholder="{{'ang_password' | translate}}"
+                class="input-xlarge">
+              <p class="help-block" *ngIf="signUpForm.controls.password.touched && (signUpForm.controls.password.errors?.required || signUpForm.controls.password.errors?.minlength)">{{'ang_passwordvalidation' | translate }}</p>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <!-- Password -->
+            <!-- <label class="control-label" for="password_confirm">Password (Confirm)</label> -->
+            <div class="controls">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+              <input type="password" formControlName="passwordConfirm" id="password_confirm" name="password_confirm" placeholder="{{'ang_confirmpassword' | translate}}"
+                class="input-xlarge">
+              <p class="help-block" *ngIf="signUpForm.controls.passwordConfirm.touched && signUpForm.controls.passwordConfirm.errors?.equalTo">{{'ang_confirmpasswordvalidation' | translate}}</p>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <!-- Button -->
+            <div class="controls">
+              <button type="submit" class="ryec_btn sign_up_btn">{{'ang_register' | translate}}</button>
+              <!-- <button [disabled]="!signUpForm.valid" class="btn ryec_btn">Sign Up</button> -->
+            </div>
+          </div>
+          <!-- already_view End -->
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

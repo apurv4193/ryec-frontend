@@ -1,0 +1,64 @@
+.footer_section{
+	background:#222222;
+	padding: 10px 0;
+	color: #fff;
+}
+.footer_logo a{display: block;}
+.footer_logo img{width: 100%;}
+.footer_address span{display: inline-block;width: 20px;font-size: 25px;
+color: #c99756;}
+.footer_address p{color:#b6b6b6;}
+
+
+.footer_section h2{margin-bottom: 50px;color: #fff;position: relative;padding-bottom: 15px;}
+.footer_section h2:before{position: absolute;content: '';width:100px;bottom: 0;left: 50%;transform: translateX(-50%);-webkit-transform: translateX(-50%);-moz-transform: translateX(-50%);-ms-transform: translateX(-50%);-o-transform: translateX(-50%);height: 2px;background: #fff;}
+.contact-detail a, .contact-detail h3{color: #fff;font-size: 18px;}
+.contact-detail a{font-size: 14px;color: #b6b6b6;}
+/*.contact-detail [class*=col-]{text-align: center;}*/
+.contact-detail a:hover{color:#a77e36; }
+.contact-detail h3{margin-bottom: 28px;font-family: 'Lato-bold';text-transform: uppercase;margin-top: 30px;}
+.contact-detail ul{padding: 0;list-style-type: none;}
+.contact-detail ul li{margin-bottom: 10px;position: relative;padding-left: 25px;color: #b6b6b6;}
+.contact-icon{margin-right: 6px;color: #c59b42;position: absolute;left: 0;}
+.contact-detail p{margin-left: 17px;line-height: 24px;}
+.foo-logo a{display: block;max-width: 300px;margin-bottom: 20px;}
+.foo-logo img{max-width: 100%;}
+.footer_copyright{
+	background:#1f1e1e;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	padding:10px 15px;
+}
+.list-inline li{display: inline-block;}
+.list-inline li:first-child{margin-right: 20px;}
+.footer_copyright li{width: 25%;}
+.footer_copyright li img{max-width: 100%;}
+.contact-detail .foo-nav li{padding-left: 0;}
+.footer_copyright [class*=col-]:first-child{align-self: center;}
+.footer_copyright .copytext{text-align: left;}
+
+@media(min-width: 768px){
+	.footer_copyright li{width: 33%;}
+	.footer_copyright{font-size: 14px;}
+}
+@media(min-width: 992px){
+	.footer_copyright li{width: 25%;}
+	.footer_copyright{font-size: 16px;}
+}
+@media (max-width: 767px){
+	.footer_section{
+		padding:30px 0;
+	}
+	.footer_section h2{
+		font-size: 30px;
+		margin-bottom: 30px;
+	}
+    .footer_copyright .list-inline{margin-top: 20px;}
+    .footer_copyright li{width: 30%;}
+	.footer_copyright{font-size: 12px;}
+	.footer_copyright .copytext{text-align:center;}
+}
+@media (max-width: 575px){
+	.footer_copyright li{width: 25%;}
+}

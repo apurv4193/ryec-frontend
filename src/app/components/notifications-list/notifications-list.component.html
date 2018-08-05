@@ -1,0 +1,23 @@
+<div class="container">
+	<div *ngIf="!noData">
+		<div class="total_result">
+			({{'ang_showing' | translate}} {{first}}-{{last}} of {{totalNotificationCount}} {{'ang_notifications' | translate}})
+		</div>
+		<div class="privacy_policy_view notification_list">
+			<h4>{{'ang_notifications' | translate}}</h4>
+			<div class="notification_box" *ngFor="let item of NotificationList; let index = index;" (click)="openDetailPage(item)">
+				<h2>{{item.title}}</h2>
+				<p>{{item.message}}</p>
+				<span>{{item.created_at | dateFormat}}</span>
+			</div>
+			<!-- notification_box End -->
+		</div>
+		<div class="pagination_view">
+			<ngb-pagination [collectionSize]="collectionSize" [(page)]="currentPage" [maxSize]="maxSize" size="sm" (pageChange)="getNextPageNotificatioList($event)"></ngb-pagination>
+		</div>
+	</div>
+	<div *ngIf="noData == true" style=" text-align: center;padding: 20px;">
+		<img src="../assets/images/norecordfound.png" style="height:250px;margin:20px;">
+		<h3>{{'ang_norecordfound' | translate}}</h3>
+	</div>
+</div>

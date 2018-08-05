@@ -1,0 +1,124 @@
+<div class="location_view" *ngIf="totalBuinessCount > 0">
+	<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14680.12944197706!2d72.5382177!3d23.0959112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1521093110702"
+		frameborder="0" style="border:0" allowfullscreen></iframe> -->
+	<ngui-map style="height:100%"
+		zoom="13"
+		center="{{center_lat}}, {{center_long}}">
+    <custom-marker position="{{user_lat}}, {{user_long}}">
+      <div>
+          <img src="assets/images/user-marker.png" height="40px" />
+      </div>
+    </custom-marker>
+		<marker *ngFor="let pos of businessMarkers"
+			position="{{pos.latitude}}, {{pos.longitude}}"
+			(click)="clicked($event,pos)">
+		</marker>
+		<info-window id="business_name">
+                <div style="width: 200px;cursor: pointer;" routerLink="/home/business-detail/{{business_slug}}">
+                    <p>{{business_title}}</p>
+                    <p>{{business_address}}</p>
+                </div>
+            </info-window>
+	</ngui-map>
+</div>
+<!-- location_view End -->
+<div class="sort_by_tab" *ngIf="totalBuinessCount > 0">
+	<span>{{'ang_sortby' | translate}}</span>
+ 	<ul>
+    	<li>
+      		<a href="" [ngClass]="(routerLink == 'relevance') ? 'active' : ''" routerLink="/home/business-list/{{activeUrl}}/relevance">{{'ang_relevance' | translate}}</a>
+    	</li>
+    	<li>
+      		<a href="" [ngClass]="(routerLink == 'near-by') ? 'active' : ''" routerLink="/home/business-list/{{activeUrl}}/near-by">{{'ang_nearme' | translate}}</a>
+   	 	</li>
+    	<li>
+      		<a href="" [ngClass]="(routerLink == 'ratings') ? 'active' : ''" routerLink="/home/business-list/{{activeUrl}}/ratings">{{'ang_ratings' | translate}}</a>
+   	 	</li>
+    	<li>
+      		<a href="" [ngClass]="(routerLink == 'popularity') ? 'active' : ''" routerLink="/home/business-list/{{activeUrl}}/popularity">{{'ang_popularity' | translate}}</a>
+   	 	</li>
+      <li>
+          <a href="javascript:void();" [ngClass]="(routerLink == 'ztoa') ? 'active' : ''" routerLink="/home/business-list/{{activeUrl}}/atoz" [hidden]="!isShow" (click)="filter('asc')">{{'ang_a_to_z' | translate}}</a>
+      </li>
+      <li>
+          <a href="javascript:void();" [ngClass]="(routerLink == 'atoz') ? 'active' : ''" routerLink="/home/business-list/{{activeUrl}}/ztoa" (click)="filter('desc')" [hidden]="isShow">{{'ang_z_to_a' | translate}}</a>
+      </li>
+ 	</ul>
+</div>
+<!-- sort_by_tab End -->
+<div class="container">
+    <div class="business_listing_view" *ngIf="totalBuinessCount > 0">
+      <div class="total_result">
+        ({{'ang_showing' | translate}} {{first}}-{{last}} {{'ang_of' | translate}} {{totalBuinessCount}} {{'ang_businesses' | translate}})
+    </div>
+      <!-- total_result End -->
+      <div class="clearfix business_listing_box" *ngFor="let item of BusinessList; let index = index; ">
+        <div class="business_listing_img">
+          <img alt="essar-real-estate" [src]="item.logo_thumbnail">
+        </div>
+      <!-- business_listing_img End -->
+        <div class="business_listing_content">
+            <div class="row">
+              <div class="col-md-7 col-sm-7 col-xs-12">
+                  <div class="business_content_left business_title_icon">
+                    <h2>
+                        <img *ngIf="item.membership_type == 0" [src]="item.membership_type_icon" title="{{'ang_basicplantext' | translate}}" />
+                        <img *ngIf="item.membership_type == 1" [src]="item.membership_type_icon" title="{{'ang_premiumplantext' | translate}}" />
+                        <img *ngIf="item.membership_type == 2" [src]="item.membership_type_icon" title="{{'ang_lifetimeplantext' | translate}}" />
+                        <span class="text-overflow-hidden">{{item.name}}</span>
+                      </h2>
+                    <ul>
+                      <li class="text-overflow-hidden">
+                        <i class="fa fa-user" aria-hidden="true" *ngIf="item.owners"></i>{{item.owners}}</li>
+                      <!-- <li class="text-overflow-hidden">
+                        <i class="fa fa-mobile" aria-hidden="true" *ngIf="item.mobile"></i>{{item.country_code}}<span *ngIf="item?.country_code">-</span>{{item.mobile}}</li> -->
+                      <li class="text-overflow-hidden" *ngIf="item.country">
+                          <i class="fa fa-map-marker " aria-hidden="true"></i>
+                            {{item.city}}<span *ngIf="item.city">, </span> {{item.state}}<span *ngIf="item.state">, </span> {{item.country}}
+                      </li>
+
+                      <li class="text-overflow-hidden" *ngIf="item.categories_name_list != null">
+                        <i class="fa fa-angle-right text-overflow-hidden" aria-hidden="true"></i>
+                        <span>{{item.categories_name_list}}</span>
+                      </li>
+
+                      <!-- <li class="text-overflow-hidden" *ngIf="item.parent_categories?.length > 0">
+                        <i class="fa fa-angle-right text-overflow-hidden" aria-hidden="true"></i>
+                        <span *ngFor="let cat of item.parent_categories; let isLast=last; ">
+                        {{cat.category_name}}{{isLast ? '' : ', '}}
+                        </span>
+                      </li> -->
+                      <!-- <li class="text-overflow-hidden">
+                        <i class="fa fa-angle-right" aria-hidden="true" *ngIf="item.parent_category_name"></i>{{item.parent_category_name}}
+                      </li> -->
+                    </ul>
+                  </div>
+                  <!-- business_content_left End -->
+              </div>
+          <div class="col-md-5 col-sm-5 col-xs-12">
+            <div class="business_content_right">
+              <a href="" class="ryec_btn" routerLink="/home/business-detail/{{item.business_slug}}">{{'ang_viewmore' | translate}}
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          <!-- business_content_right -->
+          </div>
+            </div>
+        </div>
+        <!-- business_listing_content End -->
+      </div>
+    <!-- row End -->
+  </div>
+  <!-- business_listing_view End -->
+  <div class="pagination_view" *ngIf="totalBuinessCount > 0">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="currentPage" [maxSize]="maxSize" size="sm"
+      (pageChange)="getNextPageBusinessList($event)"></ngb-pagination>
+  </div>
+  <!-- pagination_view End -->
+
+  <div *ngIf="noData == true" style=" text-align: center;padding: 20px;">
+    <img src="../assets/images/norecordfound.png" style="height:250px;margin:20px;">
+    <h3>{{'ang_nomatches' | translate}}</h3>
+  </div>
+</div><!--container end-->
+

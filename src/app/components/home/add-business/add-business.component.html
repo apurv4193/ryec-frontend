@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col-md-12" *ngIf="!successFul_registration">
+        <form [formGroup]="RegBusinessForm" class="form-horizontal" (submit)="submitDetails()" novalidate>
+            <fieldset class="signup_view">
+                <div class="row skip_cst">
+                    <div class="col-md-12" *ngIf="agentStatus">
+                        <a href="javascript:void(0);" (click)="skipBusinessReg()"> {{'ang_skip' | translate}} >></a>
+                    </div>
+                </div>   
+                <div class="business_view">
+                    <div class="thank_you">
+                        {{'ang_registeryourbusiness' | translate}}
+                        <!-- <span>SignUp!</span> -->
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <input type="text" pattern="[a-zA-Z0-9][a-zA-Z0-9 ]+" formControlName="name" id="businessname" name="businessname" placeholder="{{'ang_businessprofessionname' | translate}}"
+                            class="input-xlarge">
+                        </div>
+                        <p class="help-block" *ngIf="RegBusinessForm.controls.name.touched && (
+                        RegBusinessForm.controls.name.errors?.required || 
+                        RegBusinessForm.controls.name.errors?.pattern)">
+                        {{'ang_businessprofessionnamevalidation'| translate}}
+                    </p>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <i class="fa fa-mobile" aria-hidden="true"></i>
+                        <input type="tel" readonly formControlName="mobile" id="mobnumber" name="mob-number" placeholder="{{'ang_mobile' | translate}}"
+                        class="input-xlarge readonly">
+                    </div>
+                    <!-- <p class="help-block" *ngIf="RegBusinessForm.controls.mobile.touched && (RegBusinessForm.controls.mobile.errors?.minlength || RegBusinessForm.controls.mobile.errors?.maxlength ||
+                    RegBusinessForm.controls.mobile.errors?.pattern)">
+                    {{'ang_mobilevalidation' | translate}}
+                </p> -->
+            </div> 
+            <div class="control-group">
+                <div class="controls">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <input type="email" formControlName="email_id" minlength="4" id="email" name="email" placeholder="{{'ang_businessprofessionemail' | translate}}"
+                    class="input-xlarge">
+                </div>
+                <p class="help-block" *ngIf="RegBusinessForm.controls.email_id.touched && 
+                RegBusinessForm.controls.email_id.errors?.email">
+                {{'ang_businessprofessionemailvalidation' | translate}}
+            </p>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <i class="fa fa-briefcase" aria-hidden="true"></i>
+                
+                <input type="text" formControlName="address" id="address" name="address" placeholder="{{'ang_businessprofessionaddress' | translate}}"
+                class="input-xlarge">
+
+                <!-- <input type="text" formControlName="address" id="address" name="address" placeholder="{{'ang_businessprofessionaddress' | translate}}"
+                class="input-xlarge" places-auto-complete (place_changed)="placeChanged($event)"> -->
+                
+
+                <!-- <ng4geo-autocomplete (componentCallback)="autoCompleteCallback1($event)"></ng4geo-autocomplete> -->
+
+            </div>
+            <p class="help-block" *ngIf="RegBusinessForm.controls.address.touched && 
+                RegBusinessForm.controls.address.errors?.required">
+                {{'ang_businessprofessionaddressvalidation' | translate}}
+            </p>
+        </div>
+        <div class="control-group description_for_bus">
+            <div class="controls">
+                <i class="fa fa-file-text" aria-hidden="true"></i>
+                <textarea formControlName="description" name="description" placeholder="{{ 'ang_businessprofessiondescription' | translate }}" rows="6"></textarea>
+                <p class="help-block" *ngIf="RegBusinessForm.controls.description.touched && RegBusinessForm.controls.description.errors?.required">{{'ang_descriptionisrequired' | translate}}</p>
+            </div>
+        </div>
+</div>
+
+<div class="control-group">
+    <div class="controls">
+        <button [disabled]="!RegBusinessForm.valid" class="btn ryec_btn sign_up_btn">{{'ang_register' | translate}}</button>
+    </div>
+</div> 
+<div class="row skip_cst">
+    <div class="col-md-12" *ngIf="agentStatus">
+        <a href="javascript:void(0);" (click)="skipBusinessReg()"> {{'ang_skip' | translate}} >></a>
+    </div>
+</div> 
+
+
+</fieldset>
+</form>
+</div>
+<div class="signup_view" *ngIf="successFul_registration">
+    <div class="col-md-12">
+        <div class="thank_section">
+            <div class="thank_you_img">
+                <img alt="thank_you" src="../assets/images/thank_you.png" class="img-responsive">
+            </div>
+            <h2>{{'ang_youareset' | translate}}</h2>
+            <button class="ryec_btn explore_btn" routerLink="/home">{{ 'ang_exploring' | translate}}</button>
+            <h4>{{'ang_thankyoureg' | translate}}.</h4> 
+            <h4>{{'ang_contactsoon' | translate}} <a href="javascript:void()" target="_blank">info@ryvua.com</a>.</h4>
+        </div>
+    </div>
+</div>
+</div>

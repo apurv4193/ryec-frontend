@@ -1,0 +1,47 @@
+.sub-category_banner{
+  height: 400px;
+}
+.sub-category_banner img{width: 100%;height: 100%;}
+.sub_category_view{width: 80%;margin:0 auto;}
+.sub_category_view h2{font-size: 28px;color: #000000;font-family: 'Lato-Bold';
+margin-top: 35px;margin-bottom:28px;}    
+.sub_category_listing{background:#fff;-webkit-box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);padding: 40px 60px;}
+.sub_category_listing li a{color: #414141;font-size:26px;display: block;
+	padding: 30px 0 15px 0;border-bottom: 1px solid #e1e1e1;}
+.sub_category_listing li a span{display: inline-block;vertical-align: middle;margin-right:30px;}	
+.sub_category_listing li a i{float: right;font-size: 30px;}
+.sub_category_listing li a:hover{color: #c59b42;}
+.bunk-bed, .buy, .sell, .rent
+{ display: inline-block; background: url('/assets/images/sub-category-icon.png') no-repeat; overflow: hidden; text-indent: -9999px; text-align: left; }
+ 
+.bunk-bed { background-position: -10px -0px; width: 42px; height: 42px; }
+.buy { background-position: -10px -52px; width: 42px; height: 42px; }
+.sell { background-position: -10px -104px; width: 41px; height: 40px; }
+.rent { background-position: -10px -154px; width: 33px; height: 42px; }
+.cate-name {font-size: 28px;
+	color: #000000;
+	font-family: 'Lato-Bold';
+	margin-top: 35px;
+	margin-bottom: 28px;}
+@media(min-width: 992px){
+	
+}
+@media(max-width: 767px){
+	.sub_category_view{width: 100%;}
+	.sub_category_listing li a{font-size: 20px;}
+	.sub-category_banner{
+    height: 300px;
+  }
+}
+@media(max-width: 480px){
+	.sub_category_listing{padding:0 15px 15px 15px;}
+	.sub_category_listing li a span{margin-right: 10px;}
+	.sub_category_view h2{font-size: 24px;}
+	.sub-category_banner{
+    height: 200px;
+  }
+}
+@media(max-width: 360px){
+	.sub_category_listing li a{font-size:18px;}
+}

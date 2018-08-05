@@ -1,0 +1,297 @@
+<div class="container">
+	<div class="coming_text">
+		<h2>{{'ang_bereadywithyourinvestment' | translate}}</h2> 
+		<h2>{{'ang_itscomingsoon' | translate}}...</h2>
+	</div>
+</div>
+
+
+<!-- <div class="investment_banner"> -->
+	<!-- <h2>{{'ang_lookingforinvestment' | translate}}</h2> -->
+	<!-- <img src="assets/images/investment_banner.jpg" alt=""> -->
+	<!-- <div class="myinterest_tab" *ngIf="!isVendor">
+		<ul>
+			<li>
+				<a href="javascript:void(0);" (click)="investmentOpportunity()" [ngClass]="{'active': contentShow == false}">{{'ang_investmentopprtunities' | translate}}</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" (click)="interestsOpportunity()" [ngClass]="{'active': contentShow == true}">{{'ang_myinterests' | translate}}</a>
+			</li>
+		</ul>
+	</div>
+	<div class="myinterest_tab myinterest_tab_member" *ngIf="isVendor">
+		<ul>
+			<li>
+				<a href="javascript:void(0);" (click)="investmentOpportunity()" [ngClass]="{'active': contentShow == false && myOppoShow == false}">{{'ang_investmentopprtunities' | translate}}</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" (click)="interestsOpportunity()" [ngClass]="{'active': contentShow == true && myOppoShow == false}">{{'ang_myinterests' | translate}}</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" (click)="myOpportunity()" [ngClass]="{'active': myOppoShow == true}">{{'ang_myopportunity' | translate}}</a>
+			</li>
+		</ul>
+	</div> -->
+<!-- </div> -->
+<!--header view end--> 
+<!-- <div class="container" *ngIf="!contentShow && !myOppoShow">
+	<div class="row" *ngIf="noData == false || isFilter == true">
+		<div class="col-sm-12">
+			<div class="sort_by_tab">
+				<span>{{'ang_sortby' | translate}}</span>
+				<ul>
+					<li>
+						<a href="javascript:void(0);" [ngClass]="(routerLink == 'relevance') ? 'active' : ''" routerLink="/home/investment-opportunity/relevance">{{'ang_relevance' | translate}}</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);" [ngClass]="(routerLink == 'near-me') ? 'active' : ''" routerLink="/home/investment-opportunity/near-me">{{'ang_nearme' | translate}}</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);" [ngClass]="(routerLink == 'recently-added') ? 'active' : ''" routerLink="/home/investment-opportunity/recently-added">{{'ang_recentadded' | translate}}</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);" [ngClass]="(routerLink == 'popular') ? 'active' : ''" routerLink="/home/investment-opportunity/popular">{{'ang_popularity' | translate}}</a>
+					</li>
+				</ul>
+				<div class="filter_btn">
+					<a href="javascript:void(0);" (click)="filter(contentFilter)">
+						<img src="assets/images/filter.png" alt="filter">{{'ang_filter' | translate}}</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div> -->
+<!-- sort_by_tab End -->
+
+<!-- <div class="container" *ngIf="noData == false"> -->
+	<!-- <div *ngIf="!contentShow && !myOppoShow">
+		<div class="business_listing_view">
+			<div class="total_result">
+				({{'ang_showing' | translate}} {{first}}-{{last}} {{'ang_of' | translate}} {{totalInvestmentCount}} {{'ang_businesses' |
+				translate}})
+			</div>
+			
+			<div class="clearfix business_listing_box" *ngFor="let item of InvestmentList; let index = index; ">
+				<div class="business_listing_img">
+					<img alt="essar-real-estate" [src]="item.file_images">
+				</div>
+				
+				<div class="business_listing_content">
+					<div class="row">
+						<div class="col-md-7 col-sm-7 col-xs-12">
+							<div class="business_content_left">
+								<h2>{{item.title}}</h2>
+								<ul>
+									<li>
+										<i class="fa fa-user" aria-hidden="true" *ngIf="item.creator_name"></i>{{item.creator_name}}</li>
+									<li>
+										<i class="fa fa-inr" aria-hidden="true" *ngIf="item.investment_amount_start"></i>{{item.investment_amount_start}} - {{item.investment_amount_end}}</li>
+									<li class="text-overflow-hidden">
+										<i class="fa fa-map-marker" aria-hidden="true" *ngIf="item.location"></i>{{item.location}}</li>
+									<li class="text-overflow-hidden">
+										<i class="fa fa-angle-right text-overflow-hidden" aria-hidden="true"></i>
+										<span>
+											{{item.category_name}}
+										</span>
+									</li>
+								</ul>
+							</div>
+							
+						</div>
+						<div class="col-md-5 col-sm-5 col-xs-12">
+							<div class="business_content_right">
+								<a href="javascript:void(0);" class="ryec_btn" routerLink="/home/investment-opportunity-detail/{{item.title_slug}}">{{'ang_viewmore' | translate}}
+									<i class="fa fa-angle-right" aria-hidden="true"></i>
+								</a>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+
+			</div>
+			
+		</div>
+		
+		<div class="pagination_view">
+			<ngb-pagination [collectionSize]="collectionSize" [(page)]="currentPage" [maxSize]="maxSize" size="sm" (pageChange)="getNextPageInvestmentOpportunity($event)"></ngb-pagination>
+		</div>
+	</div> -->
+	<!-- pagination_view End -->
+
+	<!-- <div *ngIf="noData == true" style=" text-align: center;padding: 20px;">
+<img src="../assets/images/norecordfound.png" style="height:250px;margin:20px;">
+<h3>{{'ang_nomatches' | translate}}</h3>
+</div> -->
+ <!-- <div *ngIf="contentShow  && !myOppoShow" >
+		<div *ngIf="noData == false">
+		<div class="business_listing_view">
+			<div class="total_result">
+				({{'ang_showing' | translate}} {{first}}-{{last}} {{'ang_of' | translate}} {{totalInvestmentCount}} {{'ang_businesses' |
+				translate}})
+			</div>
+			
+			<div class="clearfix business_listing_box" *ngFor="let item of InvestmentList; let index = index; ">
+				<div class="business_listing_img">
+					<img alt="essar-real-estate" [src]="item.file_images">
+				</div>
+				
+				<div class="business_listing_content">
+					<div class="row">
+						<div class="col-md-7 col-sm-7 col-xs-12">
+							<div class="business_content_left">
+								<h2>{{item.title}}</h2>
+								<ul>
+									<li>
+										<i class="fa fa-user" aria-hidden="true" *ngIf="item.creator_name"></i>{{item.creator_name}}</li>
+									<li>
+										<i class="fa fa-inr" aria-hidden="true" *ngIf="item.investment_amount_start"></i>{{item.investment_amount_start}} - {{item.investment_amount_end}}</li>
+									<li>
+										<i class="fa fa-map-marker" aria-hidden="true" *ngIf="item.address"></i>{{item.address}}</li>
+									<li class="text-overflow-hidden">
+										<i class="fa fa-angle-right text-overflow-hidden" aria-hidden="true"></i>
+										<span>
+											{{item.category_name}}
+										</span>
+									</li>
+								</ul>
+							</div>
+							
+						</div>
+						<div class="col-md-5 col-sm-5 col-xs-12">
+							<div class="business_content_right">
+								<a href="javascript:void(0);" class="ryec_btn" routerLink="/home/investment-opportunity-detail/{{item.title_slug}}">{{'ang_viewmore' | translate}}
+									<i class="fa fa-angle-right" aria-hidden="true"></i>
+								</a>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="pagination_view">
+			<ngb-pagination [collectionSize]="collectionSize" [(page)]="currentPage" [maxSize]="maxSize" size="sm" (pageChange)="getNextPageBusinessList($event)"></ngb-pagination>
+		</div>
+	</div>
+	</div>
+</div> -->
+<!--container end-->
+
+<!--<div class="container" *ngIf="myOppoShow">
+	<div class="col-sm-12">
+		<div class="create_oppo_btn">
+			<a href="javascript::void(0)" routerLink="/home/create-investment-opportunity/add-new" class="ryec_btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>{{'ang_createnewopp' | translate }}</a>
+		</div>
+	</div>
+	<div class="business_listing_view">
+		<div class="total_result">
+			({{'ang_showing' | translate}} {{first}}-{{last}} {{'ang_of' | translate}} {{totalInvestmentCount}} {{'ang_businesses' |
+			translate}})
+		</div>
+		<!~~ total_result End ~~>
+		<div class="clearfix business_listing_box" *ngFor="let item of InvestmentList; let index = index; ">
+			<div class="business_listing_img">
+				<img alt="essar-real-estate" [src]="item.file_images">
+			</div>
+			<!~~ business_listing_img End ~~>
+			<div class="business_listing_content">
+				<div class="row">
+					<div class="col-md-7 col-sm-7 col-xs-12">
+						<div class="business_content_left">
+							<h2>{{item.title}}</h2>
+							<ul>
+								<li>
+									<i class="fa fa-user" aria-hidden="true" *ngIf="item.creator_name"></i>{{item.creator_name}}</li>
+								<li>
+									<i class="fa fa-inr" aria-hidden="true" *ngIf="item.investment_amount_start"></i>{{item.investment_amount_start}} - {{item.investment_amount_end}}</li>
+								<li class="text-overflow-hidden">
+									<i class="fa fa-map-marker" aria-hidden="true" *ngIf="item.location"></i>{{item.location}}</li>
+								<li class="text-overflow-hidden">
+									<i class="fa fa-angle-right text-overflow-hidden" aria-hidden="true"></i>
+									<span>
+										{{item.category_name}}
+									</span>
+								</li>
+							</ul>
+						</div>
+						<!~~ business_content_left End ~~>
+					</div>
+					<div class="col-md-5 col-sm-5 col-xs-12">
+						<div class="business_content_right">
+							<a href="javascript:void(0);" class="ryec_btn" routerLink="/home/my-investment-opportunity-detail/{{item.title_slug}}">view more
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+							</a>
+						</div>
+						<!~~ business_content_right ~~>
+					</div>
+				</div>
+			</div>
+			<!~~ business_listing_content End ~~>
+
+		</div>
+		<!~~ row End ~~>
+	</div>
+	<!~~ business_listing_view End ~~>
+	<div class="pagination_view">
+		<ngb-pagination [collectionSize]="collectionSize" [(page)]="currentPage" [maxSize]="maxSize" size="sm" (pageChange)="getNextPageInvestmentOpportunity($event)"></ngb-pagination>
+	</div>	
+</div>-->
+<!--<div class="container">
+	<div *ngIf="noData == true" style=" text-align: center;padding: 20px;">
+	<img src="../assets/images/norecordfound.png" style="height:250px;margin:20px;">
+	<h3>{{'ang_nomatches' | translate}}</h3>
+	</div>
+</div>-->
+
+<!--- Add Rating and Reviews-->
+<!-- <ng-template #contentFilter let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h5 class="modal-title">{{'ang_filter' | translate}}</h5>
+		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="price_title">
+			<div class="price_left">
+				<span>{{'ang_minprice' | translate}}</span>
+				<h6>
+					<i class="fa fa-inr" aria-hidden="true"></i>{{minPrice}}</h6>
+			</div>
+			<div class="price_right">
+				<span>{{'ang_maxprice' | translate}}</span>
+				<h6>
+					<i class="fa fa-inr" aria-hidden="true"></i>{{maxPrice}}</h6>
+			</div>
+		</div>
+		<ion-range-slider #sliderElement class="rangeslider_cst" type="double" min="{{investmentFilter.min_amount}}" max="{{investmentFilter.max_amount}}" from={{from}} to="{{to}}" grid="true" grid_num="1"
+		 decorate_both="true"  (onChange)="myOnChange($event)">
+		</ion-range-slider>
+		<div class="category_select top">
+			<label>{{'ang_selectcategory' | translate}}</label>
+			<select [(ngModel)]="category_id" multiple>
+				<option *ngFor="let category of investmentFilter?.categories" [ngValue]="category.id">
+					{{category.name}}
+				</option>
+			</select>
+			
+		</div>
+		<div class="category_select">
+			<label>{{'ang_selectlocation' | translate}}</label>
+			<select [(ngModel)]="location" multiple>
+				<option *ngFor="let location of investmentFilter?.locations" value="{{location}}">
+					{{location}}
+				</option>
+			</select>
+		</div>
+		<div class="apply_btn">
+			<a _ngcontent-c6="" class="ryec_btn" href="javascript:void(0)" (click)="applyFilter()">{{'ang_apply' | translate}}</a>
+		</div>
+	</div>
+
+</ng-template> -->

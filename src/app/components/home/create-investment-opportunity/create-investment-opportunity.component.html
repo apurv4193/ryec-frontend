@@ -1,0 +1,217 @@
+<div class="container">
+	<div class="business_detail_view">
+		<div class="business_title">
+			<h2>{{'ang_businessdetail' | translate}} <i class="fa fa-info-circle" aria-hidden="true" ></i></h2>
+		</div><!-- business_title End -->
+
+		<form class="form-horizontal" novalidate>
+			<!-- {{addBusinessForm.value | json}} -->
+			<div class="row edit_business_form">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="control-group">
+						<label class="control-label" for="name">Business title <i class="fa fa-info-circle" aria-hidden="true"></i></label>
+						<div class="controls">
+							<input  type="text" id="name" name="name" placeholder="Business name" 
+							class="input-xlarge">
+						</div>
+						<p class="help-block"></p>
+					</div>
+				</div><!-- col End -->
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="control-group">
+						<label class="control-label" for="name">Project duration <i class="fa fa-info-circle" aria-hidden="true"></i></label>
+						<div class="controls">
+							<input  type="text" id="name" name="name" placeholder="Business name" 
+							class="input-xlarge">
+						</div>
+						<p class="help-block"></p>
+					</div>
+				</div><!--col End-->
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="control-group">
+						<label class="control-label" for="name">Location <i class="fa fa-info-circle" aria-hidden="true"></i></label>
+						<div class="controls">
+							<input  type="text" id="name" name="name" placeholder="Business name" 
+							class="input-xlarge">
+						</div>
+						<p class="help-block"></p>
+					</div>
+				</div><!-- col End -->
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="control-group">
+						<label class="control-label" for="name">Approx % offering <i class="fa fa-info-circle" aria-hidden="true"></i></label>
+						<div class="controls">
+							<input  type="text" id="name" name="name" placeholder="Business name" 
+							class="input-xlarge">
+						</div>
+						<p class="help-block"></p>
+					</div>
+				</div><!--col End-->
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="control-group">
+						<label class="control-label" for="name">Price range <i class="fa fa-info-circle" aria-hidden="true"></i></label>
+						<div class="create_oppo_range">
+							<div class="price_title">
+								<div class="price_left">
+									<span>min</span>
+									<h6><i class="fa fa-inr" aria-hidden="true"></i>500</h6>
+								</div>
+								<div class="price_right">
+									<span>max</span>
+									<h6><i class="fa fa-inr" aria-hidden="true"></i>100000</h6>
+								</div>
+							</div>
+							<ion-range-slider #sliderElement class="rangeslider_cst" type="double" min="500" max="100000" from="500" to="100000" grid="true">
+							</ion-range-slider>
+						</div>
+					</div>
+				</div><!-- col End -->
+				
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">Category <i class="fa fa-info-circle" aria-hidden="true"></i></label>
+							<div class="city_dropdown">
+						        <div class="dropdown">
+						        <button class="dropbtn">ALL</button>
+						          <div  class="dropdown-content">
+						            <div class="city_search_input">
+						                <i _ngcontent-c1="" aria-hidden="true" class="fa fa-search"></i>
+						                <input type="text" placeholder="{{'ang_searchhere' | translate}}" id="myInput" name="city" class="city-search">
+						            </div> 
+						            <perfect-scrollbar style="height: 210px;"> 
+						              <a href="javascript:void(0)" class="city">All Cities</a>          
+						              <a href="javascript:void(0)" >scsc</a>
+						            </perfect-scrollbar>
+						          </div>
+						        </div>
+						        <!-- language_select End -->
+						    </div>
+							<p class="help-block"></p>
+						</div>
+				</div><!--col End-->
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="control-group">
+							<label class="control-label" for="name">Price range <i class="fa fa-info-circle" aria-hidden="true"></i></label>
+							<div class="create_oppo_range">
+								<div class="price_title">
+									<div class="price_left">
+										<span>min</span>
+										<h6><i class="fa fa-inr" aria-hidden="true"></i>500</h6>
+									</div>
+									<div class="price_right">
+										<span>max</span>
+										<h6><i class="fa fa-inr" aria-hidden="true"></i>100000</h6>
+									</div>
+								</div>
+								<ion-range-slider #sliderElement class="rangeslider_cst" type="double" min="500" max="100000" from="500" to="100000" grid="true">
+								</ion-range-slider>
+							</div>
+						</div>
+				</div><!-- col End -->
+				<div class="col-sm-12">
+					<div class="control-group">
+						<label class="control-label" for="name">{{'ang_description' | translate}}</label>
+						<div class="controls">
+							<textarea formControlName="description"	 id="description" name="description"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="control-group">
+						<div class="document_upload clearfix">
+							<input type="file" style="display: none;">
+							<label>Upload document<span class="browse_btn pull-right">
+							{{'ang_browse' | translate}}</span></label>
+							<div class="controls">
+								<input  type="text" id="name" name="name" placeholder="Upload document" 
+								class="input-xlarge">
+								<i  aria-hidden="true" class="fa fa-times"></i>
+							</div>
+							<div class="controls">
+								<input  type="text" id="name" name="name" placeholder="Upload document" 
+								class="input-xlarge">
+								<i  aria-hidden="true" class="fa fa-times"></i>
+							</div>
+							<div class="controls">
+								<input  type="text" id="name" name="name" placeholder="Upload document" 
+								class="input-xlarge">
+								<i  aria-hidden="true" class="fa fa-times"></i>
+							</div>
+						</div><!-- categories_gallery End -->
+					</div>					
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="control-group">
+						<div class="document_upload clearfix">
+							<input type="file" style="display: none;">
+							<label>Add links<span class="browse_btn pull-right">
+							Add new</span></label>
+							<div class="controls">
+								<input  type="text" id="name" name="name" placeholder="Upload link" 
+								class="input-xlarge">
+								<i aria-hidden="true" class="fa fa-times"></i>
+							</div>
+							<div class="controls">
+								<input  type="text" id="name" name="name" placeholder="Upload link" 
+								class="input-xlarge">
+								<i aria-hidden="true" class="fa fa-times"></i>
+							</div>
+							<div class="controls">
+								<input  type="text" id="name" name="name" placeholder="Upload link" 
+								class="input-xlarge">
+								<i aria-hidden="true" class="fa fa-times"></i>
+							</div>
+						</div><!-- categories_gallery End -->
+					</div>					
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="control-group">
+						<div class="document_upload clearfix">
+							<input type="text" style="display: none;">
+							<label>Upload image<span class="browse_btn pull-right">
+								{{'ang_browse' | translate}}</span></label>
+							<ul>
+								<li>
+									<span><i aria-hidden="true" class="fa fa-times"></i></span>
+									<img src="../assets/images/auto-mobile.jpg">
+								</li>
+								<li>
+									<span><i aria-hidden="true" class="fa fa-times"></i></span>
+									<img src="../assets/images/auto-mobile.jpg">
+								</li>
+								<li>
+									<span><i aria-hidden="true" class="fa fa-times"></i></span>
+									<img src="../assets/images/auto-mobile.jpg">
+								</li>
+								<li>
+									<span><i aria-hidden="true" class="fa fa-times"></i></span>
+									<img src="../assets/images/auto-mobile.jpg">
+								</li>
+								<li>
+									<span><i aria-hidden="true" class="fa fa-times"></i></span>
+									<img src="../assets/images/auto-mobile.jpg">
+								</li>
+								<li>
+									<span><i aria-hidden="true" class="fa fa-times"></i></span>
+									<img src="../assets/images/auto-mobile.jpg">
+								</li>
+							</ul>
+						</div><!-- categories_gallery End -->
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				</div>
+				<div class="col-md-6 col-xs-12">	
+					<div class="profile_btn">
+						<button class="ryec_btn" type="submit">Save</button>
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">	
+					<div class="profile_btn">
+						<button class="ryec_btn" type="submit">Cancel</button>
+					</div>
+				</div>
+			</div><!--row end-->
+		</form>
+	</div>
+</div>

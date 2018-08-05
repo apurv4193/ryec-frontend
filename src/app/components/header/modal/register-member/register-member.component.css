@@ -1,0 +1,145 @@
+.modal-body .signup_view {
+  padding: 35px 60px;
+  margin: 0px auto;
+}
+
+.modal-body .signup_view legend {
+  font-size: 30px;
+  font-family: 'Lato-Bold';
+  color: #222222;
+  margin-bottom: 40px;
+}
+
+.type_of_language {
+  margin-bottom: 50px;
+}
+
+.type_of_language button {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding: 7px 45px;
+  font-size: 25px;
+}
+
+.modal-body .signup_view .control-group input {
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid #b2b2b2;
+  width: 100%;
+  font-size: 24px;
+  color: #645d4b;
+  padding: 0px 10px 5px 30px !important;
+  font-family: 'Lato-Regular';
+}
+
+.modal-body .signup_view .control-group {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.modal-body .signup_view .control-group i {
+  font-size: 25px;
+  color: #000000;
+  position: absolute;
+  top: 7px;
+  left: 4px;
+}
+.modal-body .signup_view .control-group .fa-envelope{
+  font-size: 22px;
+}
+.modal-body .signup_view .control-group .fa-mobile {
+  font-size: 34px;
+  top: 0px;
+  left: 4px;
+}
+
+.sign_up_btn {
+  font-family: 'Lato-Heavy';
+  font-size: 30px;
+  text-transform: uppercase;
+  padding: 15px 135px;
+  margin: 0 auto;
+  display: block;
+}
+
+.already_view {
+  text-align: center;
+  color: #777777;
+  font-size: 26px;
+}
+
+.already_view a {
+  color: #777777;
+}
+
+.already_view strong {
+  color: #c59b42;
+  font-family: 'lato-Bold';
+}
+
+@media (min-width: 768px) {
+  .sign_up_btn{padding: 10px 75px;font-size: 20px;}
+}
+
+@media (min-width: 992px) {
+  .modal-body .signup_view {
+    width: 100%;
+  }
+  .sign_up_btn{padding: 15px 135px;font-size: 30px;}
+}
+
+@media (min-width: 1024px) {
+  .modal-body .signup_view {
+    width: 70%;
+  }
+}
+
+@media (max-width: 767px) {
+  .modal-body .signup_view legend {
+    font-size: 25px;
+  }
+  .type_of_language {
+    margin-bottom: 30px;
+  }
+  .sign_up_btn {
+    font-size: 20px;
+  }
+  .already_view {
+    font-size: 20px;
+  }
+  .modal-body .signup_view {
+    padding: 20px 20px;
+  }
+  .type_of_language button {
+    font-size: 20px;
+    padding: 7px 30px;
+  }
+  .modal-body .signup_view .control-group {
+    margin-bottom: 30px;
+  }
+  .modal-body .signup_view .control-group input {
+    font-size: 20px !important;
+  }
+  .modal-body .signup_view {
+    margin: 20px auto;
+  }
+  .modal-body .signup_view .control-group .fa-mobile {top:-5px;}
+  .modal-body .signup_view .control-group i {top:3px;}
+}
+
+@media (max-width: 576px) {
+  .type_of_language button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .sign_up_btn {
+    width: 100%;
+    padding: 15px 0;
+  }
+  .modal-body .signup_view .control-group input {
+    font-size: 16px !important;
+  }
+}

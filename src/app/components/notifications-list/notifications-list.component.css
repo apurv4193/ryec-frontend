@@ -1,0 +1,57 @@
+.notification_list{
+	padding:0 0 0 0;
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+.notification_list h4{
+	padding-left: 20px;
+    background: #c59b42;
+    color: #fff;
+    padding: 20px 20px;
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+.notification_box{
+	border-bottom: 1px solid #e0e0e0;
+	padding:0 20px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+.notification_box:last-child{
+	border-bottom: 0;
+}
+.notification_box h2{
+	font-family:'Lato-Bold';
+	font-size:22px;
+}
+.notification_box p{
+	margin:0;
+	font-size: 16px;
+}
+.notification_box span{
+	display: block;
+	text-align: right;
+	font-size: 13px;
+}
+.total_result{
+	font-size: 16px;
+    text-align: right;
+    margin-bottom: 5px;
+    margin-top:40px;
+}
+.pagination_view{
+	text-align: center;
+}
+.pagination_view ngb-pagination{
+	display: inline-block;
+}
+@media(max-width: 767px){
+	.notification_box h2{
+	    font-family: 'Lato-Bold';
+	    font-size: 20px;
+	}
+	.notification_box p{
+		font-size: 14px;
+		line-height: 20px;
+	}
+}

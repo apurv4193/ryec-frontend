@@ -1,0 +1,170 @@
+.inbox-sec{padding: 80px 0;}
+.inbox-heading{background: #222222;padding: 17px 15px;text-align: center;height: 100%;}
+.inbox-list{overflow-y: auto;height: 850px;-webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.63);
+    -moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.63);
+    box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.63);background: #fff;}
+.inbox-heading h3{font-size: 30px;color: #c59b42;text-transform: uppercase;font-weight: 700;margin-bottom: 0;}
+.inbox-block{background: #fff;padding: 25px 10px 0px;cursor: pointer;-webkit-transition: all 0.5s linear;transition: all 0.5s linear;-moz-transition: all 0.5s linear;-ms-transition: all 0.5s linear;-o-transition: all 0.5s linear;}
+.inbox-block.active, .inbox-block:hover{background: #f3f3f3;}
+.inbox-img {width: 25%;display: inline-block;margin: 0 auto;text-align: center;}
+.inbox-img img{width: 88px;height: 88px;border-radius: 50%;max-width: 100%;}
+.inbox-detail {width: 75%;display: inline-block;margin-left: -4px;vertical-align: top;border-bottom: 1px solid #e4e0e0;padding:0 10px 20px;font-family: lato-bold;position: relative;word-break: break-word;}
+.active .inbox-detail, .inbox-block:hover .inbox-detail{border-bottom: 1px solid transparent;}
+.business-name {font-family: lato-bold;font-size: 22px;color: #434343;position:relative;padding-right: 70px;}
+.message-time{font-size: 15px;color: #c59b42;position: absolute;right: 0;top: 6px;}
+.business-title {font-family: lato-bold;font-size: 18px;color: #c59b42;max-width: 85%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;margin-bottom: 0;}
+.inbox-detail p{font-size: 17px;color: #666666;}
+img{max-width: 100%;}
+.business-img {display: inline-block;width: 48px;height: 48px;float: left;border-radius: 50%;border: 1px solid #c59b42;overflow: hidden;margin-right: 20px;}
+.business-img img{height: 100%;}
+.no-gutter-right{padding-right: 0;}
+.no-gutter-left{padding-left: 0;}
+.brdr-left{border-left:  3px solid #ddd8d8;}
+.message-screen{background: #fff;width: 100%;height: 100%;-webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.63);box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.63);}
+.message-detail{text-align: left;}
+.message-detail.inbox-heading h3{font-size: 22px;text-transform: capitalize;}
+.message-title {display: block;color: #fff;}
+.message-area {padding: 30px 15px 0;height: 777px;overflow-y: auto;}
+/*.received-msg, .send-msg{clear: both;}*/
+.message_msg{
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+.received-msg .message-content{
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: left;
+    -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.63);
+    box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.63);
+    border-radius: 8px;
+    position: relative;
+    margin-bottom: 30px;
+    font-size: 22px;
+    color: #666666;
+    float: left;
+    background: #f3f3f3;
+    word-break: break-word;
+    margin-right: 40px;
+}
+.send-msg .message-content{
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: left;
+    -webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.63);
+    box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.63);
+    border-radius: 8px;
+    position: relative;
+    margin-bottom: 30px;
+    font-size: 22px;
+    color: #fff;
+    background: #c59b42;
+    float: right;
+    word-break: break-word;
+    margin-left: 40px;
+}
+.received-msg .message-content:before {
+    position: absolute;
+    content: '';
+    border-top: 15px solid #f3f3f3;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    bottom: -10px;
+    left: -7px;
+    -ms-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    transform: rotate(40deg);
+}
+.send-msg .message-content:before {
+        position: absolute;
+    content: '';
+    border-bottom: 15px solid #c59b42;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    bottom: -2px;
+    right: -5px;
+    -webkit-transform: rotate(22deg);
+    -o-transform: rotate(22deg);
+    transform: rotate(22deg);
+}
+.message-form {
+    border-top: 1px solid #ddd8d8;
+    padding: 14px 10px;
+}
+.message-text{width: 92%;display: inline-block;vertical-align: top;}
+.message-text .form-group{margin-bottom: 0;}
+.message-text textarea{border: 1px solid #c59b42;border-radius: 15px;resize: none;display:block;}
+.send-btn{/*width: 20%;margin-left: -4px;*/display: inline-block;vertical-align: top;margin-left: 5px;}
+.send-btn a{display: block;border-radius: 50%;background: #c59b42;width: 42px;height: 42px;line-height: 42px;text-align: center;}
+.message-screen{height: 850px;}
+.inbox-detail .new_message{position: absolute;content: "";top: 30px;right: 30px;height: 20px;width: 20px;border-radius: 100%;background: #c59b42;color: #fff;font-size: 10px;text-align: center;vertical-align: middle;padding: 2px;}
+
+.message-heading{height: 80px;}
+.message-detail i{
+    display: inline-block;
+    float: left;
+    vertical-align: middle;
+    width: 7%;
+    font-size: 20px;
+    color: #fff;
+    padding-top: 15px;
+    cursor: pointer;
+    display: none;
+}
+.load_btn{background: transparent;color:#c59b42;text-transform: capitalize;font-family: lato-bold;outline: none;}
+
+.message-content span{display:block;font-size: 10px;color:#4c4c4c;text-align: right;}
+/* .send-msg .message-content span{text-align: right;}
+.received-msg .message-content span{text-align: left;} */
+.center_date{text-align: center;}
+.center_date span{display: inline-block;font-size: 13px;background: #b1b1b1;color: #ffff;padding: 1px 6px;border-radius: 5px;margin: 15px 0;}
+.center_date.top{position: absolute;top: 2px;left: 50%;transform: translate(-50%,0);}
+@media (max-width:1199px){
+    .inbox-img img{width: 78px;height: 78px;}
+    .business-name{font-size: 20px;}
+    .received-msg .message-content,.send-msg .message-content{font-size: 20px;}
+    /*.message-area{height: 717px;}*/
+    .message-text{width: 90%;}
+    /*.inbox-list{height: 790px;}*/
+}
+@media (max-width:991px){
+    .inbox-img{width: 20%;}
+    .inbox-detail{width: 80%;padding-bottom: 15px;}
+    .inbox-img img{width: 50px;height: 50px;}
+    .business-name{font-size: 18px;margin-bottom: 0;}
+    .message-time{font-size: 13px;}
+    .received-msg .message-content{font-size: 20px;}
+    .business-title{font-size: 16px;}
+    .inbox-detail p{font-size: 15px;}
+    .inbox-block{padding-top: 15px;}
+    .message-area{height:627px;}
+    .message-text{width:85%;}
+    .inbox-list{height: 697px;}
+    .message-screen{height: 697px;}
+    .inbox-heading h3{font-size: 20px;padding-top: 14px;}
+    .inbox-heading.message-detail h3{font-size: 20px;padding-top: 0px;}
+    .received-msg .message-content,.send-msg .message-content{font-size: 17px;margin-bottom: 20px;}
+    .inbox-sec{padding: 50px 0 0;}
+}
+@media(max-width: 767px){
+    .send-btn a{width: 33px;height: 33px;line-height: 33px;}
+}
+@media(max-width: 575px){
+    .no-gutter-right{padding-right: 15px;}
+    .no-gutter-left{padding-left: 15px;}
+    .chat_view_responsive{
+        position: absolute;
+        display: none;
+    }
+    .brdr-left{
+        border-left: 0;
+    }
+    .chat_view_responsive.active{
+        display: block;
+    }
+    .message-detail i{display: block;}
+    .message-text{width:90%;}
+}
+@media(max-width: 465px){
+    .message-text{width:84%;}
+}

@@ -1,0 +1,249 @@
+<div class="user_profile_view">
+  <div class="profile_photo">
+    <div class="upload_photo">
+      <img alt="user_profile" src="../assets/images/user_profile.png" #userProfileImage>
+      <input type="file" (change)="uploadProfilePic($event)" style="display: none;" accept="image/x-png,image/gif,image/jpeg" #userProfile>
+      <div class="add_photo">
+        <img alt="plus-icon" (click)="triggerUpload()" src="../assets/images/plus-icon.png" class="img-responsive">
+      </div>
+      <!-- add_photo End -->
+    </div>
+    <!-- upload_photo End -->
+  </div>
+  <!-- profile_photo End  -->
+  <form [formGroup]="profileForm" (submit)="submitDetail()">
+    <div formGroupName="personal">
+      <div class="personal_profile_view">
+        <div class="row">
+          <div class="col-md-12 col-xs-12">
+            <div class="profile_title">
+              <h2>{{'ang_personalprofile' | translate}}</h2>
+            </div>
+            <!-- profile_title End -->
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="name">{{'ang_username' | translate}}</label>
+              <div class="controls">
+                <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" formControlName="name" id="fullname" name="fullname" placeholder="{{'ang_username' | translate}}"
+                  class="input-xlarge">
+              </div>
+              <p class="help-block" *ngIf="profileForm['controls'].personal['controls'].name.touched && (
+              profileForm['controls'].personal['controls'].name.errors?.required || profileForm['controls'].personal['controls'].name.errors?.pattern)">{{ 'ang_usernamevalidation' | translate}}</p>
+            </div>
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="email">{{'ang_email' | translate}}</label>
+              <div class="controls">
+                <input type="text" formControlName="email" id="email" name="email" placeholder="{{'ang_email' | translate}}" class="input-xlarge">
+              </div>
+              <p class="help-block" *ngIf="profileForm['controls'].personal['controls'].email.touched && profileForm['controls'].personal['controls'].email.errors?.email">{{ 'ang_emailvalidation' | translate}}</p>
+            </div>
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="phone">{{'ang_mobile'| translate}}</label>
+              <div class="controls">
+                <input type="tel" readonly maxlength="10" formControlName="phone" id="mobile" name="mobile" placeholder="{{'ang_mobile'| translate}}"
+                  class="input-xlarge">
+              </div>
+              <p class="help-block" *ngIf="profileForm['controls'].personal['controls'].phone.touched && profileForm['controls'].personal['controls'].phone.errors?.required">{{'ang_mobilerequired'| translate}}</p>
+
+              <p class="help-block" *ngIf="profileForm['controls'].personal['controls'].phone.touched && 
+            (profileForm['controls'].personal['controls'].phone.errors?.minlength || profileForm['controls'].personal['controls'].phone.errors?.maxlength || profileForm['controls'].personal['controls'].phone.errors?.pattern)">{{ 'ang_mobilevalidation' | translate}}</p>
+            </div>
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="dob">{{'ang_dob' | translate}}</label>
+              <div class="controls">
+                <i class="fa fa-calendar" (click)="d.toggle()" aria-hidden="true"></i>
+                <input formControlName="dob" ngbDatepicker #d="ngbDatepicker" type="text" id="dob" name="dob" placeholder="{{'ang_dob'| translate}}"
+                  class="input-xlarge">
+              </div>
+              <!-- <p class="help-block" *ngIf="profileForm['controls'].personal['controls'].dob.touched && profileForm['controls'].personal['controls'].dob.errors?.required ">{{'ang_dobvalidation'| translate}}</p> -->
+            </div>
+          </div>
+          <!-- col End -->
+          <!-- <div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="control-group">
+            		<label class="control-label" for="Mobile">Password</label>
+		            <div class="controls">
+		              <input type="text" id="fullname" name="fullname"
+		                placeholder="Password" class="input-xlarge">
+		            </div>
+          		</div>
+			</div> -->
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="gender">{{'ang_gender'| translate}}</label>
+              <div class="type_gender">
+                <input type="radio" formControlName="gender" value="2" id="test1" name="gender" checked>
+                <label for="test1">{{'ang_female' | translate}}</label>
+                <input type="radio" formControlName="gender" value="1" id="test2" name="gender" checked>
+                <label for="test2">{{'ang_male'| translate}}</label>
+              </div>
+              <!-- type_gender End -->
+            </div>
+          </div>
+          <!-- col End -->
+        </div>
+        <!-- row End -->
+      </div>
+      <!-- personal_profile_view End -->
+      <div class="personal_profile_view">
+        <div class="row">
+          <div class="col-md-12 col-xs-12">
+            <div class="profile_title">
+              <h2>{{'ang_businessprofile' | translate}}</h2>
+            </div>
+            <!-- profile_title End -->
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="name">{{'ang_businessname' | translate}}</label>
+              <div class="controls">
+                <input type="text" readonly formControlName="business_name" id="business_name" name="businessname" placeholder="{{'ang_businessname' | translate}}"
+                  class="input-xlarge">
+              </div>
+            </div>
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="email">{{'ang_businessemail' | translate}}</label>
+              <div class="controls">
+                <input type="text" readonly formControlName="business_email_id" form id="business_email_id" name="email_id" placeholder="{{'ang_businessemail' | translate}}"
+                  class="input-xlarge">
+              </div>
+            </div>
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="Mobile">{{'ang_businessmobile' | translate}}</label>
+              <div class="controls">
+                <input type="text" readonly formControlName="business_mobile" id="business_mobile" name="mobile" placeholder="{{'ang_businessmobile' | translate}}"
+                  class="input-xlarge">
+              </div>
+            </div>
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="address">{{'ang_businessaddress' | translate}}</label>
+              <div class="controls">
+                <textarea readonly formControlName="business_address" id="business_address"></textarea>
+              </div>
+            </div>
+          </div>
+          <!-- col End -->
+
+        </div>
+        <!-- row End -->
+      </div>
+      <!-- personal_profile_view End -->
+      <div class="personal_profile_view">
+        <div class="row">
+          <div class="col-md-12 col-xs-12">
+            <div class="profile_title">
+              <h2>{{'ang_otherinformation' | translate}}</h2>
+            </div>
+            <!-- profile_title End -->
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="fathename">{{'ang_fathername'| translate}}</label>
+              <div class="controls">
+                <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" formControlName="father_name" id="fathername" name="fathername" placeholder="{{'ang_fathername'| translate}}"
+                  class="input-xlarge">
+              </div>
+              <p class="help-block" *ngIf="profileForm['controls'].personal['controls'].father_name.touched && profileForm['controls'].personal['controls'].father_name.errors?.pattern ">{{'ang_validdetails'| translate}}</p>
+            </div>
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="nativevillage">{{'ang_nativevillage'| translate}}</label>
+              <div class="controls">
+                <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" formControlName="native_village" id="nativevillage" name="nativevillage"
+                  placeholder="{{'ang_nativevillage' | translate}}" class="input-xlarge">
+              </div>
+              <p class="help-block" *ngIf="profileForm['controls'].personal['controls'].native_village.touched && profileForm['controls'].personal['controls'].native_village.errors?.pattern ">{{'ang_validdetails'| translate}}</p>
+            </div>
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="maternalhome">{{'ang_maternalhome' | translate}}</label>
+              <div class="controls">
+                <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" formControlName="maternal_home" id="maternalhome" name="maternalhome" placeholder="{{'ang_maternalhome' | translate}}"
+                  class="input-xlarge">
+              </div>
+              <p class="help-block" *ngIf="profileForm['controls'].personal['controls'].maternal_home.touched && profileForm['controls'].personal['controls'].maternal_home.errors?.pattern ">{{'ang_validdetails'| translate}}</p>
+            </div>
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="kulgotra">{{'ang_kulgotra'| translate}}</label>
+              <div class="controls">
+                <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" formControlName="kul_gotra" id="kulgotra" name="kulgotra" placeholder="{{'ang_kulgotra'| translate}}"
+                  class="input-xlarge">
+              </div>
+              <p class="help-block" *ngIf="profileForm['controls'].personal['controls'].kul_gotra.touched && profileForm['controls'].personal['controls'].kul_gotra.errors?.pattern ">{{'ang_validdetails'| translate}}</p>
+            </div>
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="children">{{'ang_children' | translate}}</label>
+              <div class="controls">
+                <input type="text" pattern="[a-zA-Z][a-zA-Z ,]*" formControlName="children" id="children" name="children" placeholder="{{'ang_children' | translate}}"
+                  class="input-xlarge">
+              </div>
+              <p class="help-block" *ngIf="profileForm['controls'].personal['controls'].children.touched && profileForm['controls'].personal['controls'].children.errors?.pattern ">{{'ang_validdetails'| translate}}</p>
+            </div>
+          </div>
+          <!-- col End -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="control-group">
+              <label class="control-label" for="business achievements">{{'ang_businessachievement' | translate}}</label>
+              <div class="controls">
+                <textarea formControlName="business_achievments" name="businessachivements"></textarea>
+              </div>
+              <!-- <p class="help-block" *ngIf="profileForm['controls'].personal['controls'].business_achievments.touched && profileForm['controls'].personal['controls'].business_achievments.errors?.pattern ">{{'ang_validdetails'| translate}}</p> -->
+            </div>
+          </div>
+          <!-- col End -->
+
+        </div>
+        <!-- row End -->
+      </div>
+      <!-- personal_profile_view End -->
+      <div class="profile_btn">
+        <button class="ryec_btn" [disabled]="!profileForm.valid" type="submit">{{'ang_save' | translate}}</button>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div *ngIf="statusAlert.status === 1" class="alert" [ngClass]="{'alert-success':statusAlert.status === 1}" role="alert">
+            Profile {{statusAlert.message}}
+          </div>
+          <!--if statusAlert role is === 0-->
+          <div class="alert" [ngClass]="{'alert-warning':statusAlert.status === 0}" *ngIf="statusAlert.status === 0" role="alert">
+            {{statusAlert.message}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- user_profile_view End -->

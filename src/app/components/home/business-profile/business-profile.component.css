@@ -1,0 +1,459 @@
+.business_detail_view{-webkit-box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);padding: 40px 60px;background: #ffffff;}
+.business_title{}
+.business_title h2{margin-bottom: 50px;font-size: 26px;color: #c59b42;line-height: 32px;
+font-family: 'Lato-Bold';}
+.edit_business_form .control-group{margin-bottom: 25px;}
+.edit_business_form .control-group label{font-size: 22px;color: #414141;
+    font-family: 'Lato-Bold';}
+.edit_business_form .control-group input{width: 100%;border-left: 0;border-right: 0;
+    border-top: 0;border-bottom: 2px solid #ddd8d8;font-size: 20px;
+    color: #414141;height: 50px;}
+.edit_business_form .control-group textarea{width: 100%;border: 2px solid #ddd8d8;
+	font-size: 20px;color: #414141;min-height: 150px;}
+
+.hours_opration_view,
+.busi_activi_view{margin-top:10px;}
+.busi_activi_view h2,	
+.hours_opration_view h2{color: #3e3e3e;font-family: 'Lato-Bold';font-size: 22px;
+}	
+
+/*K 29-03-2018 start*/
+.owner_info,.pro_info {margin-top: 50px;}
+.title h2{color: #3e3e3e;font-family: 'Lato-Bold';font-size: 22px;text-transform: capitalize;display: inline-block;}
+.title a{float: right;font-size: 22px;color: #c59b42;font-family: 'Lato-Bold';text-transform: uppercase;}
+.owner_box {border:1px solid#c59b42;font-size: 0;padding: 25px 10px;margin: 20px 0;}
+.owner_box .img_outer{border-radius: 100%;display: inline-block;overflow:hidden;vertical-align: middle;}
+.owner_box .img_outer img{height: 100%;width: 100%;}
+.owner_box .detail{display: inline-block;padding-left: 20px;vertical-align: middle;}
+.owner_box .detail h5{font-size: 20px;font-family: 'Lato-Bold';text-transform: capitalize;}
+.owner_box .detail h6{font-size: 18px;}
+.detail h2{font-family: 'Lato-Bold';}
+.owner_box .icons_outer{display: inline-block;vertical-align: middle;}
+.icons_outer a{display: block;background: #c59b42;height: 50px;width:50px;border-radius: 10px;line-height: 50px;margin-bottom: 20px;text-align: center;}
+.icons_outer a:last-child{margin-bottom: 0;}
+.add_pro_box{box-shadow: 1px 1px 10px #bdbaba;padding: 20px;margin-top: 20px;margin-bottom: 30px;}
+.add_pro_box label{font-size: 18px;font-family: 'Lato-Bold';text-transform: capitalize;margin-right: 10px;vertical-align: top;width:15%;text-align: right;}
+.add_pro_box input{border:none;border-bottom:1px solid #ddd8d8;width:60%;}
+.add_pro_box textarea{border:1px solid #ddd8d8;width:80%;}
+.add_pro_box .control-group{margin-bottom: 20px;}
+.pro_browse{display: inline-block;vertical-align:top;}
+.pro_browse ul li{height: 80px;width: 80px;overflow:hidden;background: #d7d7d7;margin:0 5px;margin: 0 5px;display: inline-block;position: relative;}
+.pro_browse span i{position: absolute;right:5px;font-size: 20px;cursor: pointer;}
+.pro_browse ul li img{height: 100%;width: 100%;}
+.pro_browse ul li:first-child{cursor: pointer;}
+.pro_browse ul li:first-child i{color:#fff;font-size: 40px;top: 50%;position: relative;left: 50%;transform: translate(-50%,-50%);}
+.add_pro_box .bottom_btn{text-align: right;}
+.add_pro_box .bottom_btn button{color:#c59b42;font-family: 'Lato-Bold';text-transform: uppercase;margin-right: 20px;font-size: 20px;background: transparent;box-shadow: none;border: 0;}
+/*K 29-03-2018 end*/
+
+.hours_opration_view h2,
+.business_categories_section h2,
+.categories_gallery h2,
+.social_profile h2,
+.meta_tag_view h2,
+.busi_activi_view h2{color: #3e3e3e;font-family: 'Lato-Bold';font-size: 22px;
+ margin-bottom:30px;}	
+.opne_time_listing mat-checkbox{display: inline-block;width: 150px;
+font-size: 20px;}
+.opne_time_listing input{display: inline-block;width: 75px;border-bottom: 1px solid #ddd8d8;
+box-shadow: none;border-top: 0;border-left: 0;border-right: 0;}
+.opne_time_listing mat-form-field{display: inline-block;width: 50px;}
+.opne_time_listing .close_time{font-size: 20px;color: #c59b42;display: inline-block;
+margin-bottom: 15px;}
+.busi_activi_view p{font-size: 18px;color: #414141;margin-bottom: 30px;
+    text-align: justify;padding-left: 30px;position: relative;}
+/*.busi_activi_view p:before{position: absolute;left: 5px;top: 10px;
+content: '';background: #414141;width: 6px;height: 6px;border-radius: 10px;}*/
+.busi_activi_view textarea{height: 115px;
+    width: 100%;
+    font-size: 20px;
+    color: #414141;
+    border: 2px solid #ddd8d8;
+    padding: 0px 10px;}
+.busi_activi_view h2 span{font-family: 'Lato-Bold';color: #c59b42;
+text-transform:uppercase;display: inline-block;cursor: pointer;}
+.business_categories_section{margin-top: 50px;}
+.business_categories_section h2 span{color: #c59b42;text-transform: uppercase;}
+.business_categories_section h2 {font-family: 'Lato-Bold';cursor: pointer;}
+.business_categories_section mat-chip,
+.meta_tag_view mat-chip{font-size:18px;color: #646464;border-radius: 0;
+padding: 10px 30px 10px 15px;position: relative;margin-bottom:8px !important;margin-right:8px !important;margin-left: 0 !important;}
+.business_categories_section mat-chip i,
+.meta_tag_view mat-chip i{position: absolute;right: 7px;top: 10px;cursor: pointer;}
+.categories_gallery,
+.social_profile{margin-top:50px;}
+.categories_gallery .browse_btn{background: #c49543;color: #fff;font-size: 18px;
+padding: 7px 20px;border-radius: 5px;cursor: pointer;}
+.categories_gallery ul li{width: 31%;display:inline-block;margin:0 -2px 15px -2px;
+	margin-right: 15px;height: 115px;}
+.categories_gallery ul li:nth-child(3),
+.categories_gallery ul li:nth-child(6),
+.categories_gallery ul li:nth-child(9),
+.categories_gallery ul li:nth-child(12){margin-right:0;}
+.categories_gallery ul li img{width: 100%;height: 100%;}
+.categories_gallery ul li span{display: block;text-align:right;cursor: pointer;}
+.social input{	width: 100%;border-left: 0;border-right: 0;
+	border-top: 0;border-bottom: 2px solid #ddd8d8; 
+	font-size: 20px;color: #414141;height: 50px;}
+.child-name-list, .social-activities{list-style-type: disc;padding-left: 20px;}
+.child-name-list li, .social-activities li{margin-bottom: 10px;font-size: 20px;color: #414141;}
+.child-name-list li p, .social-activities li p{width: 87%;display: inline-block;vertical-align: top;padding-right: 3px;}
+.social li a{display: inline-block;width: 10%;margin-right: 10px;}
+.social li input{display: inline-block;width: 86% !important;}
+.social li{display: block;margin-bottom: 30px;}
+.social li:last-child{margin-right: 0;}
+.social li img{max-width: 100%;}
+.social-activities{margin-top:30px;}
+.add_new_box{font-size: 0;margin-top:10px;}
+.add_new_box input{vertical-align: middle;}
+.add_new_box input + i{vertical-align: middle;}
+.add_new_box input,.add_new_box textarea{width: 93% !important;display: inline-block;}
+.add_new_box i{width: 5% !important;font-size: 30px;color:#c59b42;display: inline-block;vertical-align: top;margin-left: 5px;}
+.add_new_box i:hover{cursor: pointer;}
+.edit_icon{vertical-align: top;display: inline-block;width: 11%;}
+.edit_icon i{font-size: 20px;color: #414141;cursor: pointer;}
+.edit_icon i:first-child{padding-right: 10px;}
+
+
+.social_profile h2{margin-bottom: 40px;}
+.meta_tag_view{margin-top: 50px;}
+.meta_tag_view h4{color: #bdbdbd;font-size: 20px;}
+.profile_btn{text-align: center;margin: 50px 0 30px 0;}
+.profile_btn button{text-transform: uppercase;font-family: 'Lato-Heavy';padding: 10px 60px;}
+.product_gallery li{vertical-align: top; width: 15.3%;display: inline-block;margin:0 -2px 15px -2px;margin-right:15px;}
+.product_gallery li span{display: block;text-align: right;cursor: pointer;}
+.product_gallery li:last-child{margin-right: 0;}
+.product_gallery li img{width: 100%;}
+.product_gallery{margin-bottom: 30px;}
+.product_gallery p{color: #041414;font-size: 20px;text-align: center;}
+.opne_time_listing span i{color: #7b7b7b;font-size: 10px;}
+.meta_tag_view input{padding:0 15px; width: 100%;background: #e8e8e8;border-radius: 5px;height: 45px;box-shadow: none;border: 0;margin-bottom: 20px;}
+.meta_tag_view .input_auto_complete{position: relative;width: 80%;}
+.meta_tag_view .input_auto_complete i{position: absolute;right: 15px;top:13px;color: #767676;font-size: 20px;}
+select.form-control{height: 50px !important;}
+
+.fa-info-circle{margin-left: 15px;cursor: pointer;}
+
+
+.city_dropdown{
+    display: inline-block;
+    vertical-align: middle;
+    width: 35%;
+    position: relative;
+    margin-right:10px;
+    font: normal normal normal 14px/1 FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .city_dropdown:before {
+      position: absolute;
+      right: 12px;
+      top: 7px;
+      font-size: 25px;
+      color: #c99756;
+      content: '\F0D7';
+      z-index: 1;
+      pointer-events: none;
+  }
+  .city_dropdown .dropbtn{
+    width: 100%;
+    padding: 0px 10px;
+    height: 36px;
+    font-size: 15px;
+    background: #ffffff;
+    border: 0;
+    vertical-align: middle;
+    border-radius: 100px;
+    font-family: 'Lato-Medium';
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    text-align: left;
+  }
+  .city_dropdown .dropbtn:focus{
+    outline: none;
+  }
+  .city_dropdown.hours{
+    width: 40%;
+    box-shadow: 0px 0px 11px #bdbcbc;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .city_dropdown.hours .dropbtn{
+    padding-left: 20px;
+  }
+  .city_dropdown .dropdown-content{
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 999;
+    background: #fff;
+    font-size: 15px;
+    font-family: 'Lato-Medium';
+    text-align: left;
+    top: 37px;
+    border: 1px solid #c59b42;
+    width: 100%;
+  }
+  .city_dropdown .dropdown-content a:hover{
+    background: #c59b42;
+    color: #fff;
+  }
+  
+  .city_dropdown .dropdown-content #myInput {
+    border-box: box-sizing;
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 5px 20px 6px 26px;
+    border: none;
+    border: 1px solid #c59b42;
+    border-radius: 5px;
+    width: 100%;
+  }
+  .city_dropdown .city_search_input{
+    position: relative;
+    margin: 5px;
+  }
+  .city_dropdown .city_search_input i{
+      position: absolute;
+      top: 50%;
+      left: 11px;
+      transform: translate(0%,-50%);
+      color: #c59b42;
+  }
+  .city_dropdown .dropdown-content a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+  }
+.owner_box p{font-size: 16px;}
+.business_all_btn .profile_btn{
+  margin: 0;
+}
+.mat-chip-list-wrapper{
+  margin-bottom: 30px;
+}
+.business-logo{
+  margin-top: 20px;
+}
+
+@media (min-width: 768px){
+.edit_business_form .control-group label{font-size: 18px;}
+.edit_business_form .control-group input,
+.edit_business_form .control-group textarea,.edit_business_form .control-group select,
+.busi_activi_view textarea,
+.opne_time_listing .close_time,
+.social input,
+.add_pro_box .bottom_btn button,
+.product_gallery p{font-size: 16px;line-height: 20px;}
+.hours_opration_view h2, 
+.business_categories_section h2, 
+.categories_gallery h2, 
+.social_profile h2, 
+.meta_tag_view h2,
+.busi_activi_view h2,
+.hours_opration_view h2,
+.title h2,
+.title a,
+.detail h2{font-size: 18px;}
+.opne_time_listing mat-checkbox,
+.busi_activi_view p{font-size: 14px;}
+.opne_time_listing mat-checkbox{width: 120px;}
+.opne_time_listing input{width: 70px;}
+.categories_gallery ul li{width: 29%;}
+.owner_box .icons_outer{display:block;text-align: center;}
+.owner_box .icons_outer a{display: inline-block;margin-bottom: 0;margin-right:10px;}
+.product_gallery li{width: 15.0%}
+.business_detail_view{padding: 20px 40px;}
+.opne_time_listing .mat-checkbox-inner-container {margin-right: 10px;}
+.opne_time_listing mat-checkbox{width: 110px;}
+.opne_time_listing input{width: 36px;}
+.opne_time_listing mat-form-field{width: 40px;}
+.opne_time_listing .mat-checkbox-inner-container{margin-right: 10px;}
+.business_categories_section mat-chip, 
+.meta_tag_view mat-chip{font-size: 16px;}
+.categories_gallery .browse_btn{font-size: 16px;}
+.social li input{width: 85% !important;}
+.meta_tag_view{margin-top: 0;}
+.meta_tag_view{display: block;margin: 0 auto;}
+.profile_btn button{font-size: 20px;}
+.owner_box .img_outer{height: 100px;width:100px;display: block;margin:0 auto;}
+.owner_box .detail{width:100%;text-align: center;margin:10px 0;padding-left: 0;}
+.icons_outer a img{max-width: 38%;}
+.title a{font-size: 16px;}
+.add_pro_box label{width: 22%;}
+.add_pro_box input{width: 60%;}
+.pro_browse,
+.add_pro_box textarea{width: 75%;}
+.city_dropdown.hours{
+    width: 100%;
+  }
+.social-activities li p{width: 80%;}
+.social-activities li .edit_icon{width: 18%;}
+}
+@media (min-width: 992px){
+.business_detail_view{padding: 40px 60px;}
+.edit_business_form .control-group label{font-size: 20px;}
+.edit_business_form .control-group input,
+.edit_business_form .control-group textarea,.edit_business_form .control-group select,
+.busi_activi_view textarea,
+.opne_time_listing .close_time,
+.social input,
+.add_pro_box .bottom_btn button,
+.product_gallery p{font-size: 18px;}
+.hours_opration_view h2, 
+.business_categories_section h2, 
+.categories_gallery h2, 
+.social_profile h2, 
+.meta_tag_view h2,
+.busi_activi_view h2,
+.hours_opration_view h2,
+.title h2,
+.title a,
+.detail h2{font-size: 20px;}
+.opne_time_listing mat-checkbox,
+.busi_activi_view p{font-size: 16px;}
+.opne_time_listing mat-checkbox{width: 120px;}
+.opne_time_listing input{width: 70px;}
+.categories_gallery ul li{width: 30%;}
+.owner_box .icons_outer{display:inline-block;text-align: center;}
+.owner_box .icons_outer a{display: block;margin-right:0;margin-bottom: 10px;}
+.product_gallery li{width: 15%;}
+.opne_time_listing .mat-checkbox-inner-container{margin-right: 15px;}
+.opne_time_listing mat-form-field{width: 50px;}
+.social_profile{padding-left: 40px;}
+.business_categories_section mat-chip, 
+.meta_tag_view mat-chip{font-size: 18px;}
+.categories_gallery .browse_btn{font-size: 18px;}
+.social li input{width: 86% !important;}
+.profile_btn button{font-size: 20px;}
+.owner_box .img_outer{height: 100px;width:100px;display: inline-block;}
+.owner_box .detail{width: 57%;padding-left: 20px;text-align: left;}
+.icons_outer a img{max-width: 100%;}
+.title a{font-size: 20px;}
+.add_pro_box label{width: 15%;}
+.add_pro_box input{width: 60%;}
+.pro_browse,
+.add_pro_box textarea{width: 80%;}
+.city_dropdown.hours{width: 50%;}
+
+}
+@media (min-width: 1024px){
+
+}
+@media (min-width: 1200px){
+.edit_business_form .control-group label{font-size: 22px;}
+.edit_business_form .control-group input,
+.edit_business_form .control-group textarea,.edit_business_form .control-group select,
+.busi_activi_view textarea,
+.opne_time_listing mat-checkbox,
+.opne_time_listing .close_time,
+.social input,
+.add_pro_box .bottom_btn button,
+.product_gallery p{font-size: 20px;}
+.opne_time_listing mat-checkbox{width: 150px;}
+.hours_opration_view h2, 
+.business_categories_section h2, 
+.categories_gallery h2, 
+.social_profile h2, 
+.meta_tag_view h2,
+.busi_activi_view h2,
+.hours_opration_view h2,
+.title h2,
+.title a{font-size: 22px;}
+.title a{font-size: 22px;}
+.opne_time_listing input{width: 75px;}
+.busi_activi_view p{font-size: 18px;}
+.categories_gallery ul li{width: 31%;}
+.owner_box .icons_outer{display: inline-block;vertical-align: middle;}
+.owner_box .icons_outer a{display:block;margin-bottom: 20px;margin-right:0;}
+.product_gallery li{width: 15.3%}
+.owner_box .img_outer{height: 150px;width:150px;}
+
+}
+@media (max-width: 767px){
+.edit_business_form .control-group label{font-size: 16px;}
+.edit_business_form .control-group input,.edit_business_form .control-group select,
+.edit_business_form .control-group textarea,
+.busi_activi_view textarea,
+.opne_time_listing .close_time,
+.social input,
+.add_pro_box .bottom_btn button,
+.product_gallery p{font-size: 14px;}
+.hours_opration_view h2, 
+.business_categories_section h2, 
+.categories_gallery h2, 
+.social_profile h2, 
+.meta_tag_view h2,
+.busi_activi_view h2,
+.hours_opration_view h2,
+.title h2,
+.title a,
+.detail h2{font-size: 18px;}
+.business_title h2{font-size: 22px;margin-bottom: 20px;}
+.business_detail_view{padding: 20px;}
+.edit_business_form .control-group{margin-bottom: 30px;}
+.business_categories_section mat-chip,
+.meta_tag_view mat-chip,
+.categories_gallery .browse_btn,
+.business_categories_section h2 span,
+.profile_btn button{font-size: 16px;}
+.profile_btn{margin: 20px 0 0 0;}
+.title a{font-size: 14px;}
+.img_outer{width: 150px;height: 150px;display: block;margin:0 auto;}
+.owner_box .detail{width: 54%;}
+.icons_outer a img{width: 40%;}
+.opne_time_listing .close_time,
+.opne_time_listing mat-checkbox{font-size: 16px;}
+.meta_tag_view,
+.business_categories_section,
+.categories_gallery, 
+.social_profile{margin-top: 30px;}
+.add_pro_box label{font-size: 16px;width: 100%;text-align: left;}
+.pro_browse{display: block;}
+.add_pro_box textarea{width: 100%;}
+.owner_info, .pro_info{margin-top: 30px;}
+
+
+}
+@media(max-width: 575px){
+  .country_code_outer{width: 38%;margin-right: -15px;}
+  .phone_outer{width: 66%;}
+  .city_dropdown.hours{width: 100%;}
+}
+@media (max-width: 560px){
+.img_outer{width: 150px;height: 150px;display: block !important;margin:0 auto;}
+.owner_box .detail{width: 100% !important;padding-left: 0;text-align: center;margin:10px 0;}
+.owner_box .icons_outer{display: block !important;text-align: center;}
+.owner_box .icons_outer a{display: inline-block;margin-right:10px;margin-bottom:0;}
+.add_pro_box input{width: 100%;}
+.pro_browse ul li{width: 45%;}
+.product_gallery li{width: 29.8%;vertical-align: top;}
+.opne_time_listing mat-checkbox{width: 100%;}
+.opne_time_listing{position: relative;}
+.opne_time_listing .close_time{position: absolute;right: 0;top: 0;}
+
+}
+@media (max-width: 360px){
+.pro_browse ul li{width: 100%;}
+.product_gallery li{width: 47%;}
+.profile_btn button{padding: 10px 70px;}
+.opne_time_listing input{width: 47px;}
+
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }

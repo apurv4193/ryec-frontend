@@ -1,0 +1,132 @@
+<div class="container well">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal" [formGroup]="signUpForm" novalidate>
+                <fieldset class="signup_view">
+                    <div id="legend">
+                        <legend class="">{{'ang_signup' | translate}}</legend>
+                    </div>
+                    <div class="type_of_language">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <button type="button" (click)="switchLang('en')" class="ryec_btn pull-left" [ngClass]="{'active': lang == 'en'}">English</button>
+                            </div>
+                            <!-- Col End -->
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <button type="button" (click)="switchLang('hi')" class="ryec_btn" [ngClass]="{'active': lang == 'hi'}">हिंदी</button>
+                            </div>
+                            <!-- Col End -->
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <button type="button" (click)="switchLang('gu')" class="ryec_btn pull-right" [ngClass]="{'active': lang == 'gu'}">ગુજરાતી</button>
+                            </div>
+                            <!-- Col End -->
+                        </div>
+                    </div>
+                    <!-- type_of_language End -->
+                    <!-- rajput community button-->
+                    <div class="control-group radio-btn">
+                        <label class="control-label">{{'ang_areyourajput' | translate}}
+                            <em class="fa fa-info-circle" title="{{'ang_rjputcommithelp' | translate}}"></em>
+                        </label>
+                        <div class="type_gender">
+                            <input type="radio" formControlName="isRajput" value="1" name="isRajput" id="cast1" checked>
+                            <label for="cast1">{{'ang_yes' | translate}}</label>
+                            <input type="radio" formControlName="isRajput" value="0" name="isRajput" id="cast2" checked>
+                            <label for="cast2">{{'ang_no' | translate}}</label>
+                        </div>
+                        <!-- type_gender End -->
+                    </div>
+                    <!-- rajput community button end-->
+                    <div class="control-group">
+                        <!-- Username -->
+                        <div class="controls">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <input (focus)="statusAlert.status === 3" pattern="[a-zA-Z][a-zA-Z ]+" type="text" formControlName="username" id="username"
+                                name="username" placeholder="{{'ang_username' | translate}}" class="input-xlarge">
+                            <p class="help-block" *ngIf="signUpForm.controls.username.touched && (signUpForm.controls.username.errors?.required || signUpForm.controls.username.errors?.pattern)">{{'ang_usernamevalidation' | translate}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 gutter_right country_outer">
+                            <div class="flag_dropdown">
+                                <button class="dropbtn" (click)="selectCountryCode();">
+                                    <img [src]="country_img" width="20px" /> {{country_code}}
+                                </button>
+                                <div class="flag_dropdown_list" *ngIf="showDropDown">
+                                    <perfect-scrollbar>
+                                        <a href="javascript:void(0);" (click)="selectCountry(code);" *ngFor="let code of countryCodes;">
+                                            <img [src]="code.country_flag" width="20px" /> {{code.country_code}}</a>
+                                    </perfect-scrollbar>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-9 col-md-9 gutter_right mobile_outer">
+                            <div class="control-group">
+                                <!--Mobile -->
+                                <div class="controls">
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                    <input (focus)="statusAlert.status === 0" minlength="6" maxlength="13" type="tel" formControlName="mobnumber" id="mobnumber" name="mob-number" (keypress)="numberOnly($event)"
+                                        placeholder="{{'ang_mobile' | translate}}" class="input-xlarge">
+                                    <p class="help-block" *ngIf="signUpForm.controls.mobnumber.touched && signUpForm.controls.mobnumber.errors?.required ">{{'ang_mobilerequired' | translate}}</p>
+                                </div>
+                                <p class="help-block" *ngIf="signUpForm.controls.mobnumber.touched && (signUpForm.controls.mobnumber.errors?.minlength || signUpForm.controls.mobnumber.errors?.maxlength)">
+                                    {{'ang_mobilevalidation' | translate}}
+                                </p>
+                                <p class="help-block" *ngIf="signUpForm.controls.mobnumber.touched && signUpForm.controls.mobnumber.errors?.pattern">{{ 'ang_numbervalidation' | translate}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group" *ngIf="showEmail">
+                        <div class="controls">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <input type="email" formControlName="email" id="email" name="email" placeholder="{{'ang_emailid' | translate}}"
+                                class="input-xlarge">
+                            <p class="help-block" *ngIf="signUpForm.controls.email.touched && (signUpForm.controls.email.errors?.required || signUpForm.controls.email.errors?.email)">
+                                {{'ang_businessemailvalidation' | translate}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Password-->
+                        <div class="controls">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                            <input type="password" formControlName="password" id="password" name="password" placeholder="{{'ang_password' | translate}}"
+                                class="input-xlarge">
+                            <p class="help-block" *ngIf="signUpForm.controls.password.touched && (signUpForm.controls.password.errors?.required || signUpForm.controls.password.errors?.minlength)">{{'ang_passwordvalidation' | translate }}</p>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Password -->
+                        <div class="controls">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                            <input type="password" formControlName="passwordConfirm" id="password_confirm" name="password_confirm" placeholder="{{'ang_confirmpassword' | translate}}"
+                                class="input-xlarge">
+                            <p class="help-block" *ngIf="signUpForm.controls.passwordConfirm.touched && signUpForm.controls.passwordConfirm.errors?.required">{{'ang_confirmpasswordvalidation' | translate}}</p>
+                            <p class="help-block" *ngIf="signUpForm.controls.passwordConfirm.touched && signUpForm.controls.passwordConfirm.errors?.equalTo">{{'ang_samepasswordvalidation' | translate}}</p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            <button type="submit" [disabled]="!signUpForm.valid" class="ryec_btn sign_up_btn" (click)="sendVerificationOTP()">{{'ang_signup' | translate}}</button>
+                        </div>
+                    </div>
+                    <div class="already_view">
+                        <a href="" routerLink="/login">{{'ang_alreadymember' | translate}}
+                            <strong>{{'ang_logintitle' | translate}}</strong>
+                        </a>
+                    </div>
+                    <!-- already_view End -->
+                    <p class="agree_line">{{'ang_signuptext' | translate}}
+                        <a href="javascript:void(0);" (click)="openTermsConditions()">{{'ang_termsandconditions' | translate}}</a>
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>

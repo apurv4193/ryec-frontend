@@ -1,0 +1,267 @@
+<div class="user_profile_view">
+	<div class="owner_business_name">
+		<h3><a href="javascript:void(0);" (click)="cancelEditOwner()">{{business_name}}</a> > {{label | translate}} {{'ang_ownerprofile' | translate}}</h3>
+	</div>
+		<div class="profile_photo">
+			<div class="upload_photo">
+				<img alt="user_profile" (click)="triggerUpload()" [src]="userProfilePic" #userProfileImage>
+				<input type="file" (change)="uploadProfilePic($event, contentImage)" style="display: none;" accept="image/x-png,image/gif,image/jpeg" #userProfile>
+				<div class="add_photo" (click)="triggerUpload()">
+					<img alt="plus-icon" src="../assets/images/plus-icon.png" class="img-responsive">
+				</div>
+			</div>
+		</div>
+
+		<form class="form-horizontal" [formGroup]="addOwnerForm" novalidate>
+			<div>
+				<div class="personal_profile_view">
+					<div class="row">
+						<div class="col-md-12 col-xs-12">
+							<div class="profile_title">
+								<h2>{{'ang_personalprofile' | translate}}</h2>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="control-group">
+								<label class="control-label" for="name">{{'ang_username' | translate}}<span class="required_field">*</span></label>
+								<div class="controls">
+									<input type="text" pattern="[a-zA-Z][a-zA-Z ]+" formControlName="full_name" id="full_name" name="full_name" placeholder="{{'ang_username' | translate}}"
+									class="input-xlarge">
+								</div>
+								<p class="help-block" *ngIf="addOwnerForm.controls.full_name.touched && addOwnerForm.controls.full_name.errors?.required">{{ 'ang_usernamevalidation' | translate}}</p>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="control-group">
+								<label class="control-label" for="email">{{'ang_email' | translate}}<span class="required_field">*</span></label>
+								<div class="controls">
+									<input type="email" formControlName="email_id" id="email_id" name="email_id" placeholder="{{'ang_email' | translate}}" class="input-xlarge">
+								</div>
+								<p class="help-block" *ngIf="addOwnerForm.controls.email_id.touched && (addOwnerForm.controls.email_id.errors?.required || addOwnerForm.controls.email_id.errors?.pattern) ">{{ 'ang_emailvalidation' | translate}}</p>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="control-group">
+								<label class="control-label" for="phone">{{'ang_mobile'| translate}}<span class="required_field">*</span></label>
+								<div class="row">
+									<div class="col-lg-4 col-md-5 col-sm-5 country_code_outer ">
+										<div class="flag_dropdown">
+							                <button class="dropbtn" (click)="selectCountryCode();">
+							                  <img [src]="country_img" width="20px" /> {{country_code}}
+							                </button>
+							                <div class="flag_dropdown_list" *ngIf="showDropDown">
+												<perfect-scrollbar>
+													<a href="javascript:void(0);" (click)="selectCountry(code);" *ngFor="let code of countryCodes;"><img [src]="code.country_flag" width="20px"/>  {{code.country_code}}</a>
+												</perfect-scrollbar>
+							                </div>
+						           		</div>
+									</div>
+									<div class="col-lg-8 col-md-7 col-sm-7 phone_outer">
+										<div class="controls">
+											<input type="tel" minlength="6" maxlength="13"  formControlName="mobile" id="mobile" name="mobile" placeholder="{{'ang_mobile'| translate}}" class="input-xlarge" (keypress)="numberOnly($event)">
+										</div>
+										<p class="help-block" *ngIf="addOwnerForm.controls.mobile.touched && (addOwnerForm.controls.mobile.errors?.required || addOwnerForm.controls.mobile.errors?.minLength || addOwnerForm.controls.mobile.errors?.maxLength)">{{ 'ang_mobilerequired' | translate}}</p>
+										<p class="help-block" *ngIf="addOwnerForm.controls.mobile.touched && addOwnerForm.controls.mobile.errors?.pattern">
+											{{'ang_numbervalidation' | translate}}
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="control-group">
+								<label class="control-label" for="dob">{{'ang_dob' | translate}}</label>
+								<div class="controls">
+									<i class="fa fa-calendar" (click)="d.toggle()" aria-hidden="true"></i>
+									<input ngbDatepicker #d="ngbDatepicker" type="text" formControlName="dob" id="dob" name="dob" placeholder="{{'ang_dob'| translate}}" class="input-xlarge">
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="control-group">
+								<label class="control-label" for="dob">{{'ang_designation' | translate}}</label>
+								<div class="controls">
+									<input type="text" formControlName="designation" id="designation" name="designation" placeholder="{{'ang_designation' | translate}}" class="input-xlarge">
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="control-group">
+								<label class="control-label" for="gender">{{'ang_gender'| translate}}</label>
+
+								<div class="type_gender">
+									<input type="radio" formControlName="gender" value="2" id="female" name="gender" checked>
+									<label for="female">{{'ang_female' | translate}}</label>
+									<input type="radio" formControlName="gender" value="1" id="male" name="gender" checked>
+									<label for="male">{{'ang_male'| translate}}</label>
+								</div>
+								<!-- type_gender End -->
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="personal_profile_view">
+					<div class="row">
+						<div class="col-md-12 col-xs-12">
+							<div class="profile_title">
+								<h2>{{'ang_otherinformation' | translate}}</h2>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="control-group">
+								<label class="control-label" for="fathename">{{'ang_fathername'| translate}}</label>
+								<div class="controls">
+									<input type="text" formControlName="father_name" pattern="[a-zA-Z][a-zA-Z ]+" id="father_name" name="father_name" placeholder="{{'ang_fathername'| translate}}"
+									class="input-xlarge">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="control-group">
+								<label class="control-label" for="nativevillage">{{'ang_nativevillage'| translate}} <i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_nativevillagehelp' | translate}}"></i></label>
+								<div class="controls">
+									<input type="text" formControlName="native_village" pattern="[a-zA-Z][a-zA-Z ]+" id="native_village" name="native_village" placeholder="{{'ang_nativevillage' | translate}}"
+									class="input-xlarge">
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="control-group">
+								<label class="control-label" for="maternalhome">{{'ang_maternalhome' | translate}} <i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_maternalvillagehelp' | translate}}"></i></label>
+								<div class="controls">
+									<input type="text" formControlName="maternal_home" pattern="[a-zA-Z][a-zA-Z ]+" id="maternal_home" name="maternal_home" placeholder="{{'ang_maternalhome' | translate}}"
+									class="input-xlarge">
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="control-group">
+								<label class="control-label" for="kulgotra">{{'ang_kulgotra'| translate}} <i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_kulgotrahelp' | translate}}"></i></label>
+								<div class="controls">
+									<input type="text" formControlName="kul_gotra" pattern="[a-zA-Z][a-zA-Z ]+" id="kul_gotra" name="kul_gotra" placeholder="{{'ang_kulgotra'| translate}}"
+									class="input-xlarge">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6  col-xs-12">
+							<div class="control-group">
+								<label class="control-label" for="children">{{'ang_children' | translate}} <i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_childrennamehelp' | translate}}"></i></label>
+								<div class="controls">
+									<ul class="child-name-list">
+										<li *ngFor="let child of ownerInfo.children; let ind = index; ">
+										<p>{{child.children_name}}</p>
+											<div class="edit_icon">
+												<i class="fa fa-pencil" (click)="editChildActivity(ind)" aria-hidden="true"></i>
+												<i class="fa fa-trash" (click)="deleteChild(ind)" aria-hidden="true"></i>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="controls add_new_box">
+									<input type="text" formControlName="children" id="children" name="children" placeholder="{{'ang_chilrenname' | translate}}" class="input-xlarge">
+									<i class="fa fa-plus-circle" (click)="addChild()" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-xs-12">
+							<div class="control-group">
+								<label class="control-label" for="business achievements">{{'ang_socialactivities' | translate}} <i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_scoialactivity' | translate}}"></i></label>
+								<div class="controls">
+									<ul class="social-activities">
+										<li *ngFor="let activity of ownerInfo.social_activities; let ind = index; ">
+											<p>{{activity.activity_title}}</p>
+											<div class="edit_icon">
+												<i class="fa fa-pencil" (click)="editSocialActivity(ind)" aria-hidden="true"></i>
+												<i class="fa fa-trash" (click)="deleteSocialActivity(ind)" aria-hidden="true"></i>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="controls add_new_box">
+									<textarea name="social_activities" id="social_activities" formControlName="social_activities" placeholder="{{'ang_writehere' | translate}}"></textarea>
+									<i class="fa fa-plus-circle" (click)="addSocialActivity()" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-xs-12">
+							<div class="profile_title">
+								<h2>{{'ang_socialprofile' | translate}} <i class="fa fa-info-circle" aria-hidden="true" title="{{'ang_ownerscoialprofile' | translate}}"></i></h2>
+							</div>
+							<div class="controls">
+								<ul class="social">
+									<li>
+										<a href="javascript::void(0);" target="_blank" title="{{'ang_facebook' | translate}}"><img src="../assets/images/facebook.png" alt="facebook"></a>
+										<input type="text" id="facebook_url" name="facebook_url" formControlName="facebook_url" placeholder="{{'ang_enterfacebooklink' | translate}}" class="input-xlarge">
+									</li>
+									<li>
+										<a href="javascript::void(0);" target="_blank" title="{{'ang_twitter' | translate}}"><img src="../assets/images/twitter.png" alt="twitter"></a>
+										<input type="text" id="twitter_url" name="twitter_url" formControlName="twitter_url" placeholder="{{'ang_entertwitterlink' | translate}}" class="input-xlarge">
+									</li>
+									<li>
+										<a href="javascript::void(0);" target="_blank" title="{{'ang_linkedin' | translate}}"><img src="../assets/images/linkedin.png" alt="linkedin"></a>
+										<input type="text" id="linkedin_url" name="linkedin_url" formControlName="linkedin_url" placeholder="{{'ang_enterlinkedinlink' | translate}}" class="input-xlarge">
+									</li>
+									<li>
+										<a href="javascript::void(0);" target="_blank" title="{{'ang_instagram' | translate}}"><img src="../assets/images/instagram.png" alt="instagram"></a>
+									<input type="text" formControlName="instagram_url" id="instagram_url" name="instagram_url" placeholder="{{'ang_enterinstagramlink' | translate}}" class="input-xlarge">
+									</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="row">
+						<div class="col-md-6 col-xs-12">
+							<div class="profile_btn">
+								   <button class="ryec_btn" [disabled]="owner_id == 0 && !addOwnerForm.valid" type="submit" (click)="onSubmitAddOwner()">{{'ang_save' | translate}}</button>
+							  </div>
+						</div>
+						<div class="col-md-6 col-xs-12">
+							<div class="profile_btn">
+								   <button class="ryec_btn" type="submit" (click)="cancelEditOwner()">{{'ang_cancel' | translate}}</button>
+							  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+<ng-template #contentImage let-c="close" let-d="dismiss">
+	<div class="modal-header">
+			<h5 class="modal-title">{{'ang_profilepic' | translate}}</h5>
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<image-cropper style="height:400px"
+				[imageChangedEvent]="imageChangedEvent"
+				[maintainAspectRatio]="true"
+				[aspectRatio]="1 / 1"
+				[resizeToWidth]="500"
+				[onlyScaleDown]="false"
+				format="png"
+				[imageQuality] = "80"
+				(imageCropped)="imageCropped($event)"
+				(imageLoaded)="imageLoaded()"
+				(loadImageFailed)="loadImageFailed()"
+			></image-cropper>
+			<div class="profile_btn">
+				<button class="ryec_btn" type="submit" (click)="sendCropImage()">{{'ang_cropupload' | translate}}</button>
+			</div>
+		</div>
+</ng-template>

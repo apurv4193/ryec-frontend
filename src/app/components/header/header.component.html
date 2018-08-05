@@ -1,0 +1,191 @@
+<div class="top_header_view">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="logo_view">
+                    <a href="javascript:void(0)" routerLink="/home" (click)="menuHide()">
+                        <img src="../assets/images/logo.png" alt="logo">
+                    </a>
+                </div>
+                <!-- logo_view End -->
+            </div>
+            <!-- col End -->
+            <div class="col-md-7 col-sm-7 col-xs-12">
+                <div class="top_menu_section">
+                    <ul>
+                        <a *ngIf="!business_flag && agentStatus && isRajput" href="javascript:void(0)" class="register_business member" routerLink="/home/add-business" routerLinkActive="active" (click)="menuHide()">{{'ang_registerbusiness' | translate}}</a>
+                        <li *ngIf="!userLoggedIn; then loginEleRef; else logoutEleRef">this is ignored</li>
+                        <ng-template #loginEleRef>
+                            <li>
+                                <a href="javascript:void(0)" routerLink="/signup" routerLinkActive="active">{{'ang_signup' | translate}}</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" routerLink="/login" routerLinkActive="active">{{'ang_logintitle' | translate}}</a>
+                            </li>
+                        </ng-template>
+                    </ul>
+                    <ng-template #logoutEleRef>
+                        <a *ngIf="!agentStatus" href="javascript:void(0);" class="register_business member" (click)="registerMember()">{{'ang_addnewmember' | translate}}</a>
+                        <div *ngIf="business_flag && agentStatus && business_name != ''" class="business_title_icon business_name">
+                            <a href="javascript:void(0);" (click)="ckeckBusinessApproved()" class="text-overflow-hidden" title="{{business_name}}">
+                                <img *ngIf="business_approved == 0" src="assets/images/round-error-symbol.png" title="{{'ang_businessunderreview' | translate}}" />
+                                <img *ngIf="business_approved == 1 && memberShipPlan == 0 && memberShipPlanImage != ''" [src]="memberShipPlanImage" title="{{ 'ang_basicplantext' | translate }}" />
+                                <img *ngIf="business_approved == 1 && memberShipPlan == 1 && memberShipPlanImage != ''" [src]="memberShipPlanImage" title="{{ 'ang_premiumplantext' | translate }}" /> <span class="business_name_align">{{business_name}}</span>
+                            </a>
+                        </div>
+                        <div class="user_profile">
+                            <a href="javascript:void(0);" (click)="toggleProfile()">
+                                <span>
+									<img [src]="userProfile?.profile_pic_thumbnail" alt="" class="profile_menu_icon">
+								</span>
+                                <p class="profile_name">{{userName}}</p>
+                            </a>
+                            <div class="user_profile_dropdown" *ngIf="profileDropDown">
+                                <ul>
+                                    <li>{{'ang_hi' | translate}}, {{userProfile?.name}}</li>
+                                    <li>
+                                        <a href="javascript:void(0)" (click)="menuHide()" routerLink="/user" routerLinkActive="active">{{'ang_profile' | translate}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" (click)="menuHide()" routerLink="/user/change-password" routerLinkActive="active">{{'ang_changepassword' | translate}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" (click)="logout()">{{'ang_logout' | translate}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- user_profile_dropdown End -->
+                        </div>
+                        <div class="alert_message">
+                            <a href="javascript:void(0);" (click)="getThreadMessage()" routerLink="/messages" style="color: #c59b42;">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
+                            <span class="total_message" *ngIf="total_unmessage != 0">{{total_unmessage}}</span>
+                        </div>
+                    </ng-template>
+                    <!-- user_profile End -->
+                    <!-- alert_message End -->
+                </div>
+                <!-- top_menu_section End -->
+            </div>
+            <!-- col End -->
+        </div>
+        <!-- Row End -->
+    </div>
+    <!-- container End -->
+</div>
+<div class="menu_bar_view" *ngIf="userLoggedIn">
+    <div class="container ">
+        <a href="javascript:void(0);" (click)="toggleMenu()" class="menu_icon">
+            <i class="fa fa-list-ul side_menu_icon" aria-hidden="true"></i>
+        </a>
+        <a *ngIf="memberShipPlan == 0 && business_approved == 1" href="javascript:void(0)" routerLink="/home/membership-plan">
+            <img style="width:30px;" title="Apply for Premium Membership - You are missing out on premium features" src="../assets/images/premium_white.png">
+        </a>
+        <div class="nav_bar" *ngIf="showMenuList">
+            <div class="city_dropdown language">
+                <div class="dropdown">
+                    <button (click)="showLanguageDropDown()" class="dropbtn langauge">{{language}}</button>
+                    <div id="myDropdown" class="dropdown-content" *ngIf="isLangaugeShow">
+                        <a href="javascript:void(0)" (click)="selectLanguage(item.key, item.val)" *ngFor="let item of languageProvider">{{item.val}}</a>
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                <li *ngIf="business_flag && business_name != ''" class="business_title_icon text-overflow-hidden business_name_agent">
+                    <a href="javascript:void(0);" (click)="ckeckBusinessApproved()" title="{{business_name}}">
+                        <img *ngIf="business_approved == 0" src="assets/images/round-error-symbol.png" title="{{'ang_businessunderreview' | translate}}" />
+                        <img *ngIf="business_approved == 1 && memberShipPlan == 0 && memberShipPlanImage != ''" [src]="memberShipPlanImage" title="{{ 'ang_basicplantext' | translate }}" />
+                        <img *ngIf="business_approved == 1 && memberShipPlan == 1 && memberShipPlanImage != ''" [src]="memberShipPlanImage" title="{{ 'ang_premiumplantext' | translate }}" />
+                        <img *ngIf="business_approved == 1 && memberShipPlan == 2 && memberShipPlanImage != ''" [src]="memberShipPlanImage" title="{{ 'ang_lifetimeplantext' | translate }}" /> {{business_name}}
+                    </a>
+                </li>
+                <li routerLinkActive="active">
+                    <a href="javascript:void(0)" routerLink="/home" (click)="menuHide()">{{'ang_home' | translate}}</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a href="javascript:void(0)" routerLink="/atoz/categories" (click)="menuHide()">{{'ang_atozcategories' | translate}}</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a href="javascript:void(0)" routerLink="/messages" (click)="menuHide()">{{'ang_messages' | translate}}</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a href="javascript:void(0)" routerLink="/notifications-list" (click)="menuHide()">{{'ang_notifications' | translate}}</a>
+                </li>
+                <!-- <li>
+                    <a href="javascript:void(0)" routerLink="/home/investment-opportunity/relevance" (click)="menuHide()">{{'ang_investmentopprtunities' | translate}}</a>
+                </li> -->
+                <li *ngIf="!agentStatus">
+                    <a href="javascript:void(0)" routerLink="/home/agent-business-list/relevance" routerLinkActive="active" (click)="menuHide()">{{'ang_mymembers' | translate}}</a>
+                </li>
+                <li routerLinkActive="active" class="register_business" *ngIf="!business_flag && agentStatus && isRajput">
+                    <a href="javascript:void(0)" routerLink="/home/add-business" (click)="menuHide()">{{'ang_registerbusiness' | translate}}</a>
+                </li>
+                <li *ngIf="!business_flag && !agentStatus && isRajput" routerLinkActive="active" class="register_business">
+                    <a href="javascript:void(0)" routerLink="/home/add-business" (click)="menuHide()">{{'ang_registerbusiness' | translate}}</a>
+                </li>
+                <li *ngIf="agentStatus && isRajput" class="register_business">
+                    <a href="javascript:void(0)" (click)="becomeAgent();">{{'ang_becomeagent' | translate}}</a>
+                </li>
+                <li *ngIf="memberShipPlan == 0 && business_approved == 1" class="register_business" routerLinkActive="active">
+                    <a href="javascript:void(0)" title="Apply for Premium Membership - You are missing out on premium features" routerLink="/home/membership-plan">{{'ang_getpremiummembership' | translate}}</a>
+                </li>
+            </ul>
+            <ul class="useful_links">
+                <h5>{{'ang_usefullinks' | translate}}</h5>
+                <li>
+                    <a href="javascript:void(0)" routerLink="/about" routerLinkActive="active" (click)="menuHide()">{{'ang_aboutus' | translate}}</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a href="javascript:void(0)" routerLink="/contact" (click)="menuHide()">{{'ang_contactus' | translate}}</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a href="javascript:void(0);" routerLink="/privacy-policy" (click)="menuHide()">{{'ang_privacyandpolicy' | translate}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="right_header pull-right ">
+            <div class="city_dropdown ">
+                <div class="dropdown">
+                    <button (click)="showCityDropDown()" class="dropbtn">{{search_city}}</button>
+                    <div class="dropdown-content" *ngIf="isShow">
+                        <div class="city_search_input">
+                            <i _ngcontent-c1="" aria-hidden="true" class="fa fa-search"></i>
+                            <input type="text" placeholder="{{'ang_searchhere' | translate}}" id="myInput" name="city" [(ngModel)]="city" (input)="filterCity()" class="city-search">
+                        </div>
+                        <perfect-scrollbar style="height: 210px;">
+                            <a href="javascript:void(0)" (click)="selectCity('All Cities')" class="city">All Cities</a>
+                            <a href="javascript:void(0)" (click)="selectCity(city.name)" *ngFor="let city of cities;" class="city">{{city.name}}</a>
+                        </perfect-scrollbar>
+                    </div>
+                </div>
+                <!-- language_select End -->
+            </div>
+            <!-- city_dropdown End -->
+            <div class="search_here_view ">
+                <i (click)="searchBusiness()" style="cursor: pointer;" class="fa fa-search" aria-hidden="true"></i>
+                <input id="search" (keyup.enter)="searchBusiness()" [(ngModel)]="searchText" (input)="search($event)" placeholder="{{ 'ang_searchhere' | translate}} " type="text ">
+                <div class="auto_complete_list" style="display: none;">
+                    <perfect-scrollbar>
+                        <ul>
+                            <li *ngFor="let item of items" (click)="searchBusinessByCategory(item.value)" class="search_input">{{item.value}}</li>
+                        </ul>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+            <!-- search_here_view End -->
+        </div>
+        <!-- right_header End -->
+    </div>
+    <!-- container End -->
+</div>
+<!-- menu_bar_view End -->
+<!-- top_header_view End -->
+<script type="text/javascript ">
+    $(document).ready(function() {
+        $(".menu_icon ").click(function() {
+            $(".nav_bar ").slideToggle("slow ");
+        });
+    });
+</script>

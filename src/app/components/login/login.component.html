@@ -1,0 +1,79 @@
+<div class="container well">
+	<div class="row">
+		<div class="col-md-12">
+			<form class="form-horizontal" [formGroup]="loginForm" novalidate>
+				<fieldset class="login_view">
+					<div id="legend">
+						<legend>{{'ang_logintitle' | translate }}</legend>
+					</div>
+					<div class="row">
+
+						<div class="col-sm-3 col-md-3 gutter_right country_outer">
+							<div class="flag_dropdown">
+								<button class="dropbtn" (click)="selectCountryCode();">
+									<img [src]="country_img" width="20px" /> {{country_code}}
+								</button>
+								<div class="flag_dropdown_list" *ngIf="showDropDown">
+									<perfect-scrollbar>
+										<a href="javascript:void(0);" (click)="selectCountry(code);" *ngFor="let code of countryCodes;">
+											<img [src]="code.country_flag" width="20px" /> {{code.country_code}}</a>
+									</perfect-scrollbar>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-9 col-md-9 gutter_right mobile_outer">
+							<div class="control-group">
+								<!--Mobile -->
+								<div class="controls">
+									<i class="fa fa-mobile" aria-hidden="true"></i>
+									<input (focus)="statusAlert.status = 3" type="tel" formControlName="mobnumber" id="mobnumber" name="mob-number" minlength="6" maxlength="13" (keypress)="numberOnly($event)"
+									 placeholder="{{'ang_mobile' | translate}}" class="input-xlarge">
+									<p class="help-block" *ngIf="loginForm.controls.mobnumber.touched && loginForm.controls.mobnumber.errors?.required ">{{'ang_mobilerequired'| translate}}</p>
+								</div>
+								<p class="help-block" *ngIf="loginForm.controls.mobnumber.touched && (loginForm.controls.mobnumber.errors?.minlength || loginForm.controls.mobnumber.errors?.maxlength || loginForm.controls.mobnumber.errors?.pattern)">{{ 'ang_mobilevalidation' | translate}}</p>
+								<p class="help-block" *ngIf="loginForm.controls.mobnumber.touched && loginForm.controls.mobnumber.errors?.pattern">{{ 'ang_numbervalidation' | translate}}</p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="control-group">
+						<!-- Password-->
+						<div class="controls">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+							<input (focus)="statusAlert.status = 3" type="password" minlength="4" formControlName="password" id="password" name="password"
+							 placeholder="{{'ang_password' | translate}}" class="input-xlarge">
+							<div>
+								<p class="help-block pull-left" *ngIf="loginForm.controls.password.touched && (loginForm.controls.password.errors?.required || loginForm.controls.password.errors?.minlength)">{{'ang_passwordvalidation'| translate}}</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Button -->
+					<div class="forgot_pass">
+						<a href="javascript:void(0)" (click)="sendOTPonMobile()">{{'ang_forgotpassword' | translate}}</a>
+					</div>
+					<div class="control-group">
+						<div class="login_btn">
+							<button type="submit" [disabled]="!loginForm.valid" (click)="submitDetails()" class="ryec_btn">{{'ang_logintitle' | translate | uppercase}}</button>
+						</div>
+					</div>
+					<!-- login_btn End -->
+					<div class="col-md-12">
+						<div class="login-footer">
+							<!-- <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button> -->
+							{{'ang_firsttimelogin' | translate}}
+							<strong>
+								<a routerLink="/signup">{{'ang_signup' | translate}}</a>
+							</strong>
+						</div>
+					</div>
+					<p class="agree_line">{{'ang_loggingtext' | translate}}
+						<a href="javascript:void(0);" (click)="openTermsConditions()">{{'ang_termsandconditions' | translate}}</a>
+					</p>
+				</fieldset>
+			</form>
+		</div>
+
+	</div>
+</div>
